@@ -9,10 +9,21 @@
 import UIKit
 
 class EditingTableViewController: UITableViewController {
+    
+    var isSetup = false
+    var masterVC: MasterViewController? = nil
+    var todoItem: Todo?
 
+    // MARK:- Outlets
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var dueTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var descTextField: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,16 +31,46 @@ class EditingTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    func configureView() {
+        if let todo = todoItem {
+            title = "Edit"
+            titleTextField.text = todo.title?.description
+            dueTextField.text = todo.date?.description
+            locationTextField.text = todo.location?.description
+            descTextField.text = todo.desc?.description
+        } else {
+            title = "Add"
+        }
+        
+        if let toolbar = self.navigationController?.toolbar {
+            toolbar.isHidden = true
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if section == 0 {
+            return 3
+        } else {
+            return 1
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 && indexPath.row == 0 {
+            var newTodo = TodoData()
+            newTodo.title = titleTextField.text
+            newTodo.location = locationTextField.text
+            newTodo.desc = descTextField.text
+            print("todo to add: \(newTodo)")
+            masterVC?.insertNewObject(todoData: newTodo)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     /*
