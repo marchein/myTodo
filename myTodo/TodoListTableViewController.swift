@@ -8,21 +8,17 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 import MGSwipeTableCell
 
-class TodoListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TodoListTableViewController: UITableViewController {
 
-    var managedObjectContext: NSManagedObjectContext? = nil
+    var managedObjectContext: NSManagedObjectContext =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var _fetchedResultsController: NSFetchedResultsController<Todo>? = nil
     
-    enum DateOptions {
-        case date
-        case time
-        case both
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        UNUserNotificationCenter.current().delegate = self
         configureView()
     }
 
@@ -40,8 +36,7 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
     
     func insertNewObject(todoData: TodoData) {
         DispatchQueue.main.async(execute: { () -> Void in
-            let context = self.fetchedResultsController.managedObjectContext
-            let newTodo = Todo(context: context)
+            let newTodo = Todo(context: self.managedObjectContext)
             
             newTodo.date = todoData.date!
             newTodo.title = todoData.title!
@@ -50,7 +45,7 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
             newTodo.location = todoData.location!
             
             do {
-                try context.save()
+                try self.managedObjectContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -63,7 +58,6 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                print(indexPath)
                 let todoFromCoreData = fetchedResultsController.object(at: indexPath)
                 guard let todoDetailVC = segue.destination as? TodoDetailTableViewController else {
                     fatalError("Wrong segue identifier for given destination")
@@ -80,7 +74,6 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
         } else if segue.identifier == "quickEditSegue" {
             if let indexPath = tableView.indexPath(for: sender as! MGSwipeTableCell) {
                 let todoFromCoreData = fetchedResultsController.object(at: indexPath)
-                print(todoFromCoreData)
                 guard let editVC = segue.destination as? EditingTableViewController else {
                     fatalError("Wrong segue identifier for given destination")
                 }
@@ -94,9 +87,14 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let array = ["Still to be done", "Already done"]
-        
-        return array[section]
+        let numberOfSections = tableView.numberOfSections
+        let sectionNames = ["Left to do", "Done"]
+        if numberOfSections == 1 {
+            return nil
+        } else {
+            return sectionNames[section]
+
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -136,11 +134,10 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let context = fetchedResultsController.managedObjectContext
-            context.delete(fetchedResultsController.object(at: indexPath))
+            managedObjectContext.delete(fetchedResultsController.object(at: indexPath))
                 
             do {
-                try context.save()
+                try managedObjectContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -153,19 +150,31 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
             cell.textLabel!.text = title.description
         }
     
-        if let _ = todo.date {
-            guard let date = getDateOf(date: todo.date, option: .date) else { return }
-            guard let time = getDateOf(date: todo.date, option: .time) else { return }
+        if let date = todo.date {
+            guard let dateValue = getDateOf(date: date, option: .date) else { return }
+            guard let timeValue = getDateOf(date: date, option: .time) else { return }
             
-            cell.detailTextLabel?.text = "\(date) um \(time) Uhr"
+            cell.detailTextLabel?.text = "\(dateValue) um \(timeValue) Uhr"
+        }
+        
+        if todo.done {
+            cell.textLabel?.textColor = UIColor.lightGray
+            cell.detailTextLabel?.textColor = UIColor.lightGray
+        } else {
+            cell.textLabel?.textColor = UIColor.black
+            cell.detailTextLabel?.textColor = UIColor.black
         }
     }
     
     func doneAction(selectedItem: Todo?) {
-        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
         if let currentObject = managedObjectContext.object(with: (selectedItem?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
+            
+            if currentObject.done {
+                LocalNotification.removeNotification(for: currentObject)
+            } else {
+                LocalNotification.dispatchlocalNotification(with: currentObject)
+            }
             
             do {
                 try managedObjectContext.save()
@@ -174,71 +183,8 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
                 print("Could not save \(error), \(error.userInfo)")
             }
         }
-    }
-
-    // MARK: - Fetched results controller
-
-    var fetchedResultsController: NSFetchedResultsController<Todo> {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController!
-        }
         
-        let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
-        
-        fetchRequest.fetchBatchSize = 20
-        
-        let doneSortDescriptor = NSSortDescriptor(key: "done", ascending: true)
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
-        
-        fetchRequest.sortDescriptors = [doneSortDescriptor, dateSort]
-
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "done", cacheName: nil)
-
-        aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
-        
-        do {
-            try _fetchedResultsController!.performFetch()
-        } catch {
-             let nserror = error as NSError
-             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-        
-        return _fetchedResultsController!
-    }    
-    var _fetchedResultsController: NSFetchedResultsController<Todo>? = nil
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-        switch type {
-            case .insert:
-                tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-            case .delete:
-                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-            default:
-                return
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-            case .insert:
-                tableView.insertRows(at: [newIndexPath!], with: .fade)
-            case .delete:
-                tableView.deleteRows(at: [indexPath!], with: .fade)
-            case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
-            case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
-                tableView.moveRow(at: indexPath!, to: newIndexPath!)
-        }
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
+        tableView.reloadData()
     }
     
     @IBAction func generateTestData(_ sender: Any) {
@@ -263,7 +209,25 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
         }
         return  formatter.string(from: date)
     }
-    
+}
+
+enum DateOptions {
+    case date
+    case time
+    case both
+}
+
+func getDateOf(date: Date?, option: DateOptions) -> String? {
+    guard let date = date else { return nil }
+    let formatter = DateFormatter()
+    if option == .date {
+        formatter.dateFormat = "dd.MM.yyyy"
+    } else if option == .time {
+        formatter.dateFormat = "HH:mm"
+    } else if option == .both {
+        formatter.dateFormat = "dd.MM.yyyy - HH:mm"
+    }
+    return  formatter.string(from: date)
 }
 
 struct TodoData {
@@ -271,4 +235,79 @@ struct TodoData {
     var date: Date?
     var location: String?
     var desc: String?
+}
+
+// MARK:- Extensions
+
+extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
+    
+    var fetchedResultsController: NSFetchedResultsController<Todo> {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
+        
+        let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
+        
+        fetchRequest.fetchBatchSize = 20
+        
+        let doneSortDescriptor = NSSortDescriptor(key: "done", ascending: true)
+        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        
+        fetchRequest.sortDescriptors = [doneSortDescriptor, dateSort]
+        
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "done", cacheName: nil)
+        
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        do {
+            try _fetchedResultsController!.performFetch()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        return _fetchedResultsController!
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete:
+            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        default:
+            return
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
+        case .move:
+            configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
+
+extension TodoListTableViewController: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+    }
+    
 }

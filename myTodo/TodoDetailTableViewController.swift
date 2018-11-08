@@ -26,7 +26,6 @@ class TodoDetailTableViewController: UITableViewController {
     var indexPath: IndexPath?
     let start = CFAbsoluteTimeGetCurrent()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("detail VC viewDidLoad")
@@ -113,6 +112,13 @@ class TodoDetailTableViewController: UITableViewController {
         
         if let currentObject = managedObjectContext.object(with: (todo?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
+
+            if currentObject.done {
+                LocalNotification.removeNotification(for: currentObject)
+            } else {
+                LocalNotification.dispatchlocalNotification(with: currentObject)
+            }
+            
             self.navigationController?.popToRootViewController(animated: true)
             
             do {

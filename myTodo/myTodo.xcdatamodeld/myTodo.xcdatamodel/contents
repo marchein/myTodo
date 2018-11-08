@@ -8,6 +8,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Todo" positionX="261" positionY="198" width="128" height="118"/>
+        <element name="Todo" positionX="261" positionY="198" width="128" height="120"/>
     </elements>
 </model>

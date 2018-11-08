@@ -14,6 +14,7 @@
 		5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */; };
 		5BA641E92187C16400446436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641E72187C16400446436 /* Main.storyboard */; };
 		5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641EC2187C16500446436 /* LaunchScreen.storyboard */; };
+		5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD7D0E7219487B600209131 /* LocalNotifications.swift */; };
 		5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEADE3C2188F02100527CE1 /* Assets.xcassets */; };
 		A2EF0A8E67BEE302EAE86294 /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		5BA641E32187C16400446436 /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailTableViewController.swift; sourceTree = "<group>"; };
 		5BA641EF2187C16500446436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BD7D0E7219487B600209131 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		5BEADE3C2188F02100527CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTodo-Bridging-Header.h"; sourceTree = "<group>"; };
 		656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myTodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 		5BEE538E2190AA350057EDCD /* Support Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				5BD7D0E7219487B600209131 /* LocalNotifications.swift */,
 				5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */,
 			);
 			path = "Support Librarys";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */,
 				5BA641DF2187C16400446436 /* AppDelegate.swift in Sources */,
 				5BA641E22187C16400446436 /* myTodo.xcdatamodeld in Sources */,
 				5B839864218DDCD8004DF853 /* EditingTableViewController.swift in Sources */,

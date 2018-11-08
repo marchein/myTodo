@@ -18,15 +18,11 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     var maxTag = 0
     var textSubViews: [UIView]?
 
-
     // MARK:- Outlets
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,23 +101,51 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     }
     
     @objc fileprivate func insertNewEntry() {
-        var newTodo = TodoData()
-        newTodo.title = titleTextField.text
-        newTodo.date = getDueDate()
-        newTodo.location = locationTextField.text
-        newTodo.desc = descTextView.text
-        print("todo to add: \(newTodo)")
-        todoListTableVC?.insertNewObject(todoData: newTodo)
-        self.navigationController?.popToRootViewController(animated: true)
+        let isValid = checkInputFields()
+        if isValid {
+            var newTodo = TodoData()
+            newTodo.title = titleTextField.text
+            newTodo.date = getDueDate()!
+            newTodo.location = locationTextField.text
+            newTodo.desc = descTextView.text
+            print("todo to add: \(newTodo)")
+            todoListTableVC?.insertNewObject(todoData: newTodo)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
-    func getDueDate() -> Date {
+    func getDueDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         guard let date = dateFormatter.date(from: dueTextField.text!) else {
-            fatalError("ERROR: Date conversion failed due to mismatched format.")
+            print("ERROR: Date conversion failed due to mismatched format.")
+            return nil
         }
         return date
+    }
+    
+    func checkInputFields() -> Bool {
+        var valid = true
+        var errorMessage: String = "No error"
+        
+        if titleTextField.text!.count < 1 {
+            valid = false
+            errorMessage = "Title field cannot be empty"
+        }
+        
+        if getDueDate() == nil {
+            valid = false
+            errorMessage = "Something seems wrong with your due date field, try again please."
+        }
+        
+        if !valid {
+            let alert = UIAlertController(title: "Error while saving your to do", message: errorMessage, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Verstanden", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+        }
+        return valid
     }
     
     @objc fileprivate func editExistingEntry() {
@@ -132,15 +156,16 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             currentObject.date = getDueDate()
             currentObject.location = locationTextField.text
             currentObject.desc = descTextView.text
+            currentObject.done = false
             
             do {
                 try managedObjectContext.save()
+                LocalNotification.dispatchlocalNotification(with: currentObject)
                 print("saved!")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
             
-
             self.navigationController?.popToRootViewController(animated: true)
             
             return
@@ -219,5 +244,11 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         todoListTableVC = nil
         todoItem = nil
         tbAccessoryView = nil
+    }
+}
+
+extension Date {
+    func addedBy(minutes:Int) -> Date {
+        return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
     }
 }
