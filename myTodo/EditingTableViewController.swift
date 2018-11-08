@@ -8,25 +8,29 @@
 
 import UIKit
 import CoreData
-import IQKeyboardManagerSwift
 
 class EditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     var todoListTableVC: TodoListTableViewController? = nil
     var todoItem: Todo?
     var indexPath: IndexPath?
     var datePickerView: UIDatePicker?
-    private var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    var tbAccessoryView : UIToolbar?
+    var maxTag = 0
+    var textSubViews: [UIView]?
+
 
     // MARK:- Outlets
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var descTextField: UITextView!
+    @IBOutlet weak var descTextView: UITextView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        //returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         configureView()
     }
     
@@ -34,10 +38,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         navigationController?.toolbar.isHidden = true
     }
 
-    func configureView() {
+    fileprivate func configureView() {
         navigationController?.toolbar.isHidden = true
-
-        returnKeyHandler?.delegate = self
         
         datePickerView = UIDatePicker()
         datePickerView!.datePickerMode = UIDatePicker.Mode.dateAndTime
@@ -54,8 +56,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
                 datePickerView?.date = date
             }
             locationTextField.text = todo.location?.description
-            descTextField.text = todo.desc?.description
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save edited", style: .done, target: self, action: #selector(self.editExistingEntry))
+            descTextView.text = todo.desc?.description
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.editExistingEntry))
         } else {
             title = "Add"
             let now = Date()
@@ -65,9 +67,12 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             datePickerView?.date = now
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.insertNewEntry))
         }
+        
+        textSubViews = [titleTextField, dueTextField, locationTextField, descTextView]
+        findMaxTFTag()
     }
     
-    @objc func handleDatePicker(sender: UIDatePicker) {
+    @objc fileprivate func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         dueTextField.text = dateFormatter.string(from: datePickerView!.date)
@@ -99,12 +104,12 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         }
     }
     
-    @objc func insertNewEntry() {
+    @objc fileprivate func insertNewEntry() {
         var newTodo = TodoData()
         newTodo.title = titleTextField.text
         newTodo.date = getDueDate()
         newTodo.location = locationTextField.text
-        newTodo.desc = descTextField.text
+        newTodo.desc = descTextView.text
         print("todo to add: \(newTodo)")
         todoListTableVC?.insertNewObject(todoData: newTodo)
         self.navigationController?.popToRootViewController(animated: true)
@@ -119,14 +124,14 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         return date
     }
     
-    @objc func editExistingEntry() {
+    @objc fileprivate func editExistingEntry() {
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         if let currentObject = managedObjectContext.object(with: (todoItem?.objectID)!) as? Todo {
             currentObject.title = titleTextField.text
             currentObject.date = getDueDate()
             currentObject.location = locationTextField.text
-            currentObject.desc = descTextField.text
+            currentObject.desc = descTextView.text
             
             do {
                 try managedObjectContext.save()
@@ -142,7 +147,77 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         }
     }
     
+    var curTag = 0
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        curTag = textField.tag
+        textField.inputAccessoryView = getToolbarAccessoryView()
+        return true
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        curTag = textView.tag
+        textView.inputAccessoryView = getToolbarAccessoryView()
+        return true
+    }
+    
+    func getToolbarAccessoryView() -> UIView? {
+        if tbAccessoryView == nil {
+            tbAccessoryView = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+            let bbiPrev = UIBarButtonItem.init(title: "Previous", style: .plain, target: self, action: #selector(doBtnPrev))
+            let bbiNext = UIBarButtonItem.init(title: "Next", style: .plain, target: self, action: #selector(doBtnNext))
+            let bbiSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let bbiSubmit = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doBtnSubmit))
+            tbAccessoryView?.items = [bbiPrev, bbiNext, bbiSpacer, bbiSubmit]
+        }
+        return tbAccessoryView
+    }
+    
+    @objc
+    func doBtnPrev() {
+        // decrement or roll over
+        curTag = curTag == 0 ? maxTag : curTag - 1
+        findTFWithTag(tag: curTag)?.becomeFirstResponder()
+    }
+    
+    @objc
+    func doBtnNext() {
+        // increment or roll over
+        curTag = curTag == maxTag ? 0 : curTag + 1
+        findTFWithTag(tag: curTag)?.becomeFirstResponder()
+    }
+    
+    @objc
+    func doBtnSubmit() {
+        findTFWithTag(tag: curTag)!.resignFirstResponder()
+    }
+    
+    func findMaxTFTag() {
+        textSubViews!.forEach { (v) in
+            if v is UITextField && v.tag > maxTag || v is UITextView && v.tag > maxTag {
+                maxTag = v.tag
+            }
+        }
+    }
+    
+    func findTFWithTag(tag : Int) -> UIView? {
+        var returnValue : UIView?
+        textSubViews!.forEach { (v) in
+            if v.tag == tag {
+                if let result = v as? UITextField {
+                    returnValue = result
+                }
+
+                if let result = v as? UITextView {
+                    returnValue = result
+                }
+            }
+        }
+        return returnValue
+    }
+    
     deinit {
-        returnKeyHandler = nil
+        todoListTableVC = nil
+        todoItem = nil
+        tbAccessoryView = nil
     }
 }

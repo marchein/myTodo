@@ -94,7 +94,7 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - Table View
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let array = ["Todo", "Done"]
+        let array = ["Still to be done", "Already done"]
         
         return array[section]
     }
@@ -111,16 +111,17 @@ class TodoListTableViewController: UITableViewController, NSFetchedResultsContro
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! MGSwipeTableCell
         let todo = fetchedResultsController.object(at: indexPath)
-        cell.leftButtons = [MGSwipeButton(title: todo.done ? "Undone" : "Done", icon: nil, backgroundColor: self.view.tintColor) {
+        let doneTableButton = MGSwipeButton(title: todo.done ? "Undone" : "Done", icon: nil, backgroundColor: self.view.tintColor) {
             (sender: MGSwipeTableCell!) -> Bool in
             self.doneAction(selectedItem: todo)
             return true
-            }]
+        }
+        cell.leftButtons = [doneTableButton]
 
         let leftExpansionSettings = MGSwipeExpansionSettings()
         leftExpansionSettings.fillOnTrigger = true
         leftExpansionSettings.buttonIndex = 0
-        leftExpansionSettings.threshold = 2
+        leftExpansionSettings.threshold = 1
         cell.leftExpansion = leftExpansionSettings
         cell.leftSwipeSettings.transition = .drag
         

@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreData
-import IQKeyboardManagerSwift
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,9 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let controller = self.window!.rootViewController?.children[0] as! TodoListTableViewController
         controller.managedObjectContext = self.persistentContainer.viewContext
-        
-        IQKeyboardManager.shared.enable = true
-
         return true
     }
 

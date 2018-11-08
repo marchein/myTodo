@@ -7,5 +7,4 @@ target 'myTodo' do
 
     # Pods for myTodo
     pod 'MGSwipeTableCell'
-    pod 'IQKeyboardManagerSwift'
 end
