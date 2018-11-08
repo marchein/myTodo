@@ -37,7 +37,6 @@ class TodoListTableViewController: UITableViewController {
     func insertNewObject(todoData: TodoData) {
         DispatchQueue.main.async(execute: { () -> Void in
             let newTodo = Todo(context: self.managedObjectContext)
-            
             newTodo.date = todoData.date!
             newTodo.title = todoData.title!
             newTodo.desc = todoData.desc!
@@ -196,27 +195,9 @@ class TodoListTableViewController: UITableViewController {
             i += 1
         }
     }
-    
-    func getDateOf(date: Date?, option: DateOptions) -> String? {
-        guard let date = date else { return nil }
-        let formatter = DateFormatter()
-        if option == .date {
-            formatter.dateFormat = "dd.MM.yyyy"
-        } else if option == .time {
-            formatter.dateFormat = "HH:mm"
-        } else if option == .both {
-            formatter.dateFormat = "dd.MM.yyyy - HH:mm"
-        }
-        return  formatter.string(from: date)
-    }
 }
 
-enum DateOptions {
-    case date
-    case time
-    case both
-}
-
+// MARK:- Date functions
 func getDateOf(date: Date?, option: DateOptions) -> String? {
     guard let date = date else { return nil }
     let formatter = DateFormatter()
@@ -230,11 +211,10 @@ func getDateOf(date: Date?, option: DateOptions) -> String? {
     return  formatter.string(from: date)
 }
 
-struct TodoData {
-    var title: String?
-    var date: Date?
-    var location: String?
-    var desc: String?
+enum DateOptions {
+    case date
+    case time
+    case both
 }
 
 // MARK:- Extensions

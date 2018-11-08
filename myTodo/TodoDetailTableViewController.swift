@@ -42,7 +42,7 @@ class TodoDetailTableViewController: UITableViewController {
         
         if let todo = todo {
             titleLabel.text = todo.title?.description
-            dueLabel.text = todoListTableVC?.getDateOf(date: todo.date, option: .both)
+            dueLabel.text = getDateOf(date: todo.date, option: .both)
             locationLabel.text = todo.location?.description
             descTextView.text = todo.desc?.description
             
@@ -93,7 +93,7 @@ class TodoDetailTableViewController: UITableViewController {
     
     func showShareSheet() {
         if let currentTodo = todo {
-            guard let dueDate = todoListTableVC?.getDateOf(date: currentTodo.date, option: .both) else { return }
+            guard let dueDate = getDateOf(date: currentTodo.date, option: .both) else { return }
             let textToShare = "\(currentTodo.title!) is due \(dueDate), check out myTodo! Soon..."
             let myTodoImage = #imageLiteral(resourceName: "AppLogo")
             if let website = NSURL(string: "https://marc-hein-webdesign.de/") {
