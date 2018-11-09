@@ -94,7 +94,7 @@ class TodoDetailTableViewController: UITableViewController {
     func showShareSheet() {
         if let currentTodo = todo {
             guard let dueDate = getDateOf(date: currentTodo.date, option: .both) else { return }
-            let textToShare = "\(currentTodo.title!) is due \(dueDate), check out myTodo! Soon..."
+            let textToShare = "\(currentTodo.title!) is due \(dueDate).\n\nCheck out myTodo!"
             let myTodoImage = #imageLiteral(resourceName: "AppLogo")
             if let website = NSURL(string: "https://marc-hein-webdesign.de/") {
                 let objectsToShare = [textToShare, website, myTodoImage] as [Any]
@@ -112,13 +112,13 @@ class TodoDetailTableViewController: UITableViewController {
         
         if let currentObject = managedObjectContext.object(with: (todo?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
-
+            /*
             if currentObject.done {
                 LocalNotification.removeNotification(for: currentObject)
             } else {
                 LocalNotification.dispatchlocalNotification(with: currentObject)
             }
-            
+            */
             self.navigationController?.popToRootViewController(animated: true)
             
             do {

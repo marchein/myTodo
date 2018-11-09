@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let controller = self.window!.rootViewController?.children[0] as! TodoListTableViewController
         controller.managedObjectContext = self.persistentContainer.viewContext
-        LocalNotification.registerForLocalNotification(on: UIApplication.shared)
+        /*
+         LocalNotification.registerForLocalNotification(on: UIApplication.shared)
+         */
+
         return true
     }
 

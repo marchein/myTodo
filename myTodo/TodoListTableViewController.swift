@@ -153,7 +153,7 @@ class TodoListTableViewController: UITableViewController {
             guard let dateValue = getDateOf(date: date, option: .date) else { return }
             guard let timeValue = getDateOf(date: date, option: .time) else { return }
             
-            cell.detailTextLabel?.text = "\(dateValue) um \(timeValue) Uhr"
+            cell.detailTextLabel?.text = "\(dateValue) at \(timeValue)"
         }
         
         if todo.done {
@@ -168,13 +168,13 @@ class TodoListTableViewController: UITableViewController {
     func doneAction(selectedItem: Todo?) {
         if let currentObject = managedObjectContext.object(with: (selectedItem?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
-            
+            /*
             if currentObject.done {
                 LocalNotification.removeNotification(for: currentObject)
             } else {
                 LocalNotification.dispatchlocalNotification(with: currentObject)
             }
-            
+            */
             do {
                 try managedObjectContext.save()
                 print("saved!")
@@ -184,16 +184,6 @@ class TodoListTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
-    }
-    
-    @IBAction func generateTestData(_ sender: Any) {
-        print("TestData")
-        let data = TodoData(title: "Test", date: Date(), location: "Trier", desc: "Lorem ipsum")
-        var i = 0
-        while (i < 10) {
-            insertNewObject(todoData: data)
-            i += 1
-        }
     }
 }
 

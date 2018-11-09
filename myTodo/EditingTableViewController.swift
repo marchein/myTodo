@@ -26,11 +26,13 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
     }
 
@@ -39,6 +41,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         
         datePickerView = UIDatePicker()
         datePickerView!.datePickerMode = UIDatePicker.Mode.dateAndTime
+        datePickerView!.locale = Locale.current
+        datePickerView?.minuteInterval = 5
         dueTextField.inputView = datePickerView
         datePickerView!.addTarget(self, action: #selector(handleDatePicker(sender:)), for: UIControl.Event.valueChanged)
         
@@ -61,6 +65,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
             dueTextField.text = dateFormatter.string(from: now)
             datePickerView?.date = now
+            locationTextField.text = "Unknown location"
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.insertNewEntry))
         }
         
@@ -73,6 +78,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         dueTextField.text = dateFormatter.string(from: datePickerView!.date)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
@@ -182,6 +188,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         curTag = textView.tag
         textView.inputAccessoryView = getToolbarAccessoryView()
+        
         return true
     }
     
