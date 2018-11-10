@@ -47,11 +47,11 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             content.title = todo.title!
             content.body = "Is due \(getDateOf(date: todo.date, option: .both)!)"
             content.categoryIdentifier = "myTodo"
-            
+            content.badge = 1
             content.sound = UNNotificationSound.default
             
             let comp = Calendar.current.dateComponents([.hour, .minute], from: todo.date!)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: comp, repeats: true)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: comp, repeats: false)
             let identifier = generateTodoIdentifier(for: todo)
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             

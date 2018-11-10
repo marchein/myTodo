@@ -19,17 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gin-bx-n3X">
-                                <rect key="frame" x="64" y="210" width="247" height="247"/>
+                                <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gin-bx-n3X" secondAttribute="height" multiplier="1:1" id="Kfj-Pu-K4E"/>
+                                    <constraint firstAttribute="width" constant="250" id="fQU-BR-0Mt"/>
+                                    <constraint firstAttribute="height" constant="250" id="hQL-S5-eMv"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gin-bx-n3X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="ONe-5e-YOr"/>
-                            <constraint firstItem="gin-bx-n3X" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="YH9-2h-Rsh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gin-bx-n3X" secondAttribute="trailing" constant="64" id="dBb-PY-F9H"/>
+                            <constraint firstItem="gin-bx-n3X" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rra-3x-taC"/>
+                            <constraint firstItem="gin-bx-n3X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tkZ-9B-oae"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

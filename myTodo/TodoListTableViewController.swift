@@ -19,10 +19,16 @@ class TodoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
+        
+        LocalNotification.center.getPendingNotificationRequests { (requests) in
+            print(requests)
+        }
+        
         configureView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         reconfigureView()
     }
     
@@ -87,7 +93,7 @@ class TodoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let numberOfSections = tableView.numberOfSections
-        let sectionNames = ["Left to do", "Done"]
+        let sectionNames = [NSLocalizedString("Left to do", comment: ""),  NSLocalizedString("Done", comment: "")]
         if numberOfSections == 1 {
             return nil
         } else {
@@ -108,7 +114,7 @@ class TodoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! MGSwipeTableCell
         let todo = fetchedResultsController.object(at: indexPath)
-        let doneTableButton = MGSwipeButton(title: todo.done ? "Undone" : "Done", icon: nil, backgroundColor: self.view.tintColor) {
+        let doneTableButton = MGSwipeButton(title: todo.done ? NSLocalizedString("Undone", comment: "") : NSLocalizedString("Done", comment: ""), icon: nil, backgroundColor: self.view.tintColor) {
             (sender: MGSwipeTableCell!) -> Bool in
             self.doneAction(selectedItem: todo)
             return true
@@ -153,7 +159,7 @@ class TodoListTableViewController: UITableViewController {
             guard let dateValue = getDateOf(date: date, option: .date) else { return }
             guard let timeValue = getDateOf(date: date, option: .time) else { return }
             
-            cell.detailTextLabel?.text = "\(dateValue) at \(timeValue)"
+            cell.detailTextLabel?.text = "\(dateValue) \(NSLocalizedString("at", comment: "")) \(timeValue) \(NSLocalizedString(".", comment: "at... __UHR__"))"
         }
         
         if todo.done {
@@ -168,19 +174,24 @@ class TodoListTableViewController: UITableViewController {
     func doneAction(selectedItem: Todo?) {
         if let currentObject = managedObjectContext.object(with: (selectedItem?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
-            /*
+        
             if currentObject.done {
                 LocalNotification.removeNotification(for: currentObject)
             } else {
                 LocalNotification.dispatchlocalNotification(with: currentObject)
             }
-            */
+            
             do {
                 try managedObjectContext.save()
-                print("saved!")
             } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
+                fatalError("Could not save \(error), \(error.userInfo)")
             }
+            
+            let alert = UIAlertController(title: "myTodo", message: currentObject.done ? NSLocalizedString("Todo as been marked as done.", comment: "") : NSLocalizedString("Todo has been marked as undone.", comment: ""), preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         }
         
         tableView.reloadData()

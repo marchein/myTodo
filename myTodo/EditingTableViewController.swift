@@ -10,19 +10,22 @@ import UIKit
 import CoreData
 
 class EditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
-    var todoListTableVC: TodoListTableViewController? = nil
+    // MARK:- Outlets
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var dueTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var descTextView: UITextView!
+    
+    // MARK:- Class Attributes
+    var todoListTableVC: TodoListTableViewController?
     var todoItem: Todo?
     var indexPath: IndexPath?
     var datePickerView: UIDatePicker?
     var tbAccessoryView : UIToolbar?
     var maxTag = 0
     var textSubViews: [UIView]?
-
-    // MARK:- Outlets
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var dueTextField: UITextField!
-    @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var descTextView: UITextView!
+    
+    // MARK:- System Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +50,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         datePickerView!.addTarget(self, action: #selector(handleDatePicker(sender:)), for: UIControl.Event.valueChanged)
         
         if let todo = todoItem {
-            title = "Edit"
+            title = NSLocalizedString("Edit", comment: "")
             titleTextField.text = todo.title?.description
             if let date = todo.date {
                 let dateFormatter = DateFormatter()
@@ -59,18 +62,15 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             descTextView.text = todo.desc?.description
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.editExistingEntry))
         } else {
-            title = "Add"
+            title = NSLocalizedString("Edit", comment: "")
             let now = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
             dueTextField.text = dateFormatter.string(from: now)
             datePickerView?.date = now
-            locationTextField.text = "Unknown location"
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.insertNewEntry))
+            locationTextField.text = NSLocalizedString("Unknown location", comment: "")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
         }
-        
-        textSubViews = [titleTextField, dueTextField, locationTextField, descTextView]
-        findMaxTFTag()
     }
     
     @objc fileprivate func handleDatePicker(sender: UIDatePicker) {
@@ -81,14 +81,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Try to find next responder
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            // Not found, so remove keyboard.
-            textField.resignFirstResponder()
-        }
-        // Do not add a line break
+        textField.resignFirstResponder()
         return false
     }
     
@@ -114,7 +107,6 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             newTodo.date = getDueDate()!
             newTodo.location = locationTextField.text
             newTodo.desc = descTextView.text
-            print("todo to add: \(newTodo)")
             todoListTableVC?.insertNewObject(todoData: newTodo)
             self.navigationController?.popToRootViewController(animated: true)
         }
@@ -124,30 +116,29 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         guard let date = dateFormatter.date(from: dueTextField.text!) else {
-            print("ERROR: Date conversion failed due to mismatched format.")
-            return nil
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
         }
         return date
     }
     
     func checkInputFields() -> Bool {
         var valid = true
-        var errorMessage: String = "No error"
+        var errorMessage: String = NSLocalizedString("No Error", comment: "")
         
         if titleTextField.text!.count < 1 {
             valid = false
-            errorMessage = "Title field cannot be empty"
+            errorMessage = NSLocalizedString("Title field cannot be empty", comment: "")
         }
         
         if getDueDate() == nil {
             valid = false
-            errorMessage = "Something seems wrong with your due date field, try again please."
+            errorMessage = NSLocalizedString("Something seems wrong with your due date field, try again please.", comment: "")
         }
         
         if !valid {
-            let alert = UIAlertController(title: "Error while saving your to do", message: errorMessage, preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("Error while saving your to do", comment: ""), message: errorMessage, preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Verstanden", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
             
             self.present(alert, animated: true)
         }
@@ -167,84 +158,14 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             do {
                 try managedObjectContext.save()
                 LocalNotification.dispatchlocalNotification(with: currentObject)
-                print("saved!")
             } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
+                fatalError("Could not save \(error), \(error.userInfo)")
             }
             
             self.navigationController?.popToRootViewController(animated: true)
             
             return
         }
-    }
-    
-    var curTag = 0
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        curTag = textField.tag
-        textField.inputAccessoryView = getToolbarAccessoryView()
-        return true
-    }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        curTag = textView.tag
-        textView.inputAccessoryView = getToolbarAccessoryView()
-        
-        return true
-    }
-    
-    func getToolbarAccessoryView() -> UIView? {
-        if tbAccessoryView == nil {
-            tbAccessoryView = UIToolbar.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
-            let bbiPrev = UIBarButtonItem.init(title: "Previous", style: .plain, target: self, action: #selector(doBtnPrev))
-            let bbiNext = UIBarButtonItem.init(title: "Next", style: .plain, target: self, action: #selector(doBtnNext))
-            let bbiSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let bbiSubmit = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doBtnSubmit))
-            tbAccessoryView?.items = [bbiPrev, bbiNext, bbiSpacer, bbiSubmit]
-        }
-        return tbAccessoryView
-    }
-    
-    @objc
-    func doBtnPrev() {
-        // decrement or roll over
-        curTag = curTag == 0 ? maxTag : curTag - 1
-        findTFWithTag(tag: curTag)?.becomeFirstResponder()
-    }
-    
-    @objc
-    func doBtnNext() {
-        // increment or roll over
-        curTag = curTag == maxTag ? 0 : curTag + 1
-        findTFWithTag(tag: curTag)?.becomeFirstResponder()
-    }
-    
-    @objc
-    func doBtnSubmit() {
-        findTFWithTag(tag: curTag)!.resignFirstResponder()
-    }
-    
-    func findMaxTFTag() {
-        textSubViews!.forEach { (v) in
-            if v is UITextField && v.tag > maxTag || v is UITextView && v.tag > maxTag {
-                maxTag = v.tag
-            }
-        }
-    }
-    
-    func findTFWithTag(tag : Int) -> UIView? {
-        var returnValue : UIView?
-        textSubViews!.forEach { (v) in
-            if v.tag == tag {
-                if let result = v as? UITextField {
-                    returnValue = result
-                }
-
-                if let result = v as? UITextView {
-                    returnValue = result
-                }
-            }
-        }
-        return returnValue
     }
     
     deinit {
@@ -258,4 +179,10 @@ extension Date {
     func addedBy(minutes:Int) -> Date {
         return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
     }
+}
+
+func showMessage(title: String, message: String, done: String, view: UIViewController) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: done, style: .cancel, handler: nil))
+    view.present(alert, animated: true)
 }

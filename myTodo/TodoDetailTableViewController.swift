@@ -8,12 +8,13 @@
 
 import UIKit
 
-class TodoDetailTableViewController: UITableViewController {
+class TodoDetailTableViewController: UITableViewController, UIPopoverControllerDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dueLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     
@@ -24,15 +25,14 @@ class TodoDetailTableViewController: UITableViewController {
         }
     }
     var indexPath: IndexPath?
-    let start = CFAbsoluteTimeGetCurrent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("detail VC viewDidLoad")
         configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         reconfigureView()
     }
     
@@ -46,16 +46,8 @@ class TodoDetailTableViewController: UITableViewController {
             locationLabel.text = todo.location?.description
             descTextView.text = todo.desc?.description
             
-            if todo.done {
-                doneButton.image = #imageLiteral(resourceName: "todoDone")
-            } else {
-                doneButton.image = #imageLiteral(resourceName: "todoUndone")
-            }
+            setDoneButton()
         }
-        
-        print("detail VC configureView done")
-        let end = CFAbsoluteTimeGetCurrent() - start
-        print("Took \(end) seconds")
     }
     
     fileprivate func reconfigureView() {
@@ -72,21 +64,27 @@ class TodoDetailTableViewController: UITableViewController {
     }
 
     @IBAction func shareAction(_ sender: Any) {
-        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: {
+        let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: {
             (action: UIAlertAction) in self.todoListTableVC?.tableView((self.todoListTableVC?.tableView!)!, commit: .delete, forRowAt: self.indexPath!)
             self.navigationController?.popToRootViewController(animated: true)
         })
-        let shareAction = UIAlertAction(title: "Share", style: .default, handler: { (action: UIAlertAction) in
+        let shareAction = UIAlertAction(title: NSLocalizedString("Share", comment: ""), style: .default, handler: { (action: UIAlertAction) in
             self.showShareSheet()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         
         optionMenu.addAction(shareAction)
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(cancelAction)
+        
+        if let popoverController = optionMenu.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = [.down]
+            popoverController.barButtonItem = shareButton
+        }
         
         self.present(optionMenu, animated: true, completion: nil)
     }
@@ -94,45 +92,34 @@ class TodoDetailTableViewController: UITableViewController {
     func showShareSheet() {
         if let currentTodo = todo {
             guard let dueDate = getDateOf(date: currentTodo.date, option: .both) else { return }
-            let textToShare = "\(currentTodo.title!) is due \(dueDate).\n\nCheck out myTodo!"
+            let textToShare = NSLocalizedString("\(currentTodo.title!) is due \(dueDate).\n\nCheck out myTodo!", comment: "")
             let myTodoImage = #imageLiteral(resourceName: "AppLogo")
             if let website = NSURL(string: "https://marc-hein-webdesign.de/") {
                 let objectsToShare = [textToShare, website, myTodoImage] as [Any]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
                 activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
-               
+                
+                if let popoverController = activityVC.popoverPresentationController {
+                    popoverController.sourceView = self.view
+                    popoverController.permittedArrowDirections = [.down]
+                    popoverController.barButtonItem = shareButton
+                }
+                
                 self.present(activityVC, animated: true, completion: nil)
             }
         }
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        if let currentObject = managedObjectContext.object(with: (todo?.objectID)!) as? Todo {
-            currentObject.done = !currentObject.done
-            /*
-            if currentObject.done {
-                LocalNotification.removeNotification(for: currentObject)
-            } else {
-                LocalNotification.dispatchlocalNotification(with: currentObject)
-            }
-            */
-            self.navigationController?.popToRootViewController(animated: true)
-            
-            do {
-                try managedObjectContext.save()
-                print("saved!")
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
-            
-            if currentObject.done {
-                doneButton.image = #imageLiteral(resourceName: "todoDone")
-            } else {
-                doneButton.image = #imageLiteral(resourceName: "todoUndone")
-            }
+        self.navigationController?.popToRootViewController(animated: true)
+        todoListTableVC?.doneAction(selectedItem: todo)
+    
+        DispatchQueue.main.async() {
+            self.setDoneButton()
         }
+    }
+    
+    fileprivate func setDoneButton() {
+        doneButton.image = (todo?.done ?? false) ? #imageLiteral(resourceName: "todoDone") : #imageLiteral(resourceName: "todoUndone")
     }
 }

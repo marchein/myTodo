@@ -1,69 +1,120 @@
 
+/* Class = "UITableViewController"; title = "About"; ObjectID = "0RB-HN-vWt"; */
+"0RB-HN-vWt.title" = "About";
+
 /* Class = "UILabel"; text = "Title"; ObjectID = "40U-Sx-VMZ"; */
 "40U-Sx-VMZ.text" = "Title";
 
-/* Class = "UITableViewSection"; headerTitle = "Beschreibung"; ObjectID = "5uZ-BE-pEu"; */
-"5uZ-BE-pEu.headerTitle" = "Beschreibung";
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "4MC-KI-9UV"; */
+"4MC-KI-9UV.title" = "About";
+
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "5uZ-BE-pEu"; */
+"5uZ-BE-pEu.headerTitle" = "Description";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "6p8-t4-XC6"; */
 "6p8-t4-XC6.text" = "Subtitle";
 
+/* Class = "UILabel"; text = "Title"; ObjectID = "7PX-I8-ynN"; */
+"7PX-I8-ynN.text" = "Title";
+
 /* Class = "UITableViewController"; title = "myTodo"; ObjectID = "7bK-jq-Zjz"; */
 "7bK-jq-Zjz.title" = "myTodo";
 
-/* Class = "UILabel"; text = "Titel"; ObjectID = "AgH-6w-lME"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "AgH-6w-lME"; */
 "AgH-6w-lME.text" = "Title";
 
-/* Class = "UILabel"; text = "Titel"; ObjectID = "BaV-Um-3U4"; */
+/* Class = "UILabel"; text = "Title"; ObjectID = "BaV-Um-3U4"; */
 "BaV-Um-3U4.text" = "Title";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "Bud-a4-RW0"; */
 "Bud-a4-RW0.text" = "Detail";
 
-/* Class = "UITableViewSection"; headerTitle = "Basisinformationen"; ObjectID = "Elm-zh-ERR"; */
-"Elm-zh-ERR.headerTitle" = "Base information";
+/* Class = "UILabel"; text = "Thanks To"; ObjectID = "Chz-Ke-UkT"; */
+"Chz-Ke-UkT.text" = "Thanks To";
+
+/* Class = "UITableViewSection"; headerTitle = "Base data"; ObjectID = "Elm-zh-ERR"; */
+"Elm-zh-ERR.headerTitle" = "Base data";
 
 /* Class = "UITableViewController"; title = "Detail"; ObjectID = "GZg-m8-dkj"; */
 "GZg-m8-dkj.title" = "Detail";
 
-/* Class = "UILabel"; text = "Bis"; ObjectID = "Gku-4I-cvc"; */
-"Gku-4I-cvc.text" = "Due date";
+/* Class = "UILabel"; text = "Until"; ObjectID = "Gku-4I-cvc"; */
+"Gku-4I-cvc.text" = "Until";
 
 /* Class = "UITableViewController"; title = "Editing View Controller"; ObjectID = "H6G-V9-50z"; */
 "H6G-V9-50z.title" = "Editing View Controller";
 
-/* Class = "UILabel"; text = "Ort"; ObjectID = "IBb-sR-EfA"; */
+/* Class = "UILabel"; text = "Location"; ObjectID = "IBb-sR-EfA"; */
 "IBb-sR-EfA.text" = "Location";
 
-/* Class = "UILabel"; text = "Bis"; ObjectID = "JCB-mi-DJB"; */
-"JCB-mi-DJB.text" = "Due date";
+/* Class = "UILabel"; text = "Until"; ObjectID = "JCB-mi-DJB"; */
+"JCB-mi-DJB.text" = "Until";
 
-/* Class = "UILabel"; text = "Ort"; ObjectID = "MLn-1g-GtH"; */
+/* Class = "UILabel"; text = "1.0"; ObjectID = "Keb-5Z-YgT"; */
+"Keb-5Z-YgT.text" = "1.0";
+
+/* Class = "UILabel"; text = "myTodo version"; ObjectID = "L4L-NA-93K"; */
+"L4L-NA-93K.text" = "myTodo version";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "MLn-1g-GtH"; */
 "MLn-1g-GtH.text" = "Location";
 
-/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "P8q-sN-Kgm"; */
-"P8q-sN-Kgm.title" = "Item";
+/* Class = "UITableViewController"; title = "Thanks To"; ObjectID = "Pcx-UL-Xqg"; */
+"Pcx-UL-Xqg.title" = "Thanks To";
 
-/* Class = "UITableViewSection"; headerTitle = "Basis Informationen"; ObjectID = "Rpd-To-4eH"; */
-"Rpd-To-4eH.headerTitle" = "Base information";
+/* Class = "UITableViewSection"; headerTitle = "Base data"; ObjectID = "Rpd-To-4eH"; */
+"Rpd-To-4eH.headerTitle" = "Base data";
+
+/* Class = "UITabBarItem"; title = "Todo list"; ObjectID = "Rzn-GB-CvI"; */
+"Rzn-GB-CvI.title" = "Todo list";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "STj-Q0-Y8d"; */
+"STj-Q0-Y8d.title" = "Done";
+
+/* Class = "UITextField"; placeholder = "Do until..?"; ObjectID = "Tht-M3-2s8"; */
+"Tht-M3-2s8.placeholder" = "Do until..?";
+
+/* Class = "UILabel"; text = "Reset notification queue"; ObjectID = "TkJ-6J-cq6"; */
+"TkJ-6J-cq6.text" = "Reset notification queue";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "WLS-a3-wpZ"; */
 "WLS-a3-wpZ.text" = "Detail";
 
+/* Class = "UITabBarItem"; title = "About"; ObjectID = "XrR-Fy-zme"; */
+"XrR-Fy-zme.title" = "About";
+
 /* Class = "UINavigationItem"; title = "myTodo"; ObjectID = "Zdf-7t-Un8"; */
 "Zdf-7t-Un8.title" = "myTodo";
+
+/* Class = "UILabel"; text = "Web Support"; ObjectID = "bFH-Sq-O1c"; */
+"bFH-Sq-O1c.text" = "Web Support";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "cKw-PP-g8y"; */
 "cKw-PP-g8y.text" = "Detail";
 
+/* Class = "UITextField"; placeholder = "Where to be done?"; ObjectID = "d4q-KW-SIJ"; */
+"d4q-KW-SIJ.placeholder" = "Where to be done?";
+
 /* Class = "UINavigationItem"; title = "Detail"; ObjectID = "dV0-sE-fz0"; */
 "dV0-sE-fz0.title" = "Detail";
 
-/* Class = "UILabel"; text = "Speichern"; ObjectID = "mke-gO-EUp"; */
-"mke-gO-EUp.text" = "Save";
+/* Class = "UITableViewSection"; headerTitle = "Caution area"; ObjectID = "dcQ-nu-jAo"; */
+"dcQ-nu-jAo.headerTitle" = "Caution area";
+
+/* Class = "UITextField"; placeholder = "Title of your todo?"; ObjectID = "jkM-at-0sb"; */
+"jkM-at-0sb.placeholder" = "Title of your todo?";
+
+/* Class = "UILabel"; text = "E-Mail Support"; ObjectID = "oYR-lF-360"; */
+"oYR-lF-360.text" = "E-Mail Support";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "tuR-RM-c02"; */
 "tuR-RM-c02.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
 
-/* Class = "UITableViewSection"; headerTitle = "Beschreibung"; ObjectID = "wDL-s9-tRk"; */
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "wDL-s9-tRk"; */
 "wDL-s9-tRk.headerTitle" = "Description";
+
+/* Class = "UITableViewSection"; footerTitle = "Build number: 000"; ObjectID = "zd5-4C-azO"; */
+"zd5-4C-azO.footerTitle" = "Build number: 000";
+
+/* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "zd5-4C-azO"; */
+"zd5-4C-azO.headerTitle" = "Information";
