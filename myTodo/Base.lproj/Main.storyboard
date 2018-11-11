@@ -127,8 +127,25 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Caution area" id="dcQ-nu-jAo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TkJ-6J-cq6" style="IBUITableViewCellStyleDefault" id="lDq-b1-X6x">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ZZ3-MK-cmJ" style="IBUITableViewCellStyleDefault" id="Qn6-jV-VE9">
                                         <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qn6-jV-VE9" id="PWU-Pn-C1v">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Generate Demo Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZZ3-MK-cmJ">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.1439521903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TkJ-6J-cq6" style="IBUITableViewCellStyleDefault" id="lDq-b1-X6x">
+                                        <rect key="frame" x="0.0" y="479.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDq-b1-X6x" id="9Ep-ad-PWe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -157,6 +174,7 @@
                         <outlet property="appVersionCell" destination="U9F-v3-byd" id="y11-ft-hFF"/>
                         <outlet property="contactMailCell" destination="zMp-aD-DsJ" id="oUo-rB-ruG"/>
                         <outlet property="developerCell" destination="Uro-Ta-GYt" id="s96-0V-LhR"/>
+                        <outlet property="generateDemoDataCell" destination="Qn6-jV-VE9" id="0l7-4E-7km"/>
                         <outlet property="resetNotificationCell" destination="lDq-b1-X6x" id="lgU-YJ-fTp"/>
                         <outlet property="webSupportCell" destination="8zW-Yp-onq" id="NbR-XF-3MU"/>
                     </connections>
@@ -459,7 +477,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Title of your todo?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-at-0sb">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Title of your todo?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jkM-at-0sb">
                                                     <rect key="frame" x="67.5" y="0.0" width="291.5" height="44.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -493,11 +511,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Do until..?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tht-M3-2s8">
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Do until..?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tht-M3-2s8" customClass="FixedUITextField" customModule="myTodo" customModuleProvider="target">
                                                     <rect key="frame" x="78" y="0.0" width="281" height="44.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="H6G-V9-50z" id="Sxr-TZ-Sjk"/>
                                                     </connections>
@@ -527,7 +545,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Where to be done?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4q-KW-SIJ">
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Where to be done?" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d4q-KW-SIJ">
                                                     <rect key="frame" x="109" y="0.0" width="250" height="44.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>

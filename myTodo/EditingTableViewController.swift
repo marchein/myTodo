@@ -12,7 +12,7 @@ import CoreData
 class EditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK:- Outlets
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var dueTextField: UITextField!
+    @IBOutlet weak var dueTextField: FixedUITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var descTextView: UITextView!
     
@@ -60,7 +60,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             }
             locationTextField.text = todo.location?.description
             descTextView.text = todo.desc?.description
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Save", style: .done, target: self, action: #selector(self.editExistingEntry))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.editExistingEntry))
         } else {
             title = NSLocalizedString("Edit", comment: "")
             let now = Date()

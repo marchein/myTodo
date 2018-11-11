@@ -19,6 +19,7 @@ class AboutTableViewController: UITableViewController {
     @IBOutlet weak var webSupportCell: UITableViewCell!
     @IBOutlet weak var developerCell: UITableViewCell!
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
+    @IBOutlet weak var generateDemoDataCell: UITableViewCell!
     
     // MARK:- Class Attributes
     private let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -35,9 +36,26 @@ class AboutTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
-            return "Build number: \(buildNumber)"
+            return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber)"
         }
         return nil
+    }
+    
+    fileprivate func generateDemoData() {
+        print("Demo")
+        guard let mainVC = (tabBarController?.viewControllers![0] as? UINavigationController)?.topViewController as? TodoListTableViewController else { return }
+        let data = [
+            TodoData(title: "Band engagieren", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
+            TodoData(title: "Bühnentechnik besorgen", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
+            TodoData(title: "Catering bestellen", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
+            TodoData(title: "Präsentation erstellen", date: Date().addedBy(minutes:  (60 * 24 * 7 + 74)), location: "Gemeindehaus", desc: "Es muss eine Präsentation über das Unternehmen und unsere Produkte erstellt werden."),
+            TodoData(title: "Halle ausräumen", date: Date().addedBy(minutes:  (60 * 24 * 10 + 80)), location: "Gemeindehaus", desc: nil),
+            TodoData(title: "Deko aufhängen", date: Date().addedBy(minutes: (60 * 24 * 10 + 160)), location: "Gemeindehaus", desc: nil),
+            TodoData(title: "Tische & Stühle aufstellen", date: Date().addedBy(minutes: (60 * 24 * 10 + 240)), location: "Gemeindehaus", desc: nil),
+        ]
+        for item in data {
+            mainVC.insertNewObject(todoData: item)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -52,8 +70,10 @@ class AboutTableViewController: UITableViewController {
             LocalNotification.center.removeAllDeliveredNotifications()
             LocalNotification.center.removeAllPendingNotificationRequests()
             resetNotificationCell.setSelected(false, animated: true)
+        } else if selectedCell == generateDemoDataCell {
+            generateDemoData()
         }
-        selectedCell.setSelected(false, animated: true)
+        selectedCell.setSelected(false, animated: false)
     }
 }
 
@@ -66,7 +86,7 @@ extension AboutTableViewController: MFMailComposeViewControllerDelegate {
             mail.mailComposeDelegate = self
             mail.setSubject("[myTodo] - Version \(appVersionString) (Build: \(buildNumber))")
             mail.setToRecipients(["info@mytodoapp.de"])
-            mail.setMessageBody("Why are you contacting the support of myTodo?<br />\n", isHTML: true)
+            mail.setMessageBody(NSLocalizedString("support_mail_body", comment: ""), isHTML: false)
             
             present(mail, animated: true)
         } else {

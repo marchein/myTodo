@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  myTodo
+
+  Created by Marc Hein on 11.11.18.
+  Copyright © 2018 Marc Hein Webdesign. All rights reserved.
+*/
+
+"Unknown location" = "Unbekannter Ort";
+"Left to do" = "Zu erledigen";
+"Done" = "Erledigt";
+"Undone" = "Zu erledigen";
+"at" = "um";
+"time unit" = "Uhr";
+"Todo as been marked as done." = "Todo as been marked as done.";
+"Todo has been marked as undone." = "Todo has been marked as undone.";
+"Got it" = "Verstanden";
+"Delete" = "Löschen";
+"Share" = "Teilen";
+"Cancel" = "Abbrechen";
+"Edit" = "Bearbeiten";
+"Save" = "Speichern";
+"No Error" = "No Error";
+"Title field cannot be empty" = "Title field cannot be empty";
+"Something seems wrong with your due date field, try again please." = "Something seems wrong with your due date field, try again please.";
+"Error while saving your to do" = "Error while saving your to do";
+"Build number" = "Build number";
+"support_mail_body" = "Why are you contacting the support of myTodo?";
+"Is due" = "Is due";

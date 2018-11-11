@@ -45,7 +45,7 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             removeNotification(for: todo)
             let content = UNMutableNotificationContent()
             content.title = todo.title!
-            content.body = "Is due \(getDateOf(date: todo.date, option: .both)!)"
+            content.body = "\(NSLocalizedString("Is due", comment: "")): \(getDateOf(date: todo.date, option: .both)!) \(NSLocalizedString("time unit", comment: "at... __UHR__"))"
             content.categoryIdentifier = "myTodo"
             content.badge = 1
             content.sound = UNNotificationSound.default

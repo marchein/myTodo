@@ -45,9 +45,9 @@ class TodoListTableViewController: UITableViewController {
             let newTodo = Todo(context: self.managedObjectContext)
             newTodo.date = todoData.date!
             newTodo.title = todoData.title!
-            newTodo.desc = todoData.desc!
+            newTodo.desc = todoData.desc ?? ""
             newTodo.done = false
-            newTodo.location = todoData.location!
+            newTodo.location = todoData.location ?? NSLocalizedString("Unknown location", comment: "")
             
             do {
                 try self.managedObjectContext.save()
@@ -159,7 +159,7 @@ class TodoListTableViewController: UITableViewController {
             guard let dateValue = getDateOf(date: date, option: .date) else { return }
             guard let timeValue = getDateOf(date: date, option: .time) else { return }
             
-            cell.detailTextLabel?.text = "\(dateValue) \(NSLocalizedString("at", comment: "")) \(timeValue) \(NSLocalizedString(".", comment: "at... __UHR__"))"
+            cell.detailTextLabel?.text = "\(dateValue) \(NSLocalizedString("at", comment: "")) \(timeValue) \(NSLocalizedString("time unit", comment: "at... __UHR__"))"
         }
         
         if todo.done {
