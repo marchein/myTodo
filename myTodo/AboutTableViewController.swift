@@ -19,7 +19,7 @@ class AboutTableViewController: UITableViewController {
     @IBOutlet weak var webSupportCell: UITableViewCell!
     @IBOutlet weak var developerCell: UITableViewCell!
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
-    @IBOutlet weak var generateDemoDataCell: UITableViewCell!
+    //@IBOutlet weak var generateDemoDataCell: UITableViewCell!
     
     // MARK:- Class Attributes
     private let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -41,7 +41,7 @@ class AboutTableViewController: UITableViewController {
         return nil
     }
     
-    fileprivate func generateDemoData() {
+    /*fileprivate func generateDemoData() {
         print("Demo")
         guard let mainVC = (tabBarController?.viewControllers![0] as? UINavigationController)?.topViewController as? TodoListTableViewController else { return }
         let data = [
@@ -56,7 +56,7 @@ class AboutTableViewController: UITableViewController {
         for item in data {
             mainVC.insertNewObject(todoData: item)
         }
-    }
+    }*/
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
@@ -70,9 +70,9 @@ class AboutTableViewController: UITableViewController {
             LocalNotification.center.removeAllDeliveredNotifications()
             LocalNotification.center.removeAllPendingNotificationRequests()
             resetNotificationCell.setSelected(false, animated: true)
-        } else if selectedCell == generateDemoDataCell {
+        } /*else if selectedCell == generateDemoDataCell {
             generateDemoData()
-        }
+        }*/
         selectedCell.setSelected(false, animated: false)
     }
 }

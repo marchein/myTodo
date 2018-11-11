@@ -127,25 +127,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Caution area" id="dcQ-nu-jAo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ZZ3-MK-cmJ" style="IBUITableViewCellStyleDefault" id="Qn6-jV-VE9">
-                                        <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qn6-jV-VE9" id="PWU-Pn-C1v">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Generate Demo Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZZ3-MK-cmJ">
-                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.1439521903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TkJ-6J-cq6" style="IBUITableViewCellStyleDefault" id="lDq-b1-X6x">
-                                        <rect key="frame" x="0.0" y="479.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDq-b1-X6x" id="9Ep-ad-PWe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -174,7 +157,6 @@
                         <outlet property="appVersionCell" destination="U9F-v3-byd" id="y11-ft-hFF"/>
                         <outlet property="contactMailCell" destination="zMp-aD-DsJ" id="oUo-rB-ruG"/>
                         <outlet property="developerCell" destination="Uro-Ta-GYt" id="s96-0V-LhR"/>
-                        <outlet property="generateDemoDataCell" destination="Qn6-jV-VE9" id="0l7-4E-7km"/>
                         <outlet property="resetNotificationCell" destination="lDq-b1-X6x" id="lgU-YJ-fTp"/>
                         <outlet property="webSupportCell" destination="8zW-Yp-onq" id="NbR-XF-3MU"/>
                     </connections>
