@@ -12,8 +12,8 @@
 "Undone" = "Undone";
 "at" = "at";
 "time unit" = "";
-"Todo as been marked as done." = "Todo as been marked as done.";
-"Todo has been marked as undone." = "Todo has been marked as undone.";
+"marked_done" = "Todo as been marked as done.";
+"marked_undone" = "Todo has been marked as undone.";
 "Got it" = "Got it";
 "Delete" = "Delete";
 "Share" = "Share";

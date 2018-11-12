@@ -12,8 +12,8 @@
 "Undone" = "Zu erledigen";
 "at" = "um";
 "time unit" = "Uhr";
-"Todo as been marked as done." = "Todo wurde als \"Erledigt\" markiert.";
-"Todo has been marked as undone." = "Todo wurde als \"Zu erledigen\" markiert.";
+"marked_done" = "Todo wurde als \"Erledigt\" markiert.";
+"marked_undone" = "Todo wurde als \"Zu erledigen\" markiert.";
 "Got it" = "Verstanden";
 "Delete" = "Löschen";
 "Share" = "Teilen";

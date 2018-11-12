@@ -196,7 +196,9 @@ class TodoListTableViewController: UITableViewController {
             }
             showConfirmDialog = UserDefaults.standard.bool(forKey: "showConfirmDialog")
             if showConfirmDialog ?? true {
-                let alert = UIAlertController(title: currentObject.title ?? "myTodo", message: currentObject.done ? NSLocalizedString("Todo as been marked as done.", comment: "") : NSLocalizedString("Todo has been marked as undone.", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: currentObject.title ?? "myTodo",
+                                              message: currentObject.done ? NSLocalizedString("marked_done", comment: "") : NSLocalizedString("marked_undone", comment: ""),
+                                              preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
                 
