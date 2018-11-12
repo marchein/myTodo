@@ -15,16 +15,25 @@ class TodoListTableViewController: UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var _fetchedResultsController: NSFetchedResultsController<Todo>? = nil
+    var showConfirmDialog: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
         
         LocalNotification.center.getPendingNotificationRequests { (requests) in
-            print(requests)
+            print("PENDING NOTIFICATIONS: \(requests)")
         }
         
         configureView()
+        
+        let appSetup = UserDefaults.standard.bool(forKey: "appSetup")
+        if !appSetup {
+            print("app will be setup")
+            showConfirmDialog = true
+            UserDefaults.standard.set(showConfirmDialog, forKey: "showConfirmDialog")
+            UserDefaults.standard.set(true, forKey: "appSetup")
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +56,7 @@ class TodoListTableViewController: UITableViewController {
             newTodo.title = todoData.title!
             newTodo.desc = todoData.desc ?? ""
             newTodo.done = false
-            newTodo.location = todoData.location ?? NSLocalizedString("Unknown location", comment: "")
+            newTodo.location = todoData.location ?? ""
             
             do {
                 try self.managedObjectContext.save()
@@ -78,10 +87,10 @@ class TodoListTableViewController: UITableViewController {
             addVC.todoListTableVC = self
         } else if segue.identifier == "quickEditSegue" {
             if let indexPath = tableView.indexPath(for: sender as! MGSwipeTableCell) {
-                let todoFromCoreData = fetchedResultsController.object(at: indexPath)
                 guard let editVC = segue.destination as? EditingTableViewController else {
                     fatalError("Wrong segue identifier for given destination")
                 }
+                let todoFromCoreData = fetchedResultsController.object(at: indexPath)
                 editVC.todoItem = todoFromCoreData
                 editVC.indexPath = indexPath
                 tableView.setEditing(false, animated: false)
@@ -140,7 +149,6 @@ class TodoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             managedObjectContext.delete(fetchedResultsController.object(at: indexPath))
-                
             do {
                 try managedObjectContext.save()
             } catch {
@@ -186,12 +194,14 @@ class TodoListTableViewController: UITableViewController {
             } catch let error as NSError  {
                 fatalError("Could not save \(error), \(error.userInfo)")
             }
-            
-            let alert = UIAlertController(title: "myTodo", message: currentObject.done ? NSLocalizedString("Todo as been marked as done.", comment: "") : NSLocalizedString("Todo has been marked as undone.", comment: ""), preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true)
+            showConfirmDialog = UserDefaults.standard.bool(forKey: "showConfirmDialog")
+            if showConfirmDialog ?? true {
+                let alert = UIAlertController(title: currentObject.title ?? "myTodo", message: currentObject.done ? NSLocalizedString("Todo as been marked as done.", comment: "") : NSLocalizedString("Todo has been marked as undone.", comment: ""), preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true)
+            }
         }
         
         tableView.reloadData()

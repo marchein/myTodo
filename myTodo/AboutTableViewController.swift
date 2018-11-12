@@ -14,12 +14,15 @@ import SafariServices
 class AboutTableViewController: UITableViewController {
 
     // MARK:- Outlets
+    @IBOutlet weak var showDialogCell: UITableViewCell!
     @IBOutlet weak var appVersionCell: UITableViewCell!
     @IBOutlet weak var contactMailCell: UITableViewCell!
-    @IBOutlet weak var webSupportCell: UITableViewCell!
+    @IBOutlet weak var developerTwitterCell: UITableViewCell!
+    @IBOutlet weak var appStoreCell: UITableViewCell!
     @IBOutlet weak var developerCell: UITableViewCell!
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
     //@IBOutlet weak var generateDemoDataCell: UITableViewCell!
+    @IBOutlet weak var confirmDialogSwitch: UISwitch!
     
     // MARK:- Class Attributes
     private let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
@@ -30,6 +33,7 @@ class AboutTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         appVersionCell.detailTextLabel?.text = appVersionString
+        confirmDialogSwitch.isOn = UserDefaults.standard.bool(forKey: "showConfirmDialog")
     }
     
     // MARK:- Table View
@@ -37,6 +41,10 @@ class AboutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
             return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber)"
+        }
+        
+        if section == 2 {
+            return NSLocalizedString("caution_desc", comment: "")
         }
         return nil
     }
@@ -62,8 +70,15 @@ class AboutTableViewController: UITableViewController {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         if selectedCell == contactMailCell {
             sendEmail()
-        } else if selectedCell == webSupportCell {
-            showLinksClicked(url: "https://mytodoapp.de")
+        } else if selectedCell == developerTwitterCell {
+            let username =  "myTodo_app"
+            openTwitter(username: username)
+        } else if selectedCell == appStoreCell {
+            let appID = "1441790770"
+            let urlStr = "itms-apps://itunes.apple.com/app/id\(appID)"
+            if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
         } else if selectedCell == developerCell {
             showLinksClicked(url: "https://marc-hein-webdesign.de")
         } else if selectedCell == resetNotificationCell {
@@ -74,6 +89,9 @@ class AboutTableViewController: UITableViewController {
             generateDemoData()
         }*/
         selectedCell.setSelected(false, animated: false)
+    }
+    @IBAction func confirmDialogSwitchAction(_ sender: Any) {
+        UserDefaults.standard.set(confirmDialogSwitch.isOn, forKey: "showConfirmDialog")
     }
 }
 
@@ -102,6 +120,20 @@ extension AboutTableViewController: MFMailComposeViewControllerDelegate {
 
 // MARK:- Safari Extension
 extension AboutTableViewController: SFSafariViewControllerDelegate {
+    fileprivate func openTwitter(username: String) {
+        let tweetbotURL = URL(string: "tweetbot:///user_profile/\(username)")!
+        let twitterURL = URL(string: "twitter:///user?screen_name=\(username)")!
+        let webURL = "https://twitter.com/\(username)"
+        let application = UIApplication.shared
+        if application.canOpenURL(tweetbotURL as URL) {
+            application.open(tweetbotURL as URL)
+        } else if application.canOpenURL(twitterURL as URL) {
+            application.open(twitterURL as URL)
+        } else {
+            showLinksClicked(url: webURL)
+        }
+    }
+    
     fileprivate func showLinksClicked(url: String) {
         guard let safariURL = URL(string: url) else { return }
         

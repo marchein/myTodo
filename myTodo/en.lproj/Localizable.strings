@@ -6,20 +6,21 @@
   Copyright © 2018 Marc Hein Webdesign. All rights reserved.
 */
 
-"Unknown location" = "Unbekannter Ort";
-"Left to do" = "Zu erledigen";
-"Done" = "Erledigt";
-"Undone" = "Zu erledigen";
-"at" = "um";
-"time unit" = "Uhr";
+"Unknown location" = "Unknown location";
+"Left to do" = "Left to do";
+"Done" = "Done";
+"Undone" = "Undone";
+"at" = "at";
+"time unit" = "";
 "Todo as been marked as done." = "Todo as been marked as done.";
 "Todo has been marked as undone." = "Todo has been marked as undone.";
-"Got it" = "Verstanden";
-"Delete" = "Löschen";
-"Share" = "Teilen";
-"Cancel" = "Abbrechen";
-"Edit" = "Bearbeiten";
-"Save" = "Speichern";
+"Got it" = "Got it";
+"Delete" = "Delete";
+"Share" = "Share";
+"Cancel" = "Cancel";
+"Edit" = "Edit";
+"Add" = "Add";
+"Save" = "Save";
 "No Error" = "No Error";
 "Title field cannot be empty" = "Title field cannot be empty";
 "Something seems wrong with your due date field, try again please." = "Something seems wrong with your due date field, try again please.";
@@ -27,3 +28,9 @@
 "Build number" = "Build number";
 "support_mail_body" = "Why are you contacting the support of myTodo?";
 "Is due" = "Is due";
+"Beta testers" = "Beta testers";
+"Developers" = "Developers";
+"No description available" = "No description available";
+"caution_desc" = "If you got notifications which shouldn't be delivered, you can reset the notification queue";
+"is_due_sharing" = "is due";
+"mytodo_promo_sharing" = "Check out myTodo!";

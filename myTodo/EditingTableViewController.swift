@@ -50,26 +50,31 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         datePickerView!.addTarget(self, action: #selector(handleDatePicker(sender:)), for: UIControl.Event.valueChanged)
         
         if let todo = todoItem {
+            guard let todoTitle = todo.title else { return }
+            guard let todoLocation = todo.location else { return }
+            guard let todoDescription = todo.desc else { return }
             title = NSLocalizedString("Edit", comment: "")
-            titleTextField.text = todo.title?.description
+            titleTextField.text = todoTitle
             if let date = todo.date {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
                 dueTextField.text = dateFormatter.string(from: date)
                 datePickerView?.date = date
             }
-            locationTextField.text = todo.location?.description
-            descTextView.text = todo.desc?.description
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.editExistingEntry))
+            locationTextField.text = todoLocation
+            descTextView.text = todoDescription
+            
+            let editButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.editExistingEntry))
+            self.navigationItem.rightBarButtonItem = editButton
         } else {
-            title = NSLocalizedString("Edit", comment: "")
+            title = NSLocalizedString("Add", comment: "")
             let now = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
             dueTextField.text = dateFormatter.string(from: now)
             datePickerView?.date = now
-            locationTextField.text = NSLocalizedString("Unknown location", comment: "")
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
+            let addButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
+            self.navigationItem.rightBarButtonItem = addButton
         }
     }
     
@@ -162,12 +167,11 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
                 fatalError("Could not save \(error), \(error.userInfo)")
             }
             
-            self.navigationController?.popToRootViewController(animated: true)
-            
+            self.navigationController?.popViewController(animated: true)
             return
         }
     }
-    
+
     deinit {
         todoListTableVC = nil
         todoItem = nil

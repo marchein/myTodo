@@ -25,6 +25,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         }
     }
     var indexPath: IndexPath?
+    var firstCallDone = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,10 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reconfigureView()
+        if firstCallDone {
+            configureView()
+        }
+        firstCallDone = true
     }
     
     fileprivate func configureView() {
@@ -41,17 +45,30 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         navigationController?.toolbar.isHidden = false
         
         if let todo = todo {
-            titleLabel.text = todo.title?.description
+            guard let title = todo.title else { return }
+            guard let location = todo.location else { return }
+            guard let description = todo.desc else { return }
+            titleLabel.text = title
             dueLabel.text = getDateOf(date: todo.date, option: .both)
-            locationLabel.text = todo.location?.description
-            descTextView.text = todo.desc?.description
+            
+            if location.count > 0 {
+                locationLabel.text = location
+                locationLabel.textColor = UIColor.black
+            } else {
+                locationLabel.text = NSLocalizedString("Unknown location", comment: "")
+                locationLabel.textColor = UIColor.lightGray
+            }
+            
+            if description.count > 0 {
+                descTextView.text = description
+                descTextView.textColor = UIColor.black
+            } else {
+                descTextView.text = NSLocalizedString("No description available", comment: "")
+                descTextView.textColor = UIColor.lightGray
+            }
             
             setDoneButton()
         }
-    }
-    
-    fileprivate func reconfigureView() {
-        navigationController?.toolbar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,13 +108,14 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     func showShareSheet() {
         if let currentTodo = todo {
-            guard let dueDate = getDateOf(date: currentTodo.date, option: .both) else { return }
-            let textToShare = NSLocalizedString("\(currentTodo.title!) is due \(dueDate).\n\nCheck out myTodo!", comment: "")
-            let myTodoImage = #imageLiteral(resourceName: "AppLogo")
-            if let website = NSURL(string: "https://marc-hein-webdesign.de/") {
-                let objectsToShare = [textToShare, website, myTodoImage] as [Any]
+            guard let dueDate = getDateOf(date: todo?.date, option: .date) else { return }
+            guard let dueTime = getDateOf(date: todo?.date, option: .time) else { return }
+            
+            let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "at... __UHR__")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
+            if let website = NSURL(string: "https://mytodoapp.de/") {
+                let objectsToShare = [textToShare, website] as [Any]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+                activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
                 
                 if let popoverController = activityVC.popoverPresentationController {
                     popoverController.sourceView = self.view

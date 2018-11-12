@@ -15,9 +15,11 @@ class ThanksTableViewController: UITableViewController {
     private let thanksItems = [
         ["header": "Frameworks",
          "items": [Thank(name: "MGSwipeTableCell", url: "https://github.com/MortimerGoro/MGSwipeTableCell")]],
-        ["header": "Persons",
-         "items": [Thank(name: "Christian Selig", url: "https://twitter.com/ChristianSelig"),
-                   Thank(name: "Rodrigo Bueno Tomiosso", url: "https://github.com/mourodrigo")]]
+        ["header": NSLocalizedString("Developers", comment: ""),
+         "items": [Thank(name: "ChristianSelig"),
+                   Thank(name: "Rodrigo Bueno Tomiosso", url: "https://github.com/mourodrigo")]],
+        ["header": NSLocalizedString("Beta testers", comment: ""),
+         "items": [Thank(name: "itsmelenni")]]
     ]
     
     override func viewDidLoad() {
@@ -42,25 +44,51 @@ class ThanksTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "thanksCell", for: indexPath)
         let thanksValues = thanksItems[indexPath.section]["items"] as! [Thank]
         let thank = thanksValues[indexPath.row] as Thank
-        cell.textLabel?.text = thank.name
+        if let _ = thank.url {
+            cell.textLabel?.text = thank.name
+        } else {
+            cell.textLabel?.text = "@\(thank.name)"
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let thanksValues = thanksItems[indexPath.section]["items"] as! [Thank]
         let thank = thanksValues[indexPath.row] as Thank
-        self.showLinksClicked(url: thank.url)
+        if let thankUrl = thank.url {
+            self.showLinksClicked(url: thankUrl)
+        } else {
+            self.openTwitter(username: thank.name)
+        }
     }
 }
 
 struct Thank {
     let name: String
-    let url: String
+    let url: String?
+    
+    init(name: String, url: String? = nil) {
+        self.name = name
+        self.url = url
+    }
 }
 
 // MARK:- Safari Extension
-
 extension ThanksTableViewController: SFSafariViewControllerDelegate {
+    fileprivate func openTwitter(username: String) {
+        let tweetbotURL = URL(string: "tweetbot:///user_profile/\(username)")!
+        let twitterURL = URL(string: "twitter:///user?screen_name=\(username)")!
+        let webURL = "https://twitter.com/\(username)"
+        let application = UIApplication.shared
+        if application.canOpenURL(tweetbotURL as URL) {
+            application.open(tweetbotURL as URL)
+        } else if application.canOpenURL(twitterURL as URL) {
+            application.open(twitterURL as URL)
+        } else {
+            showLinksClicked(url: webURL)
+        }
+    }
+    
     fileprivate func showLinksClicked(url: String) {
         guard let safariURL = URL(string: url) else { return }
         

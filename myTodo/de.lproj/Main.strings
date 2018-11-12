@@ -90,7 +90,7 @@
 "Zdf-7t-Un8.title" = "myTodo";
 
 /* Class = "UILabel"; text = "Web Support"; ObjectID = "bFH-Sq-O1c"; */
-"bFH-Sq-O1c.text" = "Web Support";
+"bFH-Sq-O1c.text" = "myTodo auf Twitter";
 
 /* Class = "UILabel"; text = "Detail"; ObjectID = "cKw-PP-g8y"; */
 "cKw-PP-g8y.text" = "Detail";
@@ -108,7 +108,7 @@
 "jkM-at-0sb.placeholder" = "Titel deines Todos?";
 
 /* Class = "UILabel"; text = "E-Mail Support"; ObjectID = "oYR-lF-360"; */
-"oYR-lF-360.text" = "E-Mail Support";
+"oYR-lF-360.text" = "myTodo Support";
 
 /* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "tuR-RM-c02"; */
 "tuR-RM-c02.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
@@ -121,3 +121,9 @@
 
 /* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "zd5-4C-azO"; */
 "zd5-4C-azO.headerTitle" = "Informationen";
+
+"hU1-vK-9V5.text" = "Bestätigungsdialog anzeigen";
+
+"Zwp-Uu-XKy.text" = "Entwickelt von";
+
+"MBn-ad-v6b.text" = "myTodo im App Store";
