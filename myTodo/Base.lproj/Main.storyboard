@@ -235,14 +235,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Caution area" footerTitle="" id="dcQ-nu-jAo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TkJ-6J-cq6" style="IBUITableViewCellStyleDefault" id="lDq-b1-X6x">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="X3M-h0-X99" style="IBUITableViewCellStyleDefault" id="X0w-a5-g65">
                                         <rect key="frame" x="0.0" y="584" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lDq-b1-X6x" id="9Ep-ad-PWe">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X0w-a5-g65" id="0WX-ku-c9H">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Reset notification queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TkJ-6J-cq6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Reset notification queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X3M-h0-X99">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -270,7 +270,7 @@
                         <outlet property="contactMailCell" destination="zMp-aD-DsJ" id="oUo-rB-ruG"/>
                         <outlet property="developerCell" destination="Uro-Ta-GYt" id="s96-0V-LhR"/>
                         <outlet property="developerTwitterCell" destination="8zW-Yp-onq" id="NbR-XF-3MU"/>
-                        <outlet property="resetNotificationCell" destination="lDq-b1-X6x" id="lgU-YJ-fTp"/>
+                        <outlet property="resetNotificationCell" destination="X0w-a5-g65" id="4Qn-mV-0iw"/>
                         <outlet property="showDialogCell" destination="ebP-fl-hJc" id="sno-no-iYt"/>
                     </connections>
                 </tableViewController>

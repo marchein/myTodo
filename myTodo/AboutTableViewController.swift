@@ -23,7 +23,6 @@ class AboutTableViewController: UITableViewController {
     @IBOutlet weak var appStoreCell: UITableViewCell!
     @IBOutlet weak var developerCell: UITableViewCell!
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
-    //@IBOutlet weak var generateDemoDataCell: UITableViewCell!
     @IBOutlet weak var confirmDialogSwitch: UISwitch!
     
     // MARK:- Class Attributes
@@ -78,23 +77,6 @@ class AboutTableViewController: UITableViewController {
         }
     }
     
-    /*fileprivate func generateDemoData() {
-        print("Demo")
-        guard let mainVC = (tabBarController?.viewControllers![0] as? UINavigationController)?.topViewController as? TodoListTableViewController else { return }
-        let data = [
-            TodoData(title: "Band engagieren", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
-            TodoData(title: "Bühnentechnik besorgen", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
-            TodoData(title: "Catering bestellen", date: Date().addedBy(minutes: (60 * 24 * 3)), location: "Zuhause", desc: nil),
-            TodoData(title: "Präsentation erstellen", date: Date().addedBy(minutes:  (60 * 24 * 7 + 74)), location: "Gemeindehaus", desc: "Es muss eine Präsentation über das Unternehmen und unsere Produkte erstellt werden."),
-            TodoData(title: "Halle ausräumen", date: Date().addedBy(minutes:  (60 * 24 * 10 + 80)), location: "Gemeindehaus", desc: nil),
-            TodoData(title: "Deko aufhängen", date: Date().addedBy(minutes: (60 * 24 * 10 + 160)), location: "Gemeindehaus", desc: nil),
-            TodoData(title: "Tische & Stühle aufstellen", date: Date().addedBy(minutes: (60 * 24 * 10 + 240)), location: "Gemeindehaus", desc: nil),
-        ]
-        for item in data {
-            mainVC.insertNewObject(todoData: item)
-        }
-    }*/
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         if selectedCell == contactMailCell {
@@ -114,9 +96,7 @@ class AboutTableViewController: UITableViewController {
             LocalNotification.center.removeAllDeliveredNotifications()
             LocalNotification.center.removeAllPendingNotificationRequests()
             resetNotificationCell.setSelected(false, animated: true)
-        } /*else if selectedCell == generateDemoDataCell {
-            generateDemoData()
-        }*/
+        }
         selectedCell.setSelected(false, animated: false)
     }
     @IBAction func confirmDialogSwitchAction(_ sender: Any) {

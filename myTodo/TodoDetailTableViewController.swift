@@ -38,6 +38,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             configureView()
         }
         firstCallDone = true
+        title = todo?.title?.description
     }
     
     fileprivate func configureView() {

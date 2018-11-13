@@ -142,9 +142,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         
         if !valid {
             let alert = UIAlertController(title: NSLocalizedString("Error while saving your to do", comment: ""), message: errorMessage, preferredStyle: .alert)
-            
             alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
-            
             self.present(alert, animated: true)
         }
         return valid
