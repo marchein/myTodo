@@ -32,6 +32,8 @@ class TodoListTableViewController: UITableViewController {
             print("app will be setup")
             showConfirmDialog = true
             UserDefaults.standard.set(showConfirmDialog, forKey: "showConfirmDialog")
+            UserDefaults.standard.set(isSimulatorOrTestFlight(), forKey: "hasTipped")
+            UserDefaults.standard.set("default", forKey: "currentIcon")
             UserDefaults.standard.set(true, forKey: "appSetup")
         }
     }
@@ -228,6 +230,14 @@ enum DateOptions {
     case date
     case time
     case both
+}
+
+//MARK:- Check for Beta Testers
+private func isSimulatorOrTestFlight() -> Bool {
+    guard let path = Bundle.main.appStoreReceiptURL?.path else {
+        return false
+    }
+    return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
 }
 
 // MARK:- Extensions

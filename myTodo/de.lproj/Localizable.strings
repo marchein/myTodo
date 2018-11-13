@@ -34,3 +34,7 @@
 "caution_desc" = "Falls Sie Benachrichtigungen erhalten, die nicht gesendet werden sollten, können Sie hier die Benachrichtigungen zurücksetzen";
 "is_due_sharing" = "ist zu erledigen bis zum";
 "mytodo_promo_sharing" = "Sieh dir myTodo an!";
+/* No comment provided by engineer. */
+"" = "";
+"tip_greeting" = "Heyho";
+"tip_desc" = "Falls dir myTodo sehr gefällt, kannst du hier mit einer Spende an den Entwickler die Entwicklung unterstützen.\nSelbst wenn du das nicht möchtest, dennoch danke. Der Gedanke zählt!";

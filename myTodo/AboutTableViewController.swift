@@ -15,6 +15,8 @@ class AboutTableViewController: UITableViewController {
 
     // MARK:- Outlets
     @IBOutlet weak var showDialogCell: UITableViewCell!
+    @IBOutlet weak var appIconCell: UITableViewCell!
+    @IBOutlet weak var appIconIV: UIImageView!
     @IBOutlet weak var appVersionCell: UITableViewCell!
     @IBOutlet weak var contactMailCell: UITableViewCell!
     @IBOutlet weak var developerTwitterCell: UITableViewCell!
@@ -27,6 +29,8 @@ class AboutTableViewController: UITableViewController {
     // MARK:- Class Attributes
     private let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     private let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+    private var hasTipped = false
+    private var currentAppIcon: String?
     
     // MARK: System Functions
     override func viewDidLoad() {
@@ -34,6 +38,20 @@ class AboutTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         appVersionCell.detailTextLabel?.text = appVersionString
         confirmDialogSwitch.isOn = UserDefaults.standard.bool(forKey: "showConfirmDialog")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reconfigureView()
+    }
+    
+    fileprivate func reconfigureView() {
+        currentAppIcon = UserDefaults.standard.string(forKey: "currentIcon")
+        if let appIcon = currentAppIcon {
+            appIconIV.image = appIcon == "default" ? Bundle.main.icon : UIImage(named: appIcon)
+        }
+        hasTipped = UserDefaults.standard.bool(forKey: "hasTipped")
+        tableView.reloadData()
     }
     
     // MARK:- Table View
@@ -47,6 +65,17 @@ class AboutTableViewController: UITableViewController {
             return NSLocalizedString("caution_desc", comment: "")
         }
         return nil
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let selectedCell = tableView.cellForRow(at: indexPath) else { return  44.0 }
+        if (selectedCell == appIconCell && !hasTipped) {
+            return 0.0
+        } else if selectedCell == developerCell {
+            return 64.0
+        } else {
+            return 44.0
+        }
     }
     
     /*fileprivate func generateDemoData() {

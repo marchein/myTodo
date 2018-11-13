@@ -34,3 +34,7 @@
 "caution_desc" = "If you got notifications which shouldn't be delivered, you can reset the notification queue";
 "is_due_sharing" = "is due";
 "mytodo_promo_sharing" = "Check out myTodo!";
+/* No comment provided by engineer. */
+"" = "";
+"tip_greeting" = "Hey there";
+"tip_desc" = "If you are really enjoying myTodo, you can leave a tip here. Tips keep up the development, as I really enjoy what I'm doing here.\nEven if you don't, thank you for considering!";

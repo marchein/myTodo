@@ -19,7 +19,14 @@
 		5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */; };
 		5BA641E92187C16400446436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641E72187C16400446436 /* Main.storyboard */; };
 		5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641EC2187C16500446436 /* LaunchScreen.storyboard */; };
+		5BCB0444219B348D006E1E1D /* AppIconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */; };
+		5BCB0446219B37F8006E1E1D /* AppIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */; };
+		5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0448219B3EEE006E1E1D /* myTodo2.png */; };
+		5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0449219B3EEE006E1E1D /* myTodo1.png */; };
 		5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD7D0E7219487B600209131 /* LocalNotifications.swift */; };
+		5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */; };
+		5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */; };
+		5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE1EA3E219AF5130023B4FB /* StoreKit.framework */; };
 		5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7A53321985A4C0070F127 /* FixedUITextField.swift */; };
 		5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEADE3C2188F02100527CE1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -43,7 +50,14 @@
 		5BA641E32187C16400446436 /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailTableViewController.swift; sourceTree = "<group>"; };
 		5BA641EF2187C16500446436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCollectionViewController.swift; sourceTree = "<group>"; };
+		5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCollectionViewCell.swift; sourceTree = "<group>"; };
+		5BCB0448219B3EEE006E1E1D /* myTodo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2.png; sourceTree = "<group>"; };
+		5BCB0449219B3EEE006E1E1D /* myTodo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo1.png; sourceTree = "<group>"; };
 		5BD7D0E7219487B600209131 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarTableViewController.swift; sourceTree = "<group>"; };
+		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5BE7A53321985A4C0070F127 /* FixedUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedUITextField.swift; sourceTree = "<group>"; };
 		5BEADE3C2188F02100527CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTodo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -57,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B53A5C72196FA76000CD0F5 /* Pods_myTodo.framework in Frameworks */,
+				5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +81,7 @@
 		0E0F778CC21A3FC073B84621 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BE1EA3E219AF5130023B4FB /* StoreKit.framework */,
 				656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */,
 			);
 			name = Frameworks;
@@ -79,6 +95,8 @@
 				5B839863218DDCD8004DF853 /* EditingTableViewController.swift */,
 				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
 				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
+				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
+				5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -129,17 +147,30 @@
 				5BA641E02187C16400446436 /* myTodo.xcdatamodeld */,
 				5B99BB712198700700115AA4 /* Localizable.strings */,
 				5BEADE3C2188F02100527CE1 /* Assets.xcassets */,
+				5BCB0447219B3ED4006E1E1D /* Images */,
 				5BEE538E2190AA350057EDCD /* Support Librarys */,
 			);
 			path = myTodo;
 			sourceTree = "<group>";
 		};
+		5BCB0447219B3ED4006E1E1D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
+				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		5BEE538E2190AA350057EDCD /* Support Librarys */ = {
 			isa = PBXGroup;
 			children = (
-				5BD7D0E7219487B600209131 /* LocalNotifications.swift */,
 				5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */,
+				5BD7D0E7219487B600209131 /* LocalNotifications.swift */,
 				5BE7A53321985A4C0070F127 /* FixedUITextField.swift */,
+				5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */,
+				5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */,
 			);
 			path = "Support Librarys";
 			sourceTree = "<group>";
@@ -188,6 +219,11 @@
 					5BA641DA2187C16400446436 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -218,6 +254,8 @@
 				5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */,
 				5B99BB732198700700115AA4 /* Localizable.strings in Resources */,
 				5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */,
+				5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */,
+				5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */,
 				5BA641E92187C16400446436 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +273,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-myTodo/Pods-myTodo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -242,6 +281,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,13 +319,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */,
+				5BCB0446219B37F8006E1E1D /* AppIconCollectionViewCell.swift in Sources */,
 				5BA641DF2187C16400446436 /* AppDelegate.swift in Sources */,
 				5BA641E22187C16400446436 /* myTodo.xcdatamodeld in Sources */,
+				5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */,
 				5B839864218DDCD8004DF853 /* EditingTableViewController.swift in Sources */,
 				5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */,
 				5BA641E42187C16400446436 /* TodoListTableViewController.swift in Sources */,
+				5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */,
 				5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */,
 				5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */,
+				5BCB0444219B348D006E1E1D /* AppIconCollectionViewController.swift in Sources */,
 				5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */,
 				5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */,
 			);
