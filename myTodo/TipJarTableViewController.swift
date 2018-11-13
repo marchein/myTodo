@@ -20,28 +20,28 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
     let largeTip = "de.marc_hein.myTodo.tip.large"
 
     var productIDs: Array<String> = []
-    
     var productsArray: Array<SKProduct?> = []
-    
     var selectedProductIndex: Int!
-    
     var transactionInProgress = false
-    
     var hud: JGProgressHUD? = JGProgressHUD(style: .dark)
+    var hasData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         SKPaymentQueue.default().add(self)
 
-        productIDs.append(smallTip)
-        productIDs.append(mediumTip)
-        productIDs.append(largeTip)
+        setupProducts()
         requestProductInfo()
-        hud!.textLabel.text = "Loading"
+        hud!.textLabel.text = NSLocalizedString("loading", comment: "")
     }
 
     // MARK:- IAP
+    fileprivate func setupProducts() {
+        productIDs.append(smallTip)
+        productIDs.append(mediumTip)
+        productIDs.append(largeTip)
+    }
+    
     func requestProductInfo() {
         if SKPaymentQueue.canMakePayments() {
             let productIdentifiers = NSSet(array: productIDs)
@@ -62,21 +62,11 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
         } else {
             print("There are no products.")
         }
+        hasData = true
         tableView.reloadData()
         if response.invalidProductIdentifiers.count != 0 {
             print(response.invalidProductIdentifiers.description)
         }
-    }
-    
-    func showActions() {
-        if transactionInProgress {
-            return
-        }
-
-        let payment = SKPayment(product: self.productsArray[self.selectedProductIndex]!)
-        SKPaymentQueue.default().add(payment)
-        self.transactionInProgress = true
-        hud!.show(in: navigationController!.view)
     }
     
     @IBAction func tipButtonAction(_ sender: UIButton) {
@@ -86,23 +76,31 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
         tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
     }
     
+    func startTransaction() {
+        if transactionInProgress || productsArray.count < 1 {
+            return
+        }
+
+        let payment = SKPayment(product: self.productsArray[self.selectedProductIndex]!)
+        SKPaymentQueue.default().add(payment)
+        self.transactionInProgress = true
+        hud!.show(in: navigationController!.view)
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
             case SKPaymentTransactionState.purchased:
-                print("Transaction completed successfully.")
                 hud!.dismiss(animated: true)
                 UserDefaults.standard.set(true, forKey: "hasTipped")
                 SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
-                showMessage(title: "Tip successful!", message: "Thank you so much for your tip!")
-            //delegate.didBuyColorsCollection(selectedProductIndex)
+                showMessage(title: NSLocalizedString("tip_success", comment: ""), message: NSLocalizedString("tip_success_message", comment: ""))
             case SKPaymentTransactionState.failed:
-                print("Transaction Failed");
                 hud!.dismiss(animated: true)
                 SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
-                
+                showMessage(title: NSLocalizedString("Error", comment: ""), message: NSLocalizedString("transaction_error", comment: ""))
             default:
                 print(transaction.transactionState.rawValue)
             }
@@ -112,7 +110,7 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
     
     func showMessage(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: UIAlertAction.Style.default,handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -146,16 +144,15 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
             if productsArray.count > indexPath.row {
                 if let product = productsArray[indexPath.row] {
                     cell.tipTitle.text = product.localizedTitle
+                    cell.tipDesc.text = product.localizedDescription
                     cell.purchaseButton.isHidden = false
                     cell.purchaseButton.setTitle(product.localizedPrice, for: .normal)
-                    cell.tipDesc.isHidden = true
                 }
             } else {
-                cell.tipTitle.text = "No tips found"
-                cell.tipDesc.text = "Either your device had problems fetching data from Apple or Apple has issues. Please try again!"
+                cell.tipTitle.text = NSLocalizedString("no_tips", comment: "")
+                cell.tipDesc.text = NSLocalizedString("no_tips_desc", comment: "")
                 cell.purchaseButton.isHidden = true
                 cell.tipDesc.isHidden = false
-
             }
             return cell
         } else {
@@ -166,16 +163,16 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 120.0
+            return 140.0
         } else {
-            return 64.0
+            return hasData ? 68.0 : 100.0
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             selectedProductIndex = indexPath.row
-            showActions()
+            startTransaction()
         }
         
         tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)

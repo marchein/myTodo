@@ -129,12 +129,10 @@ extension AboutTableViewController: MFMailComposeViewControllerDelegate {
     fileprivate func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
-            
             mail.mailComposeDelegate = self
             mail.setSubject("[myTodo] - Version \(appVersionString) (Build: \(buildNumber))")
             mail.setToRecipients(["info@mytodoapp.de"])
             mail.setMessageBody(NSLocalizedString("support_mail_body", comment: ""), isHTML: false)
-            
             present(mail, animated: true)
         } else {
             print("No mail account configured")

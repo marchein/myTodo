@@ -21,6 +21,7 @@
 "Edit" = "Edit";
 "Add" = "Add";
 "Save" = "Save";
+"Error" = "Error";
 "No Error" = "No Error";
 "Title field cannot be empty" = "Title field cannot be empty";
 "Something seems wrong with your due date field, try again please." = "Something seems wrong with your due date field, try again please.";
@@ -38,3 +39,9 @@
 "" = "";
 "tip_greeting" = "Hey there";
 "tip_desc" = "If you are really enjoying myTodo, you can leave a tip here. Tips keep up the development, as I really enjoy what I'm doing here.\nEven if you don't, thank you for considering!";
+"transaction_error" = "There was an error while finishing the transaction.";
+"no_tips" = "No tips found";
+"no_tips_desc" = "Either your device has problems fetching data from Apple or Apple has issues. Please try again!";
+"tip_success" = "Tip successful!";
+"tip_success_message" = "Thank you so much for your tip!";
+"loading" = "Loading...";

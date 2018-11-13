@@ -19,7 +19,8 @@ class ThanksTableViewController: UITableViewController {
          "items": [Thank(name: "ChristianSelig"),
                    Thank(name: "Rodrigo Bueno Tomiosso", url: "https://github.com/mourodrigo")]],
         ["header": NSLocalizedString("Beta testers", comment: ""),
-         "items": [Thank(name: "itsmelenni")]]
+         "items": [Thank(name: "itsmelenni"),
+                   Thank(name: "BugsB")]]
     ]
     
     override func viewDidLoad() {
