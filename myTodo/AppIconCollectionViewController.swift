@@ -10,9 +10,8 @@ import UIKit
 
 private let reuseIdentifier = "appIcons"
 
-private let iconValues = [nil, "myTodo1", "myTodo2", "myTodo_christmas"]
-
 class AppIconCollectionViewController: UICollectionViewController {
+    var appIcons: [String?]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,28 +47,33 @@ class AppIconCollectionViewController: UICollectionViewController {
     }
     
     // MARK:- UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return iconValues.count
+        guard let appIcons = appIcons else {
+            fatalError()
+        }
+        return appIcons.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let appIcons = appIcons else {
+            fatalError()
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AppIconCollectionViewCell
-        let imageOfCurrentCell = iconValues[indexPath.row]
+        let imageOfCurrentCell = appIcons[indexPath.row]
         setSelectedImage(key: imageOfCurrentCell, cell: cell)
         cell.icon.image = getImageFor(value: imageOfCurrentCell)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedIcon = iconValues[indexPath.row]
+        guard let appIcons = appIcons else {
+            fatalError()
+        }
+        let selectedIcon = appIcons[indexPath.row]
         DispatchQueue.main.async(execute: { () -> Void in
             UserDefaults.standard.set(selectedIcon ?? "default", forKey: "currentIcon")
             self.setSelectedImage(key: selectedIcon, cell: collectionView.cellForItem(at: indexPath))

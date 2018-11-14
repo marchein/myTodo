@@ -30,6 +30,8 @@ class AboutTableViewController: UITableViewController {
     private let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     private var hasTipped = false
     private var currentAppIcon: String?
+    private let appIcons = [nil, "myTodo1", "myTodo2", "myTodo_christmas"]
+
     
     // MARK: System Functions
     override func viewDidLoad() {
@@ -46,6 +48,11 @@ class AboutTableViewController: UITableViewController {
     
     fileprivate func reconfigureView() {
         currentAppIcon = UserDefaults.standard.string(forKey: "currentIcon")
+        if !appIcons.contains(currentAppIcon) {
+            currentAppIcon = "default"
+            UserDefaults.standard.set(currentAppIcon, forKey: "currentIcon")
+        }
+        
         if let appIcon = currentAppIcon {
             appIconIV.image = appIcon == "default" ? Bundle.main.icon : UIImage(named: appIcon)
         }
@@ -99,8 +106,16 @@ class AboutTableViewController: UITableViewController {
         }
         selectedCell.setSelected(false, animated: false)
     }
+    
     @IBAction func confirmDialogSwitchAction(_ sender: Any) {
         UserDefaults.standard.set(confirmDialogSwitch.isOn, forKey: "showConfirmDialog")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "appIconSegue" {
+            guard let appIconVC = segue.destination as? AppIconCollectionViewController else { return }
+            appIconVC.appIcons = appIcons
+        }
     }
 }
 
