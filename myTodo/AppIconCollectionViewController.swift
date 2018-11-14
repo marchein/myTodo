@@ -24,10 +24,8 @@ class AppIconCollectionViewController: UICollectionViewController {
     // MARK:- Image functions
     
     fileprivate func getImageFor(value: String?) -> UIImage? {
-        if value == "myTodo1" {
-            return UIImage(named: "myTodo1")
-        } else if value == "myTodo2" {
-            return UIImage(named: "myTodo2")
+        if let imageName = value {
+            return UIImage(named: imageName)
         } else {
             return Bundle.main.icon
         }
