@@ -28,6 +28,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>myTodo_christmas</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>myTodo_christmas</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
@@ -37,17 +46,6 @@
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
-		</dict>
-		<key>UINewsstandIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string></string>
-			</array>
-			<key>UINewsstandBindingEdge</key>
-			<string>UINewsstandBindingEdgeLeft</string>
-			<key>UINewsstandBindingType</key>
-			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
 	<key>CFBundleIcons~ipad</key>
@@ -72,6 +70,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>myTodo_christmas</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>myTodo_christmas</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
@@ -81,17 +88,6 @@
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
-		</dict>
-		<key>UINewsstandIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string></string>
-			</array>
-			<key>UINewsstandBindingEdge</key>
-			<string>UINewsstandBindingEdgeLeft</string>
-			<key>UINewsstandBindingType</key>
-			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -105,7 +101,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>142</string>
+	<string>143</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

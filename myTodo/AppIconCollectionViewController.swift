@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "appIcons"
 
-private let iconValues = [nil, "myTodo1", "myTodo2"]
+private let iconValues = [nil, "myTodo1", "myTodo2", "myTodo_christmas"]
 
 class AppIconCollectionViewController: UICollectionViewController {
 
