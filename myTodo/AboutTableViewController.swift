@@ -42,7 +42,10 @@ class AboutTableViewController: UITableViewController {
         AppIcon(iconName: nil, iconTitle: "Default"),
         AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)"),
         AppIcon(iconName: "myTodo2", iconTitle: "myTodo (2014)"),
-        AppIcon(iconName: "myTodo_christmas", iconTitle: "Christmas 1"),
+        AppIcon(iconName: "brains", iconTitle: "Braaaaaains"),
+        AppIcon(iconName: "wet", iconTitle: "Waterdrawing"),
+        AppIcon(iconName: "pinsel", iconTitle: "Sprayed"),
+        AppIcon(iconName: "myTodo_christmas", iconTitle: "Christmas")
     ])
     
     // MARK: System Functions
