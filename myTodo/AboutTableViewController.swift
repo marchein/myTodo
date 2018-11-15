@@ -30,8 +30,20 @@ class AboutTableViewController: UITableViewController {
     private let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     private var hasTipped = false
     private var currentAppIcon: String?
-    private let appIcons = [nil, "myTodo1", "myTodo2", "myTodo_christmas"]
-
+    
+//    private let appIcons = [
+//        ["icon": nil, "title": "Default"],
+//        ["icon": "myTodo1", "title": "myTodo (2013)"],
+//        ["icon": "myTodo2", "title": "myTodo (2014)"],
+//        ["icon": "myTodo_christmas", "title": "Christmas 1"]
+//    ]
+    
+    private let appIcons = AppIcons(icons: [
+        AppIcon(iconName: nil, iconTitle: "Default"),
+        AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)"),
+        AppIcon(iconName: "myTodo2", iconTitle: "myTodo (2014)"),
+        AppIcon(iconName: "myTodo_christmas", iconTitle: "Christmas 1"),
+    ])
     
     // MARK: System Functions
     override func viewDidLoad() {
@@ -48,13 +60,17 @@ class AboutTableViewController: UITableViewController {
     
     fileprivate func reconfigureView() {
         currentAppIcon = UserDefaults.standard.string(forKey: "currentIcon")
-        if !appIcons.contains(currentAppIcon) {
+        if !appIcons.contains(iconName: currentAppIcon) {
             currentAppIcon = "default"
             UserDefaults.standard.set(currentAppIcon, forKey: "currentIcon")
         }
         
         if let appIcon = currentAppIcon {
+            let maskImage = UIImage(named: "app_mask")!
+            let maskView = UIImageView(image: maskImage)
             appIconIV.image = appIcon == "default" ? Bundle.main.icon : UIImage(named: appIcon)
+            appIconIV.mask = maskView
+            maskView.frame = appIconIV.bounds
         }
         hasTipped = UserDefaults.standard.bool(forKey: "hasTipped")
         tableView.reloadData()
@@ -64,7 +80,9 @@ class AboutTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
-            return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber)"
+            let isRelease = !isSimulatorOrTestFlight()
+            let releaseString = isRelease ? "App Store" : "Beta"
+            return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber) (\(releaseString))"
         }
         
         if section == 2 {
@@ -113,7 +131,7 @@ class AboutTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "appIconSegue" {
-            guard let appIconVC = segue.destination as? AppIconCollectionViewController else { return }
+            guard let appIconVC = segue.destination as? AppIconTableViewController else { return }
             appIconVC.appIcons = appIcons
         }
     }

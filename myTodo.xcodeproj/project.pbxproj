@@ -12,6 +12,7 @@
 		5B53A5C72196FA76000CD0F5 /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
 		5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */; };
 		5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53F6252194CA4700373DD5 /* TodoData.swift */; };
+		5B68059D219D51BB006514EF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B68059C219D51BB006514EF /* Helper.swift */; };
 		5B839864218DDCD8004DF853 /* EditingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B839863218DDCD8004DF853 /* EditingTableViewController.swift */; };
 		5B99BB732198700700115AA4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B99BB712198700700115AA4 /* Localizable.strings */; };
 		5BA641DF2187C16400446436 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641DE2187C16400446436 /* AppDelegate.swift */; };
@@ -20,11 +21,13 @@
 		5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */; };
 		5BA641E92187C16400446436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641E72187C16400446436 /* Main.storyboard */; };
 		5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641EC2187C16500446436 /* LaunchScreen.storyboard */; };
-		5BCB0444219B348D006E1E1D /* AppIconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */; };
-		5BCB0446219B37F8006E1E1D /* AppIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */; };
 		5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0448219B3EEE006E1E1D /* myTodo2.png */; };
 		5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0449219B3EEE006E1E1D /* myTodo1.png */; };
 		5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD7D0E7219487B600209131 /* LocalNotifications.swift */; };
+		5BDFD74F219DA88D00D01D6D /* AppIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */; };
+		5BDFD751219DAA6D00D01D6D /* AppIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */; };
+		5BDFD753219DB1F000D01D6D /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD752219DB1F000D01D6D /* AppIcon.swift */; };
+		5BDFD757219DC7CD00D01D6D /* app_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BDFD756219DC7CC00D01D6D /* app_mask.png */; };
 		5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */; };
 		5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */; };
 		5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE1EA3E219AF5130023B4FB /* StoreKit.framework */; };
@@ -38,6 +41,7 @@
 		5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo_christmas.png; sourceTree = "<group>"; };
 		5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksTableViewController.swift; sourceTree = "<group>"; };
 		5B53F6252194CA4700373DD5 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
+		5B68059C219D51BB006514EF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5B839863218DDCD8004DF853 /* EditingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewController.swift; sourceTree = "<group>"; };
 		5B879F9321986F76008B475B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B879F9421986F76008B475B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,11 +56,13 @@
 		5BA641E32187C16400446436 /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailTableViewController.swift; sourceTree = "<group>"; };
 		5BA641EF2187C16500446436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCollectionViewController.swift; sourceTree = "<group>"; };
-		5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCollectionViewCell.swift; sourceTree = "<group>"; };
 		5BCB0448219B3EEE006E1E1D /* myTodo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2.png; sourceTree = "<group>"; };
 		5BCB0449219B3EEE006E1E1D /* myTodo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo1.png; sourceTree = "<group>"; };
 		5BD7D0E7219487B600209131 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewController.swift; sourceTree = "<group>"; };
+		5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewCell.swift; sourceTree = "<group>"; };
+		5BDFD752219DB1F000D01D6D /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		5BDFD756219DC7CC00D01D6D /* app_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_mask.png; path = ../../../../../Desktop/app_mask.png; sourceTree = "<group>"; };
 		5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarTableViewController.swift; sourceTree = "<group>"; };
 		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -98,7 +104,7 @@
 				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
 				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
 				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
-				5BCB0443219B348D006E1E1D /* AppIconCollectionViewController.swift */,
+				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -118,6 +124,7 @@
 				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
 				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
 				5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */,
+				5BDFD756219DC7CC00D01D6D /* app_mask.png */,
 			);
 			path = "Alternative App Icons";
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				5B53F6252194CA4700373DD5 /* TodoData.swift */,
+				5BDFD752219DB1F000D01D6D /* AppIcon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,7 +180,8 @@
 				5BD7D0E7219487B600209131 /* LocalNotifications.swift */,
 				5BE7A53321985A4C0070F127 /* FixedUITextField.swift */,
 				5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */,
-				5BCB0445219B37F8006E1E1D /* AppIconCollectionViewCell.swift */,
+				5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */,
+				5B68059C219D51BB006514EF /* Helper.swift */,
 			);
 			path = "Support Librarys";
 			sourceTree = "<group>";
@@ -260,6 +269,7 @@
 				5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */,
 				5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */,
 				5BA641E92187C16400446436 /* Main.storyboard in Resources */,
+				5BDFD757219DC7CD00D01D6D /* app_mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,17 +332,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */,
-				5BCB0446219B37F8006E1E1D /* AppIconCollectionViewCell.swift in Sources */,
+				5BDFD753219DB1F000D01D6D /* AppIcon.swift in Sources */,
+				5B68059D219D51BB006514EF /* Helper.swift in Sources */,
 				5BA641DF2187C16400446436 /* AppDelegate.swift in Sources */,
 				5BA641E22187C16400446436 /* myTodo.xcdatamodeld in Sources */,
 				5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */,
+				5BDFD751219DAA6D00D01D6D /* AppIconTableViewCell.swift in Sources */,
 				5B839864218DDCD8004DF853 /* EditingTableViewController.swift in Sources */,
 				5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */,
+				5BDFD74F219DA88D00D01D6D /* AppIconTableViewController.swift in Sources */,
 				5BA641E42187C16400446436 /* TodoListTableViewController.swift in Sources */,
 				5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */,
 				5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */,
 				5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */,
-				5BCB0444219B348D006E1E1D /* AppIconCollectionViewController.swift in Sources */,
 				5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */,
 				5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */,
 			);

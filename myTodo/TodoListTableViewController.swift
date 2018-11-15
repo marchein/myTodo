@@ -212,34 +212,6 @@ class TodoListTableViewController: UITableViewController {
     }
 }
 
-// MARK:- Date functions
-func getDateOf(date: Date?, option: DateOptions) -> String? {
-    guard let date = date else { return nil }
-    let formatter = DateFormatter()
-    if option == .date {
-        formatter.dateFormat = "dd.MM.yyyy"
-    } else if option == .time {
-        formatter.dateFormat = "HH:mm"
-    } else if option == .both {
-        formatter.dateFormat = "dd.MM.yyyy - HH:mm"
-    }
-    return  formatter.string(from: date)
-}
-
-enum DateOptions {
-    case date
-    case time
-    case both
-}
-
-//MARK:- Check for Beta Testers
-private func isSimulatorOrTestFlight() -> Bool {
-    guard let path = Bundle.main.appStoreReceiptURL?.path else {
-        return false
-    }
-    return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
-}
-
 // MARK:- Extensions
 
 extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
@@ -289,16 +261,18 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        guard let todo = anObject as? Todo else { return }
         switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
-        case .move:
-            configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
-            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
+            case .delete:
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            case .update:
+                configureCell(tableView.cellForRow(at: indexPath)!, withTodo: todo)
+            case .move:
+                configureCell(tableView.cellForRow(at: indexPath)!, withTodo: todo)
+                tableView.moveRow(at: indexPath, to: newIndexPath!)
         }
     }
     
@@ -308,7 +282,6 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
 }
 
 extension TodoListTableViewController: UNUserNotificationCenterDelegate {
-    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert])
     }

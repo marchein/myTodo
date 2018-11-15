@@ -36,7 +36,6 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.toolbar.isHidden = true
     }
 
@@ -188,16 +187,4 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         todoItem = nil
         tbAccessoryView = nil
     }
-}
-
-extension Date {
-    func addedBy(minutes:Int) -> Date {
-        return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
-    }
-}
-
-func showMessage(title: String, message: String, done: String, view: UIViewController) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: done, style: .cancel, handler: nil))
-    view.present(alert, animated: true)
 }
