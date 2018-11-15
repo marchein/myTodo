@@ -36,12 +36,13 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.toolbar.isHidden = true
     }
 
     fileprivate func configureView() {
         navigationController?.toolbar.isHidden = true
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
         datePickerView = UIDatePicker()
         datePickerView!.datePickerMode = UIDatePicker.Mode.dateAndTime
         datePickerView!.locale = Locale.current
@@ -76,6 +77,10 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             let addButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
             self.navigationItem.rightBarButtonItem = addButton
         }
+        titleTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
+        dueTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
+
+        checkIfSavingIsPossible()
     }
     
     @objc fileprivate func handleDatePicker(sender: UIDatePicker) {
@@ -88,6 +93,14 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+    
+    @objc func checkIfSavingIsPossible() {
+        let titleIsEmpty = titleTextField.text?.isEmpty ?? true
+        let dateIsEmpty = dueTextField.text?.isEmpty ?? true
+        
+        let canSave = !titleIsEmpty && !dateIsEmpty
+        self.navigationItem.rightBarButtonItem?.isEnabled = canSave
     }
     
     // MARK: - Table view data source

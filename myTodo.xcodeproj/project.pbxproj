@@ -112,6 +112,16 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		5B4472B1219CAA04003A03D6 /* Alternative App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
+				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
+				5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */,
+			);
+			path = "Alternative App Icons";
+			sourceTree = "<group>";
+		};
 		5B53F6272194CA5400373DD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,21 +159,10 @@
 				5BA641E02187C16400446436 /* myTodo.xcdatamodeld */,
 				5B99BB712198700700115AA4 /* Localizable.strings */,
 				5BEADE3C2188F02100527CE1 /* Assets.xcassets */,
-				5BCB0447219B3ED4006E1E1D /* Images */,
 				5BEE538E2190AA350057EDCD /* Support Librarys */,
+				5B4472B1219CAA04003A03D6 /* Alternative App Icons */,
 			);
 			path = myTodo;
-			sourceTree = "<group>";
-		};
-		5BCB0447219B3ED4006E1E1D /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
-				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
-				5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */,
-			);
-			name = Images;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		5BEE538E2190AA350057EDCD /* Support Librarys */ = {
