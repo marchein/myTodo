@@ -50,7 +50,7 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             content.badge = 1
             content.sound = UNNotificationSound.default
             
-            let comp = Calendar.current.dateComponents([.hour, .minute], from: todo.date!)
+            let comp = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: todo.date!)
             let trigger = UNCalendarNotificationTrigger(dateMatching: comp, repeats: false)
             let identifier = generateTodoIdentifier(for: todo)
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

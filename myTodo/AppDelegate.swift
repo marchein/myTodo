@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalNotification.registerForLocalNotification(on: UIApplication.shared)
         UIApplication.shared.applicationIconBadgeNumber = 0
         IQKeyboardManager.shared.enable = true
-
         return true
     }
 
