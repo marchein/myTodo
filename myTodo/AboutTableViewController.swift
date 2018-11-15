@@ -83,9 +83,15 @@ class AboutTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
-            let isRelease = !isSimulatorOrTestFlight()
-            let releaseString = isRelease ? "App Store" : "Beta"
-            return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber) (\(releaseString))"
+            var releaseString: String?
+            if isSimulator() {
+                releaseString = "Simulator"
+            } else if isTestFlight() {
+                releaseString = "TestFlight"
+            } else {
+                releaseString = "App Store"
+            }
+            return "\(NSLocalizedString("Build number", comment: "")): \(buildNumber) (\(releaseString!))"
         }
         
         if section == 2 {

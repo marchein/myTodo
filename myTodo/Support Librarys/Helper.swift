@@ -11,10 +11,21 @@ import UIKit
 
 //MARK:- Check for Beta Testers
 func isSimulatorOrTestFlight() -> Bool {
+    return isSimulator() || isTestFlight()
+}
+
+func isSimulator() -> Bool {
     guard let path = Bundle.main.appStoreReceiptURL?.path else {
         return false
     }
-    return path.contains("CoreSimulator") || path.contains("sandboxReceipt")
+    return path.contains("CoreSimulator")
+}
+
+func isTestFlight() -> Bool {
+    guard let path = Bundle.main.appStoreReceiptURL?.path else {
+        return false
+    }
+    return path.contains("sandboxReceipt")
 }
 
 // MARK:- showDialog

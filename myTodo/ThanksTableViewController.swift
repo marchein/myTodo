@@ -14,17 +14,31 @@ class ThanksTableViewController: UITableViewController {
      // MARK:- Class Attributes
     private let thanksItems = [
         ["header": "Frameworks",
-         "items": [Thank(name: "MGSwipeTableCell", url: "https://github.com/MortimerGoro/MGSwipeTableCell")]],
+         "items": [Thank(name: "IQKeyboardManager", url: "https://github.com/hackiftekhar/IQKeyboardManager"),
+                   Thank(name: "JGProgressHUD", url: "https://github.com/JonasGessner/JGProgressHUD"),
+                   Thank(name: "MGSwipeTableCell", url: "https://github.com/MortimerGoro/MGSwipeTableCell")]],
         ["header": NSLocalizedString("Developers", comment: ""),
          "items": [Thank(name: "ChristianSelig"),
                    Thank(name: "Rodrigo Bueno Tomiosso", url: "https://github.com/mourodrigo")]],
         ["header": NSLocalizedString("Beta testers", comment: ""),
-         "items": [Thank(name: "itsmelenni"),
-                   Thank(name: "BugsB")]]
+         "items": [Thank(name: "BugsB"),
+                   Thank(name: "itsmelenni"),
+                   Thank(name: "ZachariasFuchs")]
+        ]
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Table view data source

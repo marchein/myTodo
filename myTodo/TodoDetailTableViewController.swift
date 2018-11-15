@@ -39,6 +39,12 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         }
         firstCallDone = true
         title = todo?.title?.description
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     fileprivate func configureView() {
