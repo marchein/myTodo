@@ -389,16 +389,16 @@
                                             <rect key="frame" x="16" y="25" width="343" height="50"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="HW9-Ju-RKk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="268" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHi-wj-yPJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="268" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="248" height="18"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This helps the development of the app every month" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8g-ek-gZN">
-                                                            <rect key="frame" x="0.0" y="21" width="268" height="29"/>
+                                                            <rect key="frame" x="0.0" y="21" width="248" height="29"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -406,9 +406,9 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BSI-tr-jkg" customClass="BorderedButton" customModule="myTodo" customModuleProvider="target">
-                                                    <rect key="frame" x="283" y="11" width="60" height="28"/>
+                                                    <rect key="frame" x="263" y="11" width="80" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="CMu-vX-gRD"/>
+                                                        <constraint firstAttribute="width" constant="80" id="CMu-vX-gRD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                     <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>

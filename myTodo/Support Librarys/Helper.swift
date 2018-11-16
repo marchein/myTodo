@@ -56,12 +56,12 @@ func getDateOf(date: Date?, option: DateOptions) -> String? {
 }
 
 extension Date {
-    func addedBy(minutes:Int) -> Date {
+    func addedBy(minutes: Int) -> Date {
         return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
     }
 }
 
-func maskImage(image:UIImage, mask:(UIImage))->UIImage{
+func maskImage(image: UIImage, mask: UIImage) -> UIImage {
     guard let imageReference = image.cgImage else { fatalError() }
     guard let maskReference = mask.cgImage else { fatalError() }
     
@@ -73,17 +73,14 @@ func maskImage(image:UIImage, mask:(UIImage))->UIImage{
                             provider: maskReference.dataProvider!, decode: nil, shouldInterpolate: true)
     
     let maskedReference = imageReference.masking(imageMask!)
-    let maskedImage = UIImage(cgImage:maskedReference!)
+    let maskedImage = UIImage(cgImage: maskedReference!)
     
     return maskedImage
 }
 
 extension Bundle {
     public var icon: UIImage? {
-        if let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
-            let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
-            let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
-            let lastIcon = iconFiles.last {
+        if let icons = infoDictionary?["CFBundleIcons"] as? [String: Any], let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any], let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String], let lastIcon = iconFiles.last {
             return UIImage(named: lastIcon)
         }
         return nil

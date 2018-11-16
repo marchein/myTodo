@@ -13,9 +13,8 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
     
     static let center = UNUserNotificationCenter.current()
     
-    class func registerForLocalNotification(on application:UIApplication) {
+    class func registerForLocalNotification(on application: UIApplication) {
         //Notifications get posted to the function (delegate):  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void)"
-        
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             
@@ -25,18 +24,11 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             }
             
             if granted {
-                //Do stuff here..
-                
-                //Register for RemoteNotifications. Your Remote Notifications can display alerts now :)
                 DispatchQueue.main.async {
                     application.registerForRemoteNotifications()
                 }
-            } else {
-                //Handle user denying permissions..
             }
         }
-        
-        //Register for remote notifications.. If permission above is NOT granted, all notifications are delivered silently to AppDelegate.
         application.registerForRemoteNotifications()
     }
     
@@ -45,7 +37,7 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             removeNotification(for: todo)
             let content = UNMutableNotificationContent()
             content.title = todo.title!
-            content.body = "\(NSLocalizedString("Is due", comment: "")): \(getDateOf(date: todo.date, option: .both)!) \(NSLocalizedString("time unit", comment: "at... __UHR__"))"
+            content.body = "\(NSLocalizedString("Is due", comment: "")): \(getDateOf(date: todo.date, option: .both)!) \(NSLocalizedString("time unit", comment: ""))"
             content.categoryIdentifier = "myTodo"
             content.badge = 1
             content.sound = UNNotificationSound.default
@@ -56,15 +48,12 @@ class LocalNotification: NSObject, UNUserNotificationCenterDelegate {
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             
             center.add(request)
-            
-            print("WILL DISPATCH LOCAL NOTIFICATION WITH IDENTIFIER \(identifier) AT ", todo.date!)
         }
     }
     
     class func removeNotification(for todo: Todo) {
         let identifier = generateTodoIdentifier(for: todo)
         center.removePendingNotificationRequests(withIdentifiers: [identifier])
-        print("LOCAL NOTIFICATION FOR IDENTIFIER \(identifier) HAS BEEN CANCELED")
     }
     
     class func generateTodoIdentifier(for todo: Todo) -> String {

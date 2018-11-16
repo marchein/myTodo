@@ -74,7 +74,6 @@
 		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5BE7A53321985A4C0070F127 /* FixedUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedUITextField.swift; sourceTree = "<group>"; };
 		5BEADE3C2188F02100527CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myTodo-Bridging-Header.h"; sourceTree = "<group>"; };
 		656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myTodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7463BEEC1FEFB040498E2F4C /* Pods-myTodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTodo.release.xcconfig"; path = "Pods/Target Support Files/Pods-myTodo/Pods-myTodo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,29 +98,6 @@
 				656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5B16EA5C21904EC2007B233B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5BA641E32187C16400446436 /* TodoListTableViewController.swift */,
-				5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */,
-				5B839863218DDCD8004DF853 /* EditingTableViewController.swift */,
-				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
-				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
-				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
-				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		5B16EA5D21904EDA007B233B /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				5BA641E72187C16400446436 /* Main.storyboard */,
-				5BA641EC2187C16500446436 /* LaunchScreen.storyboard */,
-			);
-			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		5B4472B1219CAA04003A03D6 /* Alternative App Icons */ = {
@@ -169,27 +145,65 @@
 			isa = PBXGroup;
 			children = (
 				5BA641DE2187C16400446436 /* AppDelegate.swift */,
-				5B16EA5C21904EC2007B233B /* Views */,
+				5BE3F58F219F2EED00381974 /* Views */,
 				5B53F6272194CA5400373DD5 /* Model */,
-				5B16EA5D21904EDA007B233B /* Storyboards */,
+				5BE3F590219F2EFA00381974 /* Storyboards */,
+				5BE3F58E219F2D2200381974 /* Custom Views */,
+				5BE3F58D219F2CED00381974 /* Cells */,
+				5BEE538E2190AA350057EDCD /* Support Librarys */,
 				5BA641EF2187C16500446436 /* Info.plist */,
 				5BA641E02187C16400446436 /* myTodo.xcdatamodeld */,
 				5B99BB712198700700115AA4 /* Localizable.strings */,
 				5BEADE3C2188F02100527CE1 /* Assets.xcassets */,
-				5BEE538E2190AA350057EDCD /* Support Librarys */,
 				5B4472B1219CAA04003A03D6 /* Alternative App Icons */,
 			);
 			path = myTodo;
 			sourceTree = "<group>";
 		};
+		5BE3F58D219F2CED00381974 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5BE3F58E219F2D2200381974 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BE7A53321985A4C0070F127 /* FixedUITextField.swift */,
+				5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5BE3F58F219F2EED00381974 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BA641E32187C16400446436 /* TodoListTableViewController.swift */,
+				5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */,
+				5B839863218DDCD8004DF853 /* EditingTableViewController.swift */,
+				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
+				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
+				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
+				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5BE3F590219F2EFA00381974 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5BA641E72187C16400446436 /* Main.storyboard */,
+				5BA641EC2187C16500446436 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		5BEE538E2190AA350057EDCD /* Support Librarys */ = {
 			isa = PBXGroup;
 			children = (
-				5BEE538F2190AA4D0057EDCD /* myTodo-Bridging-Header.h */,
 				5BD7D0E7219487B600209131 /* LocalNotifications.swift */,
-				5BE7A53321985A4C0070F127 /* FixedUITextField.swift */,
-				5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */,
-				5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */,
 				5B68059C219D51BB006514EF /* Helper.swift */,
 			);
 			path = "Support Librarys";
@@ -530,7 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "myTodo Development";
-				SWIFT_OBJC_BRIDGING_HEADER = "myTodo/Support Librarys/myTodo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,7 +568,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "myTodo Distribution";
-				SWIFT_OBJC_BRIDGING_HEADER = "myTodo/Support Librarys/myTodo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
