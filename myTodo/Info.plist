@@ -10,24 +10,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>wet</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>wet</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>pinsel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>pinsel</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>brains</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -60,6 +42,24 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>myTodo_christmas</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>pinsel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pinsel</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>wet</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>wet</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -79,6 +79,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>brains</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>brains</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>myTodo1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -102,15 +111,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>myTodo_christmas</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>brains</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>brains</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -155,7 +155,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1</string>
 	<key>CFBundleVersion</key>
-	<string>145</string>
+	<string>146</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

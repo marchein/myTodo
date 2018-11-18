@@ -131,7 +131,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             newTodo.location = locationTextField.text
             newTodo.desc = descTextView.text
             todoListTableVC?.insertNewObject(todoData: newTodo)
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

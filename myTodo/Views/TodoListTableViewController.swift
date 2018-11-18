@@ -13,8 +13,9 @@ import MGSwipeTableCell
 
 class TodoListTableViewController: UITableViewController {
 
-    var managedObjectContext: NSManagedObjectContext =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var managedObjectContext: NSManagedObjectContext? = nil
     var _fetchedResultsController: NSFetchedResultsController<Todo>? = nil
+    var todoDetailVC: TodoDetailTableViewController? = nil
     var showConfirmDialog: Bool?
     
     override func viewDidLoad() {
@@ -36,37 +37,47 @@ class TodoListTableViewController: UITableViewController {
             UserDefaults.standard.set("default", forKey: "currentIcon")
             UserDefaults.standard.set(true, forKey: "appSetup")
         }
+        
+        if let split = splitViewController {
+            let controllers = split.viewControllers
+            todoDetailVC = (controllers[controllers.count-1] as! UINavigationController).topViewController as? TodoDetailTableViewController
+        }
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        reconfigureView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.toolbar.isHidden = false
+        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        configureView()
+        super.viewWillAppear(animated)
     }
     
     fileprivate func configureView() {
         navigationItem.leftBarButtonItem = editButtonItem
-    }
-    
-    fileprivate func reconfigureView() {
-        navigationController?.toolbar.isHidden = true
+        self.splitViewController?.preferredDisplayMode = .allVisible
+        if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
+            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+        }
     }
     
     func insertNewObject(todoData: TodoData) {
-        DispatchQueue.main.async(execute: { () -> Void in
-            let newTodo = Todo(context: self.managedObjectContext)
-            newTodo.date = todoData.date!
-            newTodo.title = todoData.title!
-            newTodo.desc = todoData.desc ?? ""
-            newTodo.done = false
-            newTodo.location = todoData.location ?? ""
-            
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        })
+        let context = self.fetchedResultsController.managedObjectContext
+        let newTodo = Todo(context: context)
+        newTodo.date = todoData.date!
+        newTodo.title = todoData.title!
+        newTodo.desc = todoData.desc ?? ""
+        newTodo.done = false
+        newTodo.location = todoData.location ?? ""
+        
+        // Save the context.
+        do {
+            try context.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 
     // MARK: - Segues
@@ -75,12 +86,16 @@ class TodoListTableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let todoFromCoreData = fetchedResultsController.object(at: indexPath)
-                guard let todoDetailVC = segue.destination as? TodoDetailTableViewController else {
+                guard let todoDetailVC = (segue.destination as? UINavigationController)?.topViewController as? TodoDetailTableViewController else {
                     fatalError("Wrong segue identifier for given destination")
                 }
+                
                 todoDetailVC.todo = todoFromCoreData
                 todoDetailVC.indexPath = indexPath
                 todoDetailVC.todoListTableVC = self
+                todoDetailVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                todoDetailVC.navigationItem.leftItemsSupplementBackButton = true
+                
             }
         } else if segue.identifier == "addSegue" {
             guard let addVC = segue.destination as? EditingTableViewController else {
@@ -150,12 +165,22 @@ class TodoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            managedObjectContext.delete(fetchedResultsController.object(at: indexPath))
+            let context = fetchedResultsController.managedObjectContext
+            context.delete(fetchedResultsController.object(at: indexPath))
+            
             do {
-                try managedObjectContext.save()
+                try context.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
+            print(tableView.numberOfSections)
+            print(tableView.numberOfRows(inSection: 0))
+            print(tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0)
+            if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
+                let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+                splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
             }
         }
     }
@@ -182,7 +207,9 @@ class TodoListTableViewController: UITableViewController {
     }
     
     func doneAction(selectedItem: Todo?) {
-        if let currentObject = managedObjectContext.object(with: (selectedItem?.objectID)!) as? Todo {
+        let context = self.fetchedResultsController.managedObjectContext
+
+        if let currentObject = context.object(with: (selectedItem?.objectID)!) as? Todo {
             currentObject.done = !currentObject.done
         
             if currentObject.done {
@@ -192,7 +219,7 @@ class TodoListTableViewController: UITableViewController {
             }
             
             do {
-                try managedObjectContext.save()
+                try context.save()
             } catch let error as NSError  {
                 fatalError("Could not save \(error), \(error.userInfo)")
             }
@@ -230,7 +257,7 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
         
         fetchRequest.sortDescriptors = [doneSortDescriptor, dateSort]
         
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "done", cacheName: nil)
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: "done", cacheName: nil)
         
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
@@ -261,18 +288,16 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let indexPath = indexPath else { return }
-        guard let todo = anObject as? Todo else { return }
         switch type {
             case .insert:
                 tableView.insertRows(at: [newIndexPath!], with: .fade)
             case .delete:
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath)!, withTodo: todo)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath)!, withTodo: todo)
-                tableView.moveRow(at: indexPath, to: newIndexPath!)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
+                tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }
     

@@ -58,6 +58,7 @@ class AboutTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.toolbar.isHidden = true
         reconfigureView()
     }
     
@@ -70,7 +71,6 @@ class AboutTableViewController: UITableViewController {
         
         if let appIcon = currentAppIcon {
             let maskImage = UIImage(named: "app_mask")!
-            print(maskImage)
             let maskView = UIImageView(image: maskImage)
             appIconIV.image = appIcon == "default" ? Bundle.main.icon : UIImage(named: appIcon)
             appIconIV.mask = maskView

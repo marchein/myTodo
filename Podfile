@@ -9,5 +9,4 @@ target 'myTodo' do
     pod 'MGSwipeTableCell'
     pod 'IQKeyboardManagerSwift'
     pod 'JGProgressHUD'
-
 end

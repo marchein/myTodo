@@ -16,14 +16,10 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var todoListTableVC: TodoListTableViewController?
-    var todo: Todo? {
-        didSet {
-            title = todo?.title?.description
-        }
-    }
+    var todo: Todo?
     var indexPath: IndexPath?
     var firstCallDone = false
 
@@ -38,8 +34,14 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             configureView()
         }
         firstCallDone = true
-        title = todo?.title?.description
+        navigationController?.setToolbarHidden(false, animated: false)
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        if todo == nil {
+            //performSegue(withIdentifier: "emptyDetail", sender: self)
+            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -48,7 +50,6 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     }
     
     fileprivate func configureView() {
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.toolbar.isHidden = false
         
         if let todo = todo {
@@ -75,6 +76,10 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             }
             
             setDoneButton()
+        } else {
+            editButton.isEnabled = false
+            doneButton.isEnabled = false
+            shareButton.isEnabled = false
         }
     }
     
@@ -86,7 +91,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             editVC.todoListTableVC = todoListTableVC
         }
     }
-
+    
     @IBAction func shareAction(_ sender: Any) {
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -136,7 +141,10 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
+            navController.popViewController(animated: true)
+        }
         todoListTableVC?.doneAction(selectedItem: todo)
     
         DispatchQueue.main.async() {

@@ -12,7 +12,7 @@ import UserNotifications
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
@@ -21,6 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocalNotification.registerForLocalNotification(on: UIApplication.shared)
         UIApplication.shared.applicationIconBadgeNumber = 0
         IQKeyboardManager.shared.enable = true
+        
+        // Override point for customization after application launch.
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        splitViewController.delegate = self
+        
+        let todoNavVC = splitViewController.viewControllers[0] as! UINavigationController
+        let controller = todoNavVC.topViewController as! TodoListTableViewController
+        controller.managedObjectContext = self.persistentContainer.viewContext
+        
         return true
     }
 
@@ -46,6 +57,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    // MARK: - Split view
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+        guard let topAsDetailController = secondaryAsNavController.topViewController as? TodoDetailTableViewController else { return false }
+        if topAsDetailController.todo == nil {
+            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+            return true
+        }
+        return false
     }
     
     // MARK: - Core Data stack
