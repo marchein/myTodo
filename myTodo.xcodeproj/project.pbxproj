@@ -12,7 +12,7 @@
 		5B53A5C72196FA76000CD0F5 /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
 		5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */; };
 		5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53F6252194CA4700373DD5 /* TodoData.swift */; };
-		5B54C8FF21A1AACE003D8CDB /* app_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B54C8FE21A1AACE003D8CDB /* app_mask.png */; };
+		5B54C90121A1ABBB003D8CDB /* app_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B54C90021A1ABBB003D8CDB /* app_mask.png */; };
 		5B68059D219D51BB006514EF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B68059C219D51BB006514EF /* Helper.swift */; };
 		5B839864218DDCD8004DF853 /* EditingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B839863218DDCD8004DF853 /* EditingTableViewController.swift */; };
 		5B99BB732198700700115AA4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B99BB712198700700115AA4 /* Localizable.strings */; };
@@ -44,7 +44,7 @@
 		5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo_christmas.png; sourceTree = "<group>"; };
 		5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksTableViewController.swift; sourceTree = "<group>"; };
 		5B53F6252194CA4700373DD5 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
-		5B54C8FE21A1AACE003D8CDB /* app_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_mask.png; sourceTree = "<group>"; };
+		5B54C90021A1ABBB003D8CDB /* app_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_mask.png; sourceTree = "<group>"; };
 		5B68059C219D51BB006514EF /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5B839863218DDCD8004DF853 /* EditingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTableViewController.swift; sourceTree = "<group>"; };
 		5B879F9321986F76008B475B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
 				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
 				5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */,
-				5B54C8FE21A1AACE003D8CDB /* app_mask.png */,
+				5B54C90021A1ABBB003D8CDB /* app_mask.png */,
 			);
 			path = "Alternative App Icons";
 			sourceTree = "<group>";
@@ -288,6 +288,7 @@
 				5B4472AD219C9C89003A03D6 /* myTodo_christmas.png in Resources */,
 				5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */,
 				5BD533BD219DFE5F000C0DD9 /* wet.png in Resources */,
+				5B54C90121A1ABBB003D8CDB /* app_mask.png in Resources */,
 				5B99BB732198700700115AA4 /* Localizable.strings in Resources */,
 				5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */,
 				5BD533BE219DFE5F000C0DD9 /* pinsel.png in Resources */,
@@ -295,7 +296,6 @@
 				5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */,
 				5BD533BC219DFE5F000C0DD9 /* brains.png in Resources */,
 				5BA641E92187C16400446436 /* Main.storyboard in Resources */,
-				5B54C8FF21A1AACE003D8CDB /* app_mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
