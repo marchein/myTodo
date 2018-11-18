@@ -181,38 +181,8 @@
                                             <segue destination="aey-9J-8T7" kind="show" id="8AQ-1q-jUh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="64" id="Uro-Ta-GYt">
-                                        <rect key="frame" x="0.0" y="412.5" width="375" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uro-Ta-GYt" id="R3B-vQ-ABc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwp-Uu-XKy">
-                                                    <rect key="frame" x="16" y="21.5" width="105" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MHW Logo" translatesAutoresizingMaskIntoConstraints="NO" id="xuj-MU-Em4">
-                                                    <rect key="frame" x="194" y="11" width="165" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="S9i-ti-MeV"/>
-                                                        <constraint firstAttribute="width" constant="165" id="rec-qX-hJt"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="xuj-MU-Em4" secondAttribute="trailing" id="1OJ-zE-d5r"/>
-                                                <constraint firstItem="Zwp-Uu-XKy" firstAttribute="centerY" secondItem="R3B-vQ-ABc" secondAttribute="centerY" id="4qb-QX-xTI"/>
-                                                <constraint firstItem="Zwp-Uu-XKy" firstAttribute="leading" secondItem="R3B-vQ-ABc" secondAttribute="leadingMargin" id="e39-LS-uow"/>
-                                                <constraint firstItem="xuj-MU-Em4" firstAttribute="centerY" secondItem="R3B-vQ-ABc" secondAttribute="centerY" id="ktM-Iq-4pA"/>
-                                                <constraint firstItem="xuj-MU-Em4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zwp-Uu-XKy" secondAttribute="trailing" constant="16" id="ogX-nG-Upf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Chz-Ke-UkT" style="IBUITableViewCellStyleDefault" id="KUI-cr-u14">
-                                        <rect key="frame" x="0.0" y="476.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="412.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KUI-cr-u14" id="ShI-WX-tQJ">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -236,14 +206,14 @@
                             <tableViewSection headerTitle="Caution area" footerTitle="" id="dcQ-nu-jAo">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="X3M-h0-X99" style="IBUITableViewCellStyleDefault" id="X0w-a5-g65">
-                                        <rect key="frame" x="0.0" y="584" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="520" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X0w-a5-g65" id="0WX-ku-c9H">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Reset notification queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X3M-h0-X99">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.1439521903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -268,7 +238,6 @@
                         <outlet property="appVersionCell" destination="U9F-v3-byd" id="y11-ft-hFF"/>
                         <outlet property="confirmDialogSwitch" destination="DGo-oC-0mE" id="Xkk-kH-L5i"/>
                         <outlet property="contactMailCell" destination="zMp-aD-DsJ" id="oUo-rB-ruG"/>
-                        <outlet property="developerCell" destination="Uro-Ta-GYt" id="s96-0V-LhR"/>
                         <outlet property="developerTwitterCell" destination="8zW-Yp-onq" id="NbR-XF-3MU"/>
                         <outlet property="resetNotificationCell" destination="X0w-a5-g65" id="4Qn-mV-0iw"/>
                         <outlet property="showDialogCell" destination="ebP-fl-hJc" id="sno-no-iYt"/>
@@ -897,7 +866,6 @@
     </scenes>
     <resources>
         <image name="Info Icon" width="55" height="55"/>
-        <image name="MHW Logo" width="800" height="218"/>
         <image name="myTodo2.png" width="1024" height="1024"/>
         <image name="todoDone" width="50" height="50"/>
         <image name="todoUndone" width="50" height="50"/>

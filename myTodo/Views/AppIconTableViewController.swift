@@ -90,10 +90,6 @@ class AppIconTableViewController: UITableViewController {
         cell.accessoryType = .none
         setSelectedImage(key: imageOfCurrentCell?.iconName, cell: cell)
         cell.appIcon.image = getImageFor(value: imageOfCurrentCell?.iconName)
-        let maskImage = UIImage(named: "app_mask")!
-        let maskView = UIImageView(image: maskImage)
-        cell.appIcon.mask = maskView
-        maskView.frame = cell.appIcon.bounds
         cell.setTitle(title: imageOfCurrentCell?.iconTitle)
         return cell
     }

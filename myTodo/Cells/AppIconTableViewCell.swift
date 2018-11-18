@@ -16,6 +16,11 @@ class AppIconTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let maskImage = UIImage(named: "app_mask")!
+        let maskView = UIImageView(image: maskImage)
+        appIcon.mask = maskView
+        maskView.frame = appIcon.bounds
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

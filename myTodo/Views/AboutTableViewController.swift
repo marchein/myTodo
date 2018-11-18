@@ -125,8 +125,6 @@ class AboutTableViewController: UITableViewController {
             if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
-        } else if selectedCell == developerCell {
-            showLinksClicked(url: "https://marc-hein-webdesign.de")
         } else if selectedCell == resetNotificationCell {
             LocalNotification.center.removeAllDeliveredNotifications()
             LocalNotification.center.removeAllPendingNotificationRequests()
