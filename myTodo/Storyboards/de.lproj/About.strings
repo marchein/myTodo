@@ -1,0 +1,75 @@
+
+/* Class = "UITableViewSection"; footerTitle = "If you got notifications which shouldn't be delivered, you can reset the notification queue"; ObjectID = "1T7-ZT-Vsr"; */
+"1T7-ZT-Vsr.footerTitle" = "Falls Du Benachrichtigungen erhältst, die nicht gesendet werden sollten, kannst Du hier die Benachrichtigungen zurücksetzen";
+
+/* Class = "UITableViewSection"; headerTitle = "Caution area"; ObjectID = "1T7-ZT-Vsr"; */
+"1T7-ZT-Vsr.headerTitle" = "Vorsicht";
+
+/* Class = "UILabel"; text = "Thanks to"; ObjectID = "3fm-8D-lj3"; */
+"3fm-8D-lj3.text" = "Danksagungen";
+
+/* Class = "UILabel"; text = "app_icon_label"; ObjectID = "5eX-15-WQg"; */
+"5eX-15-WQg.text" = "app_icon_label";
+
+/* Class = "UILabel"; text = "myTodo on Twitter"; ObjectID = "ANl-Mk-QMH"; */
+"ANl-Mk-QMH.text" = "myTodo auf Twitter";
+
+/* Class = "UIButton"; normalTitle = "tip_price"; ObjectID = "AdG-II-7yX"; */
+"AdG-II-7yX.normalTitle" = "tip_price";
+
+/* Class = "UILabel"; text = "Change app icon"; ObjectID = "ED3-9t-hVj"; */
+"ED3-9t-hVj.text" = "App Icon ändern";
+
+/* Class = "UILabel"; text = "Show confirmation dialog"; ObjectID = "EwW-lb-HIk"; */
+"EwW-lb-HIk.text" = "Bestätigungsdialog anzeigen";
+
+/* Class = "UILabel"; text = "tip_name"; ObjectID = "FCo-bS-nK1"; */
+"FCo-bS-nK1.text" = "tip_name";
+
+/* Class = "UILabel"; text = "Thank title"; ObjectID = "Ifd-H6-0Ae"; */
+"Ifd-H6-0Ae.text" = "Thank title";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "T3w-QR-w0N"; */
+"T3w-QR-w0N.title" = "Über";
+
+/* Class = "UITableViewSection"; footerTitle = "Build number: 000"; ObjectID = "U2Q-wb-IVG"; */
+"U2Q-wb-IVG.footerTitle" = "Build Nummer: 000";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "U2Q-wb-IVG"; */
+"U2Q-wb-IVG.headerTitle" = "Einstellungen";
+
+/* Class = "UITableViewController"; title = "Tip Jar"; ObjectID = "XL1-gD-qrJ"; */
+"XL1-gD-qrJ.title" = "Spendenglas";
+
+/* Class = "UILabel"; text = "Support myTodo"; ObjectID = "aeI-rr-3yC"; */
+"aeI-rr-3yC.text" = "myTodo unterstützen";
+
+/* Class = "UITableViewController"; title = "About"; ObjectID = "d3V-32-RIX"; */
+"d3V-32-RIX.title" = "Über";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "e2b-No-H44"; */
+"e2b-No-H44.text" = "1.0";
+
+/* Class = "UILabel"; text = "myTodo support"; ObjectID = "eg5-mK-YoP"; */
+"eg5-mK-YoP.text" = "myTodo Support";
+
+/* Class = "UITableViewController"; title = "Thanks to"; ObjectID = "h80-j9-bid"; */
+"h80-j9-bid.title" = "Danksagungen";
+
+/* Class = "UILabel"; text = "myTodo on the App Store"; ObjectID = "kGT-5g-1ug"; */
+"kGT-5g-1ug.text" = "myTodo im App Store";
+
+/* Class = "UILabel"; text = "Reset notification queue"; ObjectID = "syt-Z1-1lK"; */
+"syt-Z1-1lK.text" = "Benachrichtigungen zurücksetzen";
+
+/* Class = "UITableViewController"; title = "Change app icon"; ObjectID = "tXX-dv-Nuf"; */
+"tXX-dv-Nuf.title" = "App Icon ändern";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "vWa-8P-riK"; */
+"vWa-8P-riK.title" = "Schließen";
+
+/* Class = "UILabel"; text = "tip_desc"; ObjectID = "xM9-69-5s4"; */
+"xM9-69-5s4.text" = "tip_desc";
+
+/* Class = "UILabel"; text = "myTodo version"; ObjectID = "yTy-05-oos"; */
+"yTy-05-oos.text" = "myTodo Version";

@@ -21,6 +21,9 @@ class TodoListTableViewController: UITableViewController {
     var emptyViewIsLoaded = false
     let notification = UINotificationFeedbackGenerator()
 
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
@@ -28,9 +31,6 @@ class TodoListTableViewController: UITableViewController {
         LocalNotification.center.getPendingNotificationRequests { (requests) in
             print("PENDING NOTIFICATIONS: \(requests)")
         }
-        
-        configureView()
-
         
         let appSetup = UserDefaults.standard.bool(forKey: "appSetup")
         if !appSetup {
@@ -46,6 +46,8 @@ class TodoListTableViewController: UITableViewController {
             let controllers = split.viewControllers
             todoDetailVC = (controllers[controllers.count-1] as! UINavigationController).topViewController as? TodoDetailTableViewController
         }
+        
+        configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +58,18 @@ class TodoListTableViewController: UITableViewController {
     }
     
     fileprivate func configureView() {
-        navigationItem.leftBarButtonItem = editButtonItem
         self.splitViewController?.preferredDisplayMode = .allVisible
+        navigationItem.setLeftBarButtonItems([settingsButton, editButton], animated: true)
+    }
+    
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        if tableView.isEditing {
+            editButton?.image = #imageLiteral(resourceName: "Edit Done")
+        } else {
+            editButton?.image = #imageLiteral(resourceName: "Edit")
+        }
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {

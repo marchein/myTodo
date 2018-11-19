@@ -25,19 +25,14 @@ class AboutTableViewController: UITableViewController {
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
     @IBOutlet weak var confirmDialogSwitch: UISwitch!
     
+    
     // MARK:- Class Attributes
+    public var todoListTableVC: TodoListTableViewController?
     private let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     private let buildNumber: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     private var hasTipped = false
     private var currentAppIcon: String?
-    
-//    private let appIcons = [
-//        ["icon": nil, "title": "Default"],
-//        ["icon": "myTodo1", "title": "myTodo (2013)"],
-//        ["icon": "myTodo2", "title": "myTodo (2014)"],
-//        ["icon": "myTodo_christmas", "title": "Christmas 1"]
-//    ]
-    
+
     private let appIcons = AppIcons(icons: [
         AppIcon(iconName: nil, iconTitle: "Default"),
         AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)"),
@@ -51,7 +46,6 @@ class AboutTableViewController: UITableViewController {
     // MARK: System Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
         appVersionCell.detailTextLabel?.text = appVersionString
         confirmDialogSwitch.isOn = UserDefaults.standard.bool(forKey: "showConfirmDialog")
     }
@@ -137,6 +131,9 @@ class AboutTableViewController: UITableViewController {
         UserDefaults.standard.set(confirmDialogSwitch.isOn, forKey: "showConfirmDialog")
     }
     
+    @IBAction func closeModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "appIconSegue" {
             guard let appIconVC = segue.destination as? AppIconTableViewController else { return }
@@ -193,4 +190,5 @@ extension AboutTableViewController: SFSafariViewControllerDelegate {
     fileprivate func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true, completion: nil)
     }
+    
 }

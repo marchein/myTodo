@@ -1,0 +1,39 @@
+
+/* Class = "UITableViewSection"; headerTitle = "Base data"; ObjectID = "3YK-CP-q42"; */
+"3YK-CP-q42.headerTitle" = "Basis Informationen";
+
+/* Class = "UITextField"; placeholder = "Do until..?"; ObjectID = "5ru-qN-J2C"; */
+"5ru-qN-J2C.placeholder" = "Bis wann zu erledigen?";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "HKC-rf-Wfh"; */
+"HKC-rf-Wfh.text" = "Titel";
+
+/* Class = "UILabel"; text = "Todo due date"; ObjectID = "LkV-4C-zaV"; */
+"LkV-4C-zaV.text" = "Todo due date";
+
+/* Class = "UITextField"; placeholder = "Where to be done?"; ObjectID = "T8y-lT-C7U"; */
+"T8y-lT-C7U.placeholder" = "Wo zu erledigen?";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "VMS-M4-pmf"; */
+"VMS-M4-pmf.text" = "Ort";
+
+/* Class = "UINavigationItem"; title = "myTodo"; ObjectID = "VgE-hc-XDl"; */
+"VgE-hc-XDl.title" = "myTodo";
+
+/* Class = "UILabel"; text = "Todo title"; ObjectID = "aKc-cU-NTq"; */
+"aKc-cU-NTq.text" = "Todo Titel";
+
+/* Class = "UILabel"; text = "Until"; ObjectID = "dVh-vM-3EX"; */
+"dVh-vM-3EX.text" = "Bis";
+
+/* Class = "UITableViewController"; title = "myTodo"; ObjectID = "hGc-3r-lK9"; */
+"hGc-3r-lK9.title" = "myTodo";
+
+/* Class = "UINavigationController"; title = "myTodo"; ObjectID = "hLH-tE-EDh"; */
+"hLH-tE-EDh.title" = "myTodo";
+
+/* Class = "UITextField"; placeholder = "Title of your todo?"; ObjectID = "sEF-G9-2bF"; */
+"sEF-G9-2bF.placeholder" = "Titel Deines Todos?";
+
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "zeX-ZW-CSf"; */
+"zeX-ZW-CSf.headerTitle" = "Beschreibung";

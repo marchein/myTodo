@@ -34,6 +34,9 @@
 		5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */; };
 		5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */; };
 		5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE1EA3E219AF5130023B4FB /* StoreKit.framework */; };
+		5BE313BF21A367790029260B /* Master.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313C121A367790029260B /* Master.storyboard */; };
+		5BE313C621A367A60029260B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313C821A367A60029260B /* Detail.storyboard */; };
+		5BE313CD21A367AF0029260B /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313CF21A367AF0029260B /* About.storyboard */; };
 		5BE7845321A2BFA200F0BFC9 /* EmptyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */; };
 		5BE7845621A2DDAC00F0BFC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BE7845821A2DDAC00F0BFC9 /* InfoPlist.strings */; };
 		5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7A53321985A4C0070F127 /* FixedUITextField.swift */; };
@@ -74,6 +77,15 @@
 		5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarTableViewController.swift; sourceTree = "<group>"; };
 		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5BE313C021A367790029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Master.storyboard; sourceTree = "<group>"; };
+		5BE313CE21A367AF0029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
+		5BE313D521A368880029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
+		5BE313DE21A36A140029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Detail.strings; sourceTree = "<group>"; };
+		5BE313E021A36A150029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Detail.strings; sourceTree = "<group>"; };
+		5BE313E821A370610029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/About.strings; sourceTree = "<group>"; };
+		5BE313EA21A3706D0029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/About.strings; sourceTree = "<group>"; };
+		5BE313EC21A372D60029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Master.strings; sourceTree = "<group>"; };
+		5BE313EE21A372F50029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Master.strings; sourceTree = "<group>"; };
 		5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListViewController.swift; sourceTree = "<group>"; };
 		5BE7845721A2DDAC00F0BFC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BE7845921A2DDAE00F0BFC9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -190,9 +202,9 @@
 				5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */,
 				5B839863218DDCD8004DF853 /* EditingTableViewController.swift */,
 				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
-				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
-				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
 				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
+				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
+				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
 				5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */,
 			);
 			path = Views;
@@ -202,6 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				5BA641E72187C16400446436 /* Main.storyboard */,
+				5BE313C121A367790029260B /* Master.storyboard */,
+				5BE313CF21A367AF0029260B /* About.storyboard */,
+				5BE313C821A367A60029260B /* Detail.storyboard */,
 				5BA641EC2187C16500446436 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -295,13 +310,16 @@
 				5B4472AD219C9C89003A03D6 /* myTodo_christmas.png in Resources */,
 				5BE7845621A2DDAC00F0BFC9 /* InfoPlist.strings in Resources */,
 				5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */,
+				5BE313BF21A367790029260B /* Master.storyboard in Resources */,
 				5BD533BD219DFE5F000C0DD9 /* wet.png in Resources */,
 				5B54C90121A1ABBB003D8CDB /* app_mask.png in Resources */,
+				5BE313CD21A367AF0029260B /* About.storyboard in Resources */,
 				5B99BB732198700700115AA4 /* Localizable.strings in Resources */,
 				5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */,
 				5BD533BE219DFE5F000C0DD9 /* pinsel.png in Resources */,
 				5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */,
 				5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */,
+				5BE313C621A367A60029260B /* Detail.storyboard in Resources */,
 				5BD533BC219DFE5F000C0DD9 /* brains.png in Resources */,
 				5BA641E92187C16400446436 /* Main.storyboard in Resources */,
 			);
@@ -414,6 +432,36 @@
 				5B99BB752198701000115AA4 /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5BE313C121A367790029260B /* Master.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BE313C021A367790029260B /* Base */,
+				5BE313EC21A372D60029260B /* en */,
+				5BE313EE21A372F50029260B /* de */,
+			);
+			name = Master.storyboard;
+			sourceTree = "<group>";
+		};
+		5BE313C821A367A60029260B /* Detail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BE313D521A368880029260B /* Base */,
+				5BE313DE21A36A140029260B /* de */,
+				5BE313E021A36A150029260B /* en */,
+			);
+			name = Detail.storyboard;
+			sourceTree = "<group>";
+		};
+		5BE313CF21A367AF0029260B /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BE313CE21A367AF0029260B /* Base */,
+				5BE313E821A370610029260B /* en */,
+				5BE313EA21A3706D0029260B /* de */,
+			);
+			name = About.storyboard;
 			sourceTree = "<group>";
 		};
 		5BE7845821A2DDAC00F0BFC9 /* InfoPlist.strings */ = {

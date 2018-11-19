@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "location_value"; ObjectID = "55b-fD-NC0"; */
+"55b-fD-NC0.text" = "location_value";
+
+/* Class = "UILabel"; text = "top_error_label"; ObjectID = "60R-bd-blk"; */
+"60R-bd-blk.text" = "Kein Todo ausgewählt.";
+
+/* Class = "UILabel"; text = "bottom_error_label"; ObjectID = "XsH-Ao-zGo"; */
+"XsH-Ao-zGo.text" = "Bitte wähle ein Todo aus.";
+
+/* Class = "UITableViewSection"; headerTitle = "Base data"; ObjectID = "JrE-qc-fHt"; */
+"JrE-qc-fHt.headerTitle" = "Basis Informationen";
+
+/* Class = "UILabel"; text = "title_value"; ObjectID = "LHV-69-Hec"; */
+"LHV-69-Hec.text" = "title_value";
+
+/* Class = "UILabel"; text = "Until"; ObjectID = "R38-Re-xIE"; */
+"R38-Re-xIE.text" = "Bis";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "T6v-z3-TZz"; */
+"T6v-z3-TZz.text" = "Titel";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "cp3-tq-D1p"; */
+"cp3-tq-D1p.title" = "Erledigt";
+
+/* Class = "UITableViewController"; title = "Detail"; ObjectID = "cvI-KH-65l"; */
+"cvI-KH-65l.title" = "Detail";
+
+/* Class = "UILabel"; text = "due_value"; ObjectID = "lmd-xe-nTc"; */
+"lmd-xe-nTc.text" = "due_value";
+
+/* Class = "UINavigationItem"; title = "vc_title"; ObjectID = "m6P-vk-gbu"; */
+"m6P-vk-gbu.title" = "Details";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "vcg-Rt-Kn2"; */
+"vcg-Rt-Kn2.text" = "Ort";
+
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "x19-lw-Jvv"; */
+"x19-lw-Jvv.headerTitle" = "Beschreibung";
