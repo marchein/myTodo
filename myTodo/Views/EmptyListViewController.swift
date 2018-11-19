@@ -11,7 +11,7 @@ import UIKit
 class EmptyListViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var message: UITextView!
     
     
     override func viewDidLoad() {

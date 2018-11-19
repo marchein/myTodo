@@ -18,7 +18,9 @@ class TodoListTableViewController: UITableViewController {
     var _fetchedResultsController: NSFetchedResultsController<Todo>? = nil
     var todoDetailVC: TodoDetailTableViewController? = nil
     var showConfirmDialog: Bool?
-    
+    var emptyViewIsLoaded = false
+    let notification = UINotificationFeedbackGenerator()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
@@ -28,6 +30,7 @@ class TodoListTableViewController: UITableViewController {
         }
         
         configureView()
+
         
         let appSetup = UserDefaults.standard.bool(forKey: "appSetup")
         if !appSetup {
@@ -55,8 +58,6 @@ class TodoListTableViewController: UITableViewController {
     fileprivate func configureView() {
         navigationItem.leftBarButtonItem = editButtonItem
         self.splitViewController?.preferredDisplayMode = .allVisible
-        
-        showEmptyView()
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
@@ -97,13 +98,15 @@ class TodoListTableViewController: UITableViewController {
                 guard let todoDetailVC = (segue.destination as? UINavigationController)?.topViewController as? TodoDetailTableViewController else {
                     fatalError("Wrong segue identifier for given destination")
                 }
-                
+                emptyViewIsLoaded = false
                 todoDetailVC.todo = todoFromCoreData
                 todoDetailVC.indexPath = indexPath
                 todoDetailVC.todoListTableVC = self
                 todoDetailVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 todoDetailVC.navigationItem.leftItemsSupplementBackButton = true
                 
+            } else {
+                showEmptyView()
             }
         } else if segue.identifier == "addSegue" {
             guard let addVC = segue.destination as? EditingTableViewController else {
@@ -163,7 +166,7 @@ class TodoListTableViewController: UITableViewController {
         cell.leftSwipeSettings.transition = .drag
         
         configureCell(cell, withTodo: todo)
-        
+    
         return cell
     }
 
@@ -173,14 +176,17 @@ class TodoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            notification.notificationOccurred(.warning)
             let context = fetchedResultsController.managedObjectContext
             context.delete(fetchedResultsController.object(at: indexPath))
-            
             do {
                 try context.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            if self.splitViewController?.viewControllers.count == 2 {
+                self.performSegue(withIdentifier: "showDetail", sender: self)
             }
         }
     }
@@ -236,6 +242,7 @@ class TodoListTableViewController: UITableViewController {
         }
         
         tableView.reloadData()
+        notification.notificationOccurred(.success)
     }
 }
 
@@ -304,15 +311,15 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-        
-        showEmptyView()
     }
     
     fileprivate func showEmptyView() {
         // show empty view if list is empty
-        if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
-            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
-            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+        if tableView.visibleCells.isEmpty  {
+            if let splitNavVC = splitViewController?.viewControllers[1] as? UINavigationController {
+                splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+                emptyViewIsLoaded = true
+            }
         }
     }
 }

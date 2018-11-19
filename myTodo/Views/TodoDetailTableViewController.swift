@@ -22,6 +22,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     var todo: Todo?
     var indexPath: IndexPath?
     var firstCallDone = false
+    let notification = UINotificationFeedbackGenerator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +98,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         
         let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: {
             (action: UIAlertAction) in self.todoListTableVC?.tableView((self.todoListTableVC?.tableView!)!, commit: .delete, forRowAt: self.indexPath!)
+            self.notification.notificationOccurred(.warning)
             self.navigationController?.popToRootViewController(animated: true)
         })
         let shareAction = UIAlertAction(title: NSLocalizedString("Share", comment: ""), style: .default, handler: { (action: UIAlertAction) in
@@ -142,6 +144,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         //self.navigationController?.popViewController(animated: true)
+        notification.notificationOccurred(.success)
         if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
             navController.popViewController(animated: true)
         }

@@ -25,6 +25,7 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
     var transactionInProgress = false
     var hud: JGProgressHUD? = JGProgressHUD(style: .dark)
     var hasData = false
+    let impact = UIImpactFeedbackGenerator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,6 +96,7 @@ class TipJarTableViewController: UITableViewController, SKProductsRequestDelegat
                 UserDefaults.standard.set(true, forKey: "hasTipped")
                 SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
+                impact.impactOccurred()
                 showMessage(title: NSLocalizedString("tip_success", comment: ""), message: NSLocalizedString("tip_success_message", comment: ""))
             case SKPaymentTransactionState.failed:
                 hud!.dismiss(animated: true)

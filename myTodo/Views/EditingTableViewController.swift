@@ -24,6 +24,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     var tbAccessoryView : UIToolbar?
     var maxTag = 0
     var textSubViews: [UIView]?
+    let notification = UINotificationFeedbackGenerator()
+
     
     // MARK:- System Functions
     
@@ -125,6 +127,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     @objc fileprivate func insertNewEntry() {
         let isValid = checkInputFields()
         if isValid {
+            notification.notificationOccurred(.success)
             var newTodo = TodoData()
             newTodo.title = titleTextField.text
             newTodo.date = getDueDate()!
@@ -159,6 +162,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         }
         
         if !valid {
+            notification.notificationOccurred(.error)
             let alert = UIAlertController(title: NSLocalizedString("Error while saving your to do", comment: ""), message: errorMessage, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
             self.present(alert, animated: true)
@@ -170,6 +174,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         if let currentObject = managedObjectContext.object(with: (todoItem?.objectID)!) as? Todo {
+            notification.notificationOccurred(.success)
+
             currentObject.title = titleTextField.text
             currentObject.date = getDueDate()
             currentObject.location = locationTextField.text
