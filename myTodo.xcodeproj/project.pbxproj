@@ -34,6 +34,7 @@
 		5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */; };
 		5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */; };
 		5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE1EA3E219AF5130023B4FB /* StoreKit.framework */; };
+		5BE7845321A2BFA200F0BFC9 /* EmptyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */; };
 		5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7A53321985A4C0070F127 /* FixedUITextField.swift */; };
 		5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEADE3C2188F02100527CE1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarTableViewController.swift; sourceTree = "<group>"; };
 		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListViewController.swift; sourceTree = "<group>"; };
 		5BE7A53321985A4C0070F127 /* FixedUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedUITextField.swift; sourceTree = "<group>"; };
 		5BEADE3C2188F02100527CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myTodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
 				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
 				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
+				5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */,
 				5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */,
 				5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */,
+				5BE7845321A2BFA200F0BFC9 /* EmptyListViewController.swift in Sources */,
 				5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

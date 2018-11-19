@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+
 import MGSwipeTableCell
 
 class TodoListTableViewController: UITableViewController {
@@ -54,10 +55,17 @@ class TodoListTableViewController: UITableViewController {
     fileprivate func configureView() {
         navigationItem.leftBarButtonItem = editButtonItem
         self.splitViewController?.preferredDisplayMode = .allVisible
-        if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
-            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
-            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+        
+        showEmptyView()
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
+        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
+        guard let topAsDetailController = secondaryAsNavController.topViewController as? TodoDetailTableViewController else { return false }
+        if topAsDetailController.todo == nil {
+            return true
         }
+        return false
     }
     
     func insertNewObject(todoData: TodoData) {
@@ -173,14 +181,6 @@ class TodoListTableViewController: UITableViewController {
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-            
-            print(tableView.numberOfSections)
-            print(tableView.numberOfRows(inSection: 0))
-            print(tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0)
-            if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
-                let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
-                splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
             }
         }
     }
@@ -301,8 +301,19 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
+        
+        showEmptyView()
+    }
+    
+    fileprivate func showEmptyView() {
+        // show empty view if list is empty
+        if tableView.numberOfSections <= 1 && tableView.numberOfRows(inSection: 0) == 0 {
+            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+        }
     }
 }
 
