@@ -18,10 +18,10 @@ class ThanksTableViewController: UITableViewController {
                    Thank(name: "JGProgressHUD", url: "https://github.com/JonasGessner/JGProgressHUD"),
                    Thank(name: "MGSwipeTableCell", url: "https://github.com/MortimerGoro/MGSwipeTableCell")]],
         ["header": NSLocalizedString("Developers", comment: ""),
-         "items": [Thank(name: "ChristianSelig"),
-                   Thank(name: "Rodrigo Bueno Tomiosso", url: "https://github.com/mourodrigo")]],
+         "items": [Thank(name: "ChristianSelig")]],
         ["header": NSLocalizedString("Beta testers", comment: ""),
-         "items": [Thank(name: "BugsB"),
+         "items": [Thank(name: "Auristrahl"),
+                   Thank(name: "BugsB"),
                    Thank(name: "itsmelenni"),
                    Thank(name: "ZachariasFuchs")]
         ]

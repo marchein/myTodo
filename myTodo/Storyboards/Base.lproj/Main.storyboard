@@ -749,10 +749,10 @@
             </objects>
             <point key="canvasLocation" x="-1522" y="127"/>
         </scene>
-        <!--Editing View Controller-->
+        <!--Editing Table View Controller-->
         <scene sceneID="QrY-Nw-Oui">
             <objects>
-                <tableViewController title="Editing View Controller" id="H6G-V9-50z" customClass="EditingTableViewController" customModule="myTodo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="editingController" id="H6G-V9-50z" customClass="EditingTableViewController" customModule="myTodo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tth-Ay-V6w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

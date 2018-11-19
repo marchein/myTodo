@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="gin-bx-n3X">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splashimage" translatesAutoresizingMaskIntoConstraints="NO" id="gin-bx-n3X">
                                 <rect key="frame" x="62.5" y="208.5" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gin-bx-n3X" secondAttribute="height" multiplier="1:1" id="Kfj-Pu-K4E"/>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppLogo" width="512" height="512"/>
+        <image name="Splashimage" width="512" height="512"/>
     </resources>
 </document>

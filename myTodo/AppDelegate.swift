@@ -59,6 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         self.saveContext()
     }
     
+    // MARK: - 3D Touch
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        print("Application performActionForShortcutItem")
+        completionHandler( handleShortcut(shortcutItem: shortcutItem) )
+    }
+
+    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) -> Bool {
+        print("Handling shortcut")
+        var succeeded = false
+        if (shortcutItem.type == "de.marc-hein.myTodo.add") {
+            let splitViewController = self.window!.rootViewController as! UISplitViewController
+            let todoNavVC = splitViewController.viewControllers[0] as! UINavigationController
+            todoNavVC.popToRootViewController(animated: false)
+            let controller = todoNavVC.topViewController as! TodoListTableViewController
+            controller.performSegue(withIdentifier: "addSegue", sender: controller)
+            succeeded = true
+        }
+        return succeeded
+    }
+    
     // MARK: - Split view
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
