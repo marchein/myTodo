@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class EditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
+class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK:- Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dueTextField: FixedUITextField!
@@ -21,14 +21,9 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     var todoItem: Todo?
     var indexPath: IndexPath?
     var datePickerView: UIDatePicker?
-    var tbAccessoryView : UIToolbar?
-    var maxTag = 0
-    var textSubViews: [UIView]?
     let notification = UINotificationFeedbackGenerator()
-
     
     // MARK:- System Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self;
@@ -39,55 +34,65 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.toolbar.isHidden = true
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     fileprivate func configureView() {
         navigationController?.toolbar.isHidden = true
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupDatePicker()
+        
+        if let todo = todoItem {
+            setupForEditing(todo: todo)
+        } else {
+            setupForAdding()
+        }
+        
+        titleTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
+        dueTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
+
+        checkIfSavingIsPossible()
+    }
+        
+    func setupForEditing(todo: Todo) {
+        guard let todoTitle = todo.title else { return }
+        guard let todoLocation = todo.location else { return }
+        guard let todoDescription = todo.desc else { return }
+        title = NSLocalizedString("Edit", comment: "")
+        titleTextField.text = todoTitle
+        if let date = todo.date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
+            dueTextField.text = dateFormatter.string(from: date)
+            datePickerView?.date = date
+        }
+        locationTextField.text = todoLocation
+        descTextView.text = todoDescription
+        
+        let editButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.editExistingEntry))
+        self.navigationItem.rightBarButtonItem = editButton
+    }
+    
+    func setupForAdding() {
+        title = NSLocalizedString("Add", comment: "")
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
+        dueTextField.text = dateFormatter.string(from: now)
+        datePickerView?.date = now
+        let addButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
+        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    fileprivate func setupDatePicker() {
         datePickerView = UIDatePicker()
         datePickerView!.datePickerMode = UIDatePicker.Mode.dateAndTime
         datePickerView!.locale = Locale.current
         datePickerView?.minuteInterval = 5
         dueTextField.inputView = datePickerView
         datePickerView!.addTarget(self, action: #selector(handleDatePicker(sender:)), for: UIControl.Event.valueChanged)
-        
-        if let todo = todoItem {
-            guard let todoTitle = todo.title else { return }
-            guard let todoLocation = todo.location else { return }
-            guard let todoDescription = todo.desc else { return }
-            title = NSLocalizedString("Edit", comment: "")
-            titleTextField.text = todoTitle
-            if let date = todo.date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
-                dueTextField.text = dateFormatter.string(from: date)
-                datePickerView?.date = date
-            }
-            locationTextField.text = todoLocation
-            descTextView.text = todoDescription
-            
-            let editButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.editExistingEntry))
-            self.navigationItem.rightBarButtonItem = editButton
-        } else {
-            title = NSLocalizedString("Add", comment: "")
-            let now = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
-            dueTextField.text = dateFormatter.string(from: now)
-            datePickerView?.date = now
-            let addButton = UIBarButtonItem.init(title: NSLocalizedString("Save", comment: ""), style: .done, target: self, action: #selector(self.insertNewEntry))
-            self.navigationItem.rightBarButtonItem = addButton
-        }
-        titleTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
-        dueTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
-
-        checkIfSavingIsPossible()
     }
     
     @objc fileprivate func handleDatePicker(sender: UIDatePicker) {
@@ -109,21 +114,7 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         let canSave = !titleIsEmpty && !dateIsEmpty
         self.navigationItem.rightBarButtonItem?.isEnabled = canSave
     }
-    
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 3
-        } else {
-            return 1
-        }
-    }
-    
+        
     @objc fileprivate func insertNewEntry() {
         let isValid = checkInputFields()
         if isValid {
@@ -163,9 +154,8 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
         
         if !valid {
             notification.notificationOccurred(.error)
-            let alert = UIAlertController(title: NSLocalizedString("Error while saving your to do", comment: ""), message: errorMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Got it", comment: ""), style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            let title = NSLocalizedString("Error while saving your to do", comment: "")
+            showMessage(title: title, message: errorMessage, on: self)
         }
         return valid
     }
@@ -173,18 +163,17 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
     @objc fileprivate func editExistingEntry() {
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        if let currentObject = managedObjectContext.object(with: (todoItem?.objectID)!) as? Todo {
+        if let currentTodo = managedObjectContext.object(with: (todoItem?.objectID)!) as? Todo {
             notification.notificationOccurred(.success)
 
-            currentObject.title = titleTextField.text
-            currentObject.date = getDueDate()
-            currentObject.location = locationTextField.text
-            currentObject.desc = descTextView.text
-            currentObject.done = false
+            currentTodo.title = titleTextField.text
+            currentTodo.date = getDueDate()
+            currentTodo.location = locationTextField.text
+            currentTodo.desc = descTextView.text
             
             do {
                 try managedObjectContext.save()
-                LocalNotification.dispatchlocalNotification(with: currentObject)
+                LocalNotification.dispatchlocalNotification(with: currentTodo)
             } catch let error as NSError  {
                 fatalError("Could not save \(error), \(error.userInfo)")
             }
@@ -192,11 +181,5 @@ class EditingTableViewController: UITableViewController, UITextFieldDelegate, UI
             self.navigationController?.popViewController(animated: true)
             return
         }
-    }
-
-    deinit {
-        todoListTableVC = nil
-        todoItem = nil
-        tbAccessoryView = nil
     }
 }

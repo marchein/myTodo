@@ -31,7 +31,7 @@
                 <viewControllerPlaceholder storyboardName="About" id="qpS-af-ASH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhI-hd-RHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-903" y="17"/>
+            <point key="canvasLocation" x="-1698" y="550"/>
         </scene>
         <!--myTodo-->
         <scene sceneID="nta-CW-Cm3">
@@ -116,12 +116,12 @@
                 <viewControllerPlaceholder storyboardName="Detail" referencedIdentifier="DetailViewController" id="AQ5-wI-WU7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGg-wd-Hsi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-832" y="76"/>
+            <point key="canvasLocation" x="-1349" y="550"/>
         </scene>
-        <!--Editing Table View Controller-->
+        <!--Todo Editing Table View Controller-->
         <scene sceneID="9tG-UF-TSl">
             <objects>
-                <tableViewController storyboardIdentifier="editingController" id="VaM-1B-HJQ" customClass="EditingTableViewController" customModule="myTodo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="editingController" id="VaM-1B-HJQ" customClass="TodoEditingTableViewController" customModule="myTodo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="bql-8s-FmN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +280,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aQ-lB-t6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="218"/>
+            <point key="canvasLocation" x="-764" y="127"/>
         </scene>
     </scenes>
     <resources>

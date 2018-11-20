@@ -253,7 +253,7 @@
                 <viewControllerPlaceholder storyboardName="Master" referencedIdentifier="editingController" id="TFw-he-RDp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0XH-xF-bDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-804" y="542"/>
+            <point key="canvasLocation" x="-844" y="542"/>
         </scene>
     </scenes>
     <resources>

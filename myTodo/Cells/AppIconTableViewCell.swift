@@ -17,10 +17,8 @@ class AppIconTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        let maskImage = UIImage(named: "app_mask")!
-        let maskView = UIImageView(image: maskImage)
-        appIcon.mask = maskView
-        maskView.frame = appIcon.bounds
+        appIcon.dropShadow()
+        appIcon.roundCorners(radius: 12)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

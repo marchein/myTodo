@@ -36,22 +36,20 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         }
         firstCallDone = true
         navigationController?.setToolbarHidden(false, animated: false)
-        navigationController?.navigationBar.prefersLargeTitles = false
         
         if todo == nil {
-            //performSegue(withIdentifier: "emptyDetail", sender: self)
             let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
-            splitNavVC.performSegue(withIdentifier: "emptyDetail", sender: self)
+            splitNavVC.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     fileprivate func configureView() {
         navigationController?.toolbar.isHidden = false
+        navigationItem.largeTitleDisplayMode = .never
         
         if let todo = todo {
             guard let title = todo.title else { return }
@@ -85,8 +83,8 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editSegue" {
-            let editVC = segue.destination as! EditingTableViewController
+        if segue.identifier == myTodoSegue.edit {
+            let editVC = segue.destination as! TodoEditingTableViewController
             editVC.todoItem = todo
             editVC.indexPath = indexPath
             editVC.todoListTableVC = todoListTableVC
@@ -110,40 +108,40 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         optionMenu.addAction(shareAction)
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(cancelAction)
-        
+
         if let popoverController = optionMenu.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.permittedArrowDirections = [.down]
-            popoverController.barButtonItem = shareButton
+            setPopOverController(popOver: popoverController)
         }
         
         self.present(optionMenu, animated: true, completion: nil)
     }
     
     func showShareSheet() {
-        if let currentTodo = todo {
-            guard let dueDate = getDateOf(date: todo?.date, option: .date) else { return }
-            guard let dueTime = getDateOf(date: todo?.date, option: .time) else { return }
+        guard let currentTodo = todo else { return }
+        guard let dueDate = getDateOf(date: todo?.date, option: .date) else { return }
+        guard let dueTime = getDateOf(date: todo?.date, option: .time) else { return }
+        
+        let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "at... __UHR__")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
+        if let website = NSURL(string: myTodo.website) {
+            let objectsToShare = [textToShare, website] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
             
-            let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "at... __UHR__")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
-            if let website = NSURL(string: "https://mytodoapp.de/") {
-                let objectsToShare = [textToShare, website] as [Any]
-                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
-                
-                if let popoverController = activityVC.popoverPresentationController {
-                    popoverController.sourceView = self.view
-                    popoverController.permittedArrowDirections = [.down]
-                    popoverController.barButtonItem = shareButton
-                }
-                
-                self.present(activityVC, animated: true, completion: nil)
+            if let popoverController = activityVC.popoverPresentationController {
+                setPopOverController(popOver: popoverController)
             }
+            
+            self.present(activityVC, animated: true, completion: nil)
         }
     }
     
+    fileprivate func setPopOverController(popOver: UIPopoverPresentationController) {
+        popOver.sourceView = self.view
+        popOver.permittedArrowDirections = [.down]
+        popOver.barButtonItem = shareButton
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)
         notification.notificationOccurred(.success)
         if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
             navController.popViewController(animated: true)
