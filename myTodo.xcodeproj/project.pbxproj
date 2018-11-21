@@ -335,7 +335,6 @@
 		5BA641DD2187C16400446436 /* myTodo */ = {
 			isa = PBXGroup;
 			children = (
-				5BA641DE2187C16400446436 /* AppDelegate.swift */,
 				5BE3F58F219F2EED00381974 /* Views */,
 				5B53F6272194CA5400373DD5 /* Model */,
 				5BE3F590219F2EFA00381974 /* Storyboards */,
@@ -344,6 +343,7 @@
 				5B51A72621A4555E00CE0A74 /* Extensions */,
 				5B51A73A21A45BE700CE0A74 /* Utilities */,
 				5BEE538E2190AA350057EDCD /* Support Librarys */,
+				5BA641DE2187C16400446436 /* AppDelegate.swift */,
 				5BA641E02187C16400446436 /* myTodo.xcdatamodeld */,
 				5BA641EF2187C16500446436 /* Info.plist */,
 				5BE7845821A2DDAC00F0BFC9 /* InfoPlist.strings */,

@@ -61,19 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     // MARK: - 3D Touch
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        print("Application performActionForShortcutItem")
-        completionHandler( handleShortcut(shortcutItem: shortcutItem) )
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
     }
 
-    func handleShortcut( shortcutItem:UIApplicationShortcutItem ) -> Bool {
-        print("Handling shortcut")
+    func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
         var succeeded = false
-        if (shortcutItem.type == "de.marc-hein.myTodo.add") {
+        if shortcutItem.type == myTodoShortcut.add3dTouch {
             let splitViewController = self.window!.rootViewController as! UISplitViewController
             let todoNavVC = splitViewController.viewControllers[0] as! UINavigationController
-            todoNavVC.popToRootViewController(animated: false)
+            todoNavVC.dismiss(animated: false, completion: nil)
             let controller = todoNavVC.topViewController as! TodoListTableViewController
-            controller.performSegue(withIdentifier: "addSegue", sender: controller)
+            controller.performSegue(withIdentifier: myTodoSegue.addTodo, sender: controller)
             succeeded = true
         }
         return succeeded

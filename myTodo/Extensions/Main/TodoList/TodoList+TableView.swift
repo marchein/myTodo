@@ -36,7 +36,8 @@ extension TodoListTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! MGSwipeTableCell
         let todo = fetchedResultsController.object(at: indexPath)
-        let doneTableButton = MGSwipeButton(title: todo.done ? NSLocalizedString("Undone", comment: "") : NSLocalizedString("Done", comment: ""), icon: nil, backgroundColor: self.view.tintColor) {
+        let doneButtonText = todo.done ? NSLocalizedString("Undone", comment: "") : NSLocalizedString("Done", comment: "")
+        let doneTableButton = MGSwipeButton(title: doneButtonText, icon: nil, backgroundColor: self.view.tintColor) {
             (sender: MGSwipeTableCell!) -> Bool in
             self.doneAction(selectedItem: todo)
             return true

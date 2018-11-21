@@ -38,6 +38,10 @@ struct myTodoSegue {
     static let emptyDetailView = "emptyDetail"
 }
 
+struct myTodoShortcut {
+    static let add3dTouch = "de.marc-hein.myTodo.add"
+}
+
 struct myTodo {
     static let appStoreId = "1441790770"
     static let twitterName = "myTodo_app"
