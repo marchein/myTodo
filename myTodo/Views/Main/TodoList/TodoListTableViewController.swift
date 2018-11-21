@@ -86,6 +86,7 @@ class TodoListTableViewController: UITableViewController {
     }
     
     func insertNewObject(todoData: TodoData) {
+        print("insert: \(todoData)")
         let context = self.fetchedResultsController.managedObjectContext
         let newTodo = Todo(context: context)
         newTodo.date = todoData.date!
@@ -100,6 +101,8 @@ class TodoListTableViewController: UITableViewController {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
+        
+        tableView.reloadData()
     }
     
     func doneAction(selectedItem: Todo?) {
@@ -132,21 +135,31 @@ class TodoListTableViewController: UITableViewController {
     }
 
     // MARK: - Segues
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == myTodoSegue.showDetail {
+        switch segue.identifier {
+        case myTodoSegue.showDetail:
             if let todoDetailVC = (segue.destination as? UINavigationController)?.topViewController as? TodoDetailTableViewController {
                 prepareShowDetailSegue(todoDetailVC: todoDetailVC)
             }
-        } else if segue.identifier == myTodoSegue.addTodo {
+            return
+        case myTodoSegue.addTodo:
             if let addVC = segue.destination as? TodoEditingTableViewController {
                 addVC.todoListTableVC = self
             }
-        } else if segue.identifier == myTodoSegue.quickEdit {
+            return
+        case myTodoSegue.quickEdit:
             if let editVC = segue.destination as? TodoEditingTableViewController {
                 let senderCell = sender as! MGSwipeTableCell
                 prepareQuickEditSegue(editVC: editVC, cell: senderCell)
             }
+            return
+        case myTodoSegue.about:
+            if let aboutVC = (segue.destination as? UINavigationController)?.topViewController as? AboutTableViewController {
+                aboutVC.todoListTableVC = self
+            }
+            return
+        default:
+            return
         }
     }
     

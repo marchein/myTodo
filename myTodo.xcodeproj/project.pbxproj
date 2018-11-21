@@ -167,8 +167,6 @@
 		5B51A72621A4555E00CE0A74 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5B51A74D21A4751C00CE0A74 /* Main */,
-				5B51A73D21A45E9E00CE0A74 /* About */,
 				5B51A72721A4559600CE0A74 /* UIView+Effects.swift */,
 				5B51A72F21A4577E00CE0A74 /* UIViewController+SafariActions.swift */,
 				5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */,
@@ -181,6 +179,7 @@
 		5B51A73521A4593B00CE0A74 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				5BA641E32187C16400446436 /* TodoListTableViewController.swift */,
 				5B51A74021A462DF00CE0A74 /* TodoList+TableView.swift */,
 				5B51A73621A4595700CE0A74 /* TodoList+UserNotificationCenter.swift */,
 				5B51A73821A4598F00CE0A74 /* TodoList+FRC.swift */,
@@ -197,59 +196,12 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		5B51A73D21A45E9E00CE0A74 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				5B51A74221A46BEC00CE0A74 /* AppIconList */,
-				5B51A74A21A4717200CE0A74 /* TipJar */,
-				5B51A74721A46F8100CE0A74 /* Thanks */,
-				5B51A74521A46E5D00CE0A74 /* About+TableView.swift */,
-				5B51A73E21A45EF200CE0A74 /* About+SendSupportMail.swift */,
-			);
-			path = About;
-			sourceTree = "<group>";
-		};
-		5B51A74221A46BEC00CE0A74 /* AppIconList */ = {
-			isa = PBXGroup;
-			children = (
-				5B51A74321A46C1D00CE0A74 /* AppIcon+TableView.swift */,
-			);
-			path = AppIconList;
-			sourceTree = "<group>";
-		};
-		5B51A74721A46F8100CE0A74 /* Thanks */ = {
-			isa = PBXGroup;
-			children = (
-				5B51A74821A46F9A00CE0A74 /* Thanks+TableView.swift */,
-			);
-			path = Thanks;
-			sourceTree = "<group>";
-		};
-		5B51A74A21A4717200CE0A74 /* TipJar */ = {
-			isa = PBXGroup;
-			children = (
-				5B51A74B21A4719E00CE0A74 /* TipJar+TableView.swift */,
-				5B51A75521A478C000CE0A74 /* TipJar+Transaction.swift */,
-			);
-			path = TipJar;
-			sourceTree = "<group>";
-		};
-		5B51A74D21A4751C00CE0A74 /* Main */ = {
+		5B51A74E21A4755A00CE0A74 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				5B51A73521A4593B00CE0A74 /* TodoList */,
 				5B51A75021A4757700CE0A74 /* TodoDetail */,
 				5B51A75121A4757F00CE0A74 /* TodoEditing */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		5B51A74E21A4755A00CE0A74 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				5BA641E32187C16400446436 /* TodoListTableViewController.swift */,
-				5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */,
-				5B839863218DDCD8004DF853 /* TodoEditingTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -261,6 +213,8 @@
 				5B51A75321A475BF00CE0A74 /* TipJar */,
 				5B51A75421A475CE00CE0A74 /* Thanks */,
 				5B082CDC21961A7000866DBE /* AboutTableViewController.swift */,
+				5B51A74521A46E5D00CE0A74 /* About+TableView.swift */,
+				5B51A73E21A45EF200CE0A74 /* About+SendSupportMail.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -268,6 +222,7 @@
 		5B51A75021A4757700CE0A74 /* TodoDetail */ = {
 			isa = PBXGroup;
 			children = (
+				5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */,
 			);
 			path = TodoDetail;
 			sourceTree = "<group>";
@@ -275,6 +230,7 @@
 		5B51A75121A4757F00CE0A74 /* TodoEditing */ = {
 			isa = PBXGroup;
 			children = (
+				5B839863218DDCD8004DF853 /* TodoEditingTableViewController.swift */,
 				5B51A75721A4813700CE0A74 /* TodoEditing+TableView.swift */,
 			);
 			path = TodoEditing;
@@ -284,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */,
+				5B51A74321A46C1D00CE0A74 /* AppIcon+TableView.swift */,
 			);
 			path = AppIconList;
 			sourceTree = "<group>";
@@ -292,6 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */,
+				5B51A74B21A4719E00CE0A74 /* TipJar+TableView.swift */,
+				5B51A75521A478C000CE0A74 /* TipJar+Transaction.swift */,
 			);
 			path = TipJar;
 			sourceTree = "<group>";
@@ -300,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */,
+				5B51A74821A46F9A00CE0A74 /* Thanks+TableView.swift */,
 			);
 			path = Thanks;
 			sourceTree = "<group>";
@@ -377,7 +337,7 @@
 			children = (
 				5B51A74E21A4755A00CE0A74 /* Main */,
 				5B51A74F21A4756600CE0A74 /* About */,
-				5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */,
+				5BE4984D21A5D5340022C997 /* EmptyList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,6 +352,14 @@
 				5BA641EC2187C16500446436 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5BE4984D21A5D5340022C997 /* EmptyList */ = {
+			isa = PBXGroup;
+			children = (
+				5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */,
+			);
+			path = EmptyList;
 			sourceTree = "<group>";
 		};
 		5BEE538E2190AA350057EDCD /* Support Librarys */ = {

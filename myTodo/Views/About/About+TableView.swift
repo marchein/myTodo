@@ -29,14 +29,9 @@ extension AboutTableViewController {
         } else if selectedCell == developerTwitterCell {
             openTwitter(username: myTodo.twitterName)
         } else if selectedCell == appStoreCell {
-            let urlStr = "itms-apps://itunes.apple.com/app/id\(myTodo.appStoreId)"
-            if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
+            appStoreAction()
         } else if selectedCell == resetNotificationCell {
-            LocalNotification.center.removeAllDeliveredNotifications()
-            LocalNotification.center.removeAllPendingNotificationRequests()
-            resetNotificationCell.setSelected(false, animated: true)
+            resetNotificationAction()
         }
         selectedCell.setSelected(false, animated: false)
     }

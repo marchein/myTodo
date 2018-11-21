@@ -58,6 +58,19 @@ class AboutTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func appStoreAction() {
+        let urlStr = "itms-apps://itunes.apple.com/app/id\(myTodo.appStoreId)"
+        if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func resetNotificationAction() {
+        LocalNotification.center.removeAllDeliveredNotifications()
+        LocalNotification.center.removeAllPendingNotificationRequests()
+        resetNotificationCell.setSelected(false, animated: true)
+    }
+    
     @IBAction func confirmDialogSwitchAction(_ sender: Any) {
         UserDefaults.standard.set(confirmDialogSwitch.isOn, forKey: localStoreKeys.showConfirmDialog)
     }

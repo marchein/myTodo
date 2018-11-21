@@ -36,6 +36,7 @@ struct myTodoSegue {
     static let edit = "editSegue"
     static let quickEdit = "quickEditSegue"
     static let emptyDetailView = "emptyDetail"
+    static let about = "aboutSegue"
 }
 
 struct myTodoShortcut {

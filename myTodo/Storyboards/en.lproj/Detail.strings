@@ -30,7 +30,7 @@
 "lmd-xe-nTc.text" = "due_value";
 
 /* Class = "UINavigationItem"; title = "vc_title"; ObjectID = "m6P-vk-gbu"; */
-"m6P-vk-gbu.title" = "vc_title";
+"m6P-vk-gbu.title" = "Details";
 
 /* Class = "UILabel"; text = "Location"; ObjectID = "vcg-Rt-Kn2"; */
 "vcg-Rt-Kn2.text" = "Location";

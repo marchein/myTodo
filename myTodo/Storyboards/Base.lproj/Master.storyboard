@@ -85,7 +85,7 @@
                         <leftBarButtonItems>
                             <barButtonItem image="Settings" id="FXA-OX-AXT">
                                 <connections>
-                                    <segue destination="qpS-af-ASH" kind="presentation" id="AL0-7D-vx8"/>
+                                    <segue destination="qpS-af-ASH" kind="presentation" identifier="aboutSegue" id="AL0-7D-vx8"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="Edit" id="WfG-mo-LBd">
