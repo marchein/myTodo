@@ -138,26 +138,18 @@ class TodoListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case myTodoSegue.showDetail:
-            if let todoDetailVC = (segue.destination as? UINavigationController)?.topViewController as? TodoDetailTableViewController {
-                prepareShowDetailSegue(todoDetailVC: todoDetailVC)
-            }
-            return
+            let todoDetailVC = (segue.destination as! UINavigationController).topViewController as! TodoDetailTableViewController
+            prepareShowDetailSegue(todoDetailVC: todoDetailVC)
         case myTodoSegue.addTodo:
-            if let addVC = segue.destination as? TodoEditingTableViewController {
-                addVC.todoListTableVC = self
-            }
-            return
+            let addVC = segue.destination as! TodoEditingTableViewController
+            addVC.todoListTableVC = self
         case myTodoSegue.quickEdit:
-            if let editVC = segue.destination as? TodoEditingTableViewController {
-                let senderCell = sender as! MGSwipeTableCell
-                prepareQuickEditSegue(editVC: editVC, cell: senderCell)
-            }
-            return
+            let editVC = segue.destination as! TodoEditingTableViewController
+            let senderCell = sender as! MGSwipeTableCell
+            prepareQuickEditSegue(editVC: editVC, cell: senderCell)
         case myTodoSegue.about:
-            if let aboutVC = (segue.destination as? UINavigationController)?.topViewController as? AboutTableViewController {
-                aboutVC.todoListTableVC = self
-            }
-            return
+            let aboutVC = (segue.destination as! UINavigationController).topViewController as! AboutTableViewController
+            aboutVC.todoListTableVC = self
         default:
             return
         }
