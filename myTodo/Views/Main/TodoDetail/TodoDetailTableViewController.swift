@@ -121,7 +121,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         guard let dueDate = getDateOf(date: todo?.date, option: .date) else { return }
         guard let dueTime = getDateOf(date: todo?.date, option: .time) else { return }
         
-        let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "at... __UHR__")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
+        let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
         if let website = NSURL(string: myTodo.website) {
             let objectsToShare = [textToShare, website] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

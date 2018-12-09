@@ -23,9 +23,8 @@ class AppIconTableViewController: UITableViewController {
     }
     
     internal func changeIcon(to name: String?) {
-        guard UIApplication.shared.supportsAlternateIcons else {
-            return
-        }
+        guard UIApplication.shared.supportsAlternateIcons else { return }
+        
         UIApplication.shared.setAlternateIconName(name) { (error) in
             if let error = error {
                 fatalError(error.localizedDescription)

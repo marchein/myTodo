@@ -71,7 +71,7 @@ class TodoListTableViewController: UITableViewController {
         navigationItem.setLeftBarButtonItems([settingsButton, editButton], animated: true)
     }
     
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func editButtonTapped(_ sender: Any?) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         editButton.image = tableView.isEditing ? #imageLiteral(resourceName: "Edit Done") : #imageLiteral(resourceName: "Edit")
     }
@@ -136,6 +136,9 @@ class TodoListTableViewController: UITableViewController {
 
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        tableView.setEditing(false, animated: true)
+        editButton.image = #imageLiteral(resourceName: "Edit")
+        
         switch segue.identifier {
         case myTodoSegue.showDetail:
             let todoDetailVC = (segue.destination as! UINavigationController).topViewController as! TodoDetailTableViewController
