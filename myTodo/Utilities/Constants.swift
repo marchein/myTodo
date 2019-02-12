@@ -69,8 +69,7 @@ struct myTodo {
         ["header": NSLocalizedString("Developers", comment: ""),
          "items": [Thank(name: "ChristianSelig")]],
         ["header": NSLocalizedString("Beta testers", comment: ""),
-         "items": [Thank(name: "Auristrahl"),
-                   Thank(name: "BugsB"),
+         "items": [Thank(name: "BugsB"),
                    Thank(name: "itsmelenni"),
                    Thank(name: "ZachariasFuchs")]
         ]
