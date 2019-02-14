@@ -37,8 +37,8 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         firstCallDone = true
         navigationController?.setToolbarHidden(false, animated: false)
         
-        if todo == nil {
-            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+        if todo == nil, let splitVC = splitViewController {
+            let splitNavVC = splitVC.viewControllers[1] as! UINavigationController
             splitNavVC.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
         }
     }
