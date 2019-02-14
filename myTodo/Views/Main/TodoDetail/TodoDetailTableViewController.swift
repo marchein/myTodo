@@ -143,8 +143,16 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         notification.notificationOccurred(.success)
-        if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
-            navController.popViewController(animated: true)
+        if let splitVC = splitViewController {
+            print(splitVC.viewControllers)
+            if (splitVC.viewControllers.count > 1) {
+                print("Split VC childs: \(splitVC.viewControllers)")
+                let navController = splitVC.viewControllers[1] as? UINavigationController
+                navController?.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
+            } else {
+                let navController = splitVC.viewControllers[0] as? UINavigationController
+                navController?.popViewController(animated: true)
+            }
         }
         todoListTableVC?.doneAction(selectedItem: todo)
     
