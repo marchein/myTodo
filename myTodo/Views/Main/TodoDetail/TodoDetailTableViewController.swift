@@ -17,6 +17,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var descCell: UITableViewCell!
     
     var todoListTableVC: TodoListTableViewController?
     var todo: Todo?
@@ -27,6 +28,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +53,9 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         navigationController?.toolbar.isHidden = false
         navigationItem.largeTitleDisplayMode = .never
         
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
         if let todo = todo {
             guard let title = todo.title else { return }
             guard let location = todo.location else { return }
@@ -67,6 +72,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             }
             
             if description.count > 0 {
+                print(descCell)
                 descTextView.text = description
                 descTextView.textColor = UIColor.black
             } else {
@@ -163,5 +169,13 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     fileprivate func setDoneButton() {
         doneButton.image = (todo?.done ?? false) ? #imageLiteral(resourceName: "todoDone") : #imageLiteral(resourceName: "todoUndone")
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

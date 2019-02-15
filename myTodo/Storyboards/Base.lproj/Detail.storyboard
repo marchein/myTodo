@@ -181,15 +181,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Description" id="x19-lw-Jvv">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="250" id="yoQ-NE-H0i">
-                                        <rect key="frame" x="0.0" y="243.5" width="375" height="250"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="descriptionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="yoQ-NE-H0i">
+                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yoQ-NE-H0i" id="4AF-Yi-ASC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d0-Ih-7Me">
-                                                    <rect key="frame" x="16" y="11" width="343" height="228"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d0-Ih-7Me">
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -234,6 +234,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="descCell" destination="yoQ-NE-H0i" id="n3i-21-mdz"/>
                         <outlet property="descTextView" destination="7d0-Ih-7Me" id="Nro-8e-IVW"/>
                         <outlet property="doneButton" destination="cp3-tq-D1p" id="t5M-DE-Edi"/>
                         <outlet property="dueLabel" destination="lmd-xe-nTc" id="B5G-3c-uX0"/>

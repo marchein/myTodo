@@ -69,10 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if shortcutItem.type == myTodoShortcut.add3dTouch {
             let splitViewController = self.window!.rootViewController as! UISplitViewController
             let todoNavVC = splitViewController.viewControllers[0] as! UINavigationController
+            // dismiss any modal views and pop every pushed other controller so app won't crash
             todoNavVC.dismiss(animated: false, completion: nil)
-            let controller = todoNavVC.topViewController as! TodoListTableViewController
-            controller.performSegue(withIdentifier: myTodoSegue.addTodo, sender: controller)
-            succeeded = true
+            todoNavVC.popToRootViewController(animated: false)
+            if let controller = todoNavVC.topViewController as? TodoListTableViewController {
+                controller.performSegue(withIdentifier: myTodoSegue.addTodo, sender: controller)
+                succeeded = true
+            }
         }
         return succeeded
     }
@@ -80,9 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - Split view
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
-        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
-        guard let topAsDetailController = secondaryAsNavController.topViewController as? TodoDetailTableViewController else { return false }
-        if topAsDetailController.todo == nil {
+        if let secondaryAsNavController = secondaryViewController as? UINavigationController, let topAsDetailController = secondaryAsNavController.topViewController as? TodoDetailTableViewController, topAsDetailController.todo == nil {
             // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
             return true
         }
