@@ -37,6 +37,9 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             configureView()
         }
         firstCallDone = true
+        
+        tableView.reloadData()
+        
         navigationController?.setToolbarHidden(false, animated: false)
         
         if todo == nil, let splitVC = splitViewController {
