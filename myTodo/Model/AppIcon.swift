@@ -38,7 +38,7 @@ struct AppIcons {
     let icons: [AppIcon]
     var activatedIcons: [AppIcon]?
     
-    init(icons: [AppIcon], activatedIcons: [AppIcon]? = nil) {
+    init(icons: [AppIcon]) {
         self.icons = icons
     }
     

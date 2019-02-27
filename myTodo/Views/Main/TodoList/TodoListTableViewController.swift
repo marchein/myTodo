@@ -12,7 +12,7 @@ import UserNotifications
 
 import MGSwipeTableCell
 
-class TodoListTableViewController: UITableViewController {
+class TodoListTableViewController: UITableViewController, UIViewControllerPreviewingDelegate {
 
     var managedObjectContext: NSManagedObjectContext? = nil
     var todoDetailVC: TodoDetailTableViewController? = nil
@@ -27,7 +27,11 @@ class TodoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UNUserNotificationCenter.current().delegate = self
-
+        
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
+        
         setupApp()
     }
     
@@ -176,5 +180,33 @@ class TodoListTableViewController: UITableViewController {
         editVC.todoItem = todoFromCoreData
         editVC.indexPath = indexPath
         tableView.setEditing(false, animated: false)
+    }
+    
+    private func viewControllerForTodo(todo: Todo, indexPath: IndexPath) -> UIViewController {
+        let todoDetailVC = TodoDetailTableViewController()
+        todoDetailVC.todo = todo
+        return todoDetailVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            let todoFromCoreData = fetchedResultsController.object(at: indexPath)
+            let storyBoard = UIStoryboard(name: "Detail", bundle: nil)
+            if let detailNavVC = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as? UINavigationController,
+               let detailVC = detailNavVC.viewControllers[0] as? TodoDetailTableViewController {
+                detailVC.todo = todoFromCoreData
+                detailVC.indexPath = indexPath
+                detailVC.todoListTableVC = self
+                detailVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                detailVC.navigationItem.leftItemsSupplementBackButton = true
+                return detailNavVC
+            }
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let navVC = navigationController else { fatalError("No main navigation controller defined!") }
+        navVC.pushViewController(viewControllerToCommit, animated: true)
     }
 }

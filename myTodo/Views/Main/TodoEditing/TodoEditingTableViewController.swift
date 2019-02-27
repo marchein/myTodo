@@ -26,8 +26,6 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
     // MARK:- System Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
         configureView()
     }
     
@@ -42,6 +40,9 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
     
     fileprivate func configureView() {
         navigationController?.toolbar.isHidden = true
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
         setupDatePicker()
         
         if let todo = todoItem {
@@ -52,6 +53,7 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
         
         titleTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
         dueTextField.addTarget(self, action: #selector(checkIfSavingIsPossible), for: UIControl.Event.editingChanged)
+        descTextView.delegate = self
 
         checkIfSavingIsPossible()
     }

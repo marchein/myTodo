@@ -17,6 +17,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var descCell: UITableViewCell!
     
     var todoListTableVC: TodoListTableViewController?
     var todo: Todo?
@@ -27,6 +28,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +37,13 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             configureView()
         }
         firstCallDone = true
+        
+        tableView.reloadData()
+        
         navigationController?.setToolbarHidden(false, animated: false)
         
-        if todo == nil {
-            let splitNavVC = splitViewController?.viewControllers[1] as! UINavigationController
+        if todo == nil, let splitVC = splitViewController {
+            let splitNavVC = splitVC.viewControllers[1] as! UINavigationController
             splitNavVC.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
         }
     }
@@ -50,6 +55,9 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     fileprivate func configureView() {
         navigationController?.toolbar.isHidden = false
         navigationItem.largeTitleDisplayMode = .never
+        
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         if let todo = todo {
             guard let title = todo.title else { return }
@@ -67,6 +75,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             }
             
             if description.count > 0 {
+                print(descCell)
                 descTextView.text = description
                 descTextView.textColor = UIColor.black
             } else {
@@ -143,8 +152,16 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         notification.notificationOccurred(.success)
-        if let navController = splitViewController?.viewControllers[0] as? UINavigationController {
-            navController.popViewController(animated: true)
+        if let splitVC = splitViewController {
+            print(splitVC.viewControllers)
+            if (splitVC.viewControllers.count > 1) {
+                print("Split VC childs: \(splitVC.viewControllers)")
+                let navController = splitVC.viewControllers[1] as? UINavigationController
+                navController?.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
+            } else {
+                let navController = splitVC.viewControllers[0] as? UINavigationController
+                navController?.popViewController(animated: true)
+            }
         }
         todoListTableVC?.doneAction(selectedItem: todo)
     
@@ -155,5 +172,13 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     fileprivate func setDoneButton() {
         doneButton.image = (todo?.done ?? false) ? #imageLiteral(resourceName: "todoDone") : #imageLiteral(resourceName: "todoUndone")
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

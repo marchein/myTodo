@@ -21,4 +21,31 @@ extension TodoEditingTableViewController {
             return 1
         }
     }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        let startHeight = textView.frame.size.height
+        let calcHeight = textView.sizeThatFits(textView.frame.size).height  //iOS 8+ only
+        
+        if startHeight != calcHeight {
+            
+            UIView.setAnimationsEnabled(false)
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+            
+
+            
+            let scrollTo = self.tableView.contentSize.height - self.tableView.frame.size.height
+            self.tableView.setContentOffset(CGPoint(x: 0, y: scrollTo), animated: false)
+            
+            UIView.setAnimationsEnabled(true) 
+        }
+    }
 }
