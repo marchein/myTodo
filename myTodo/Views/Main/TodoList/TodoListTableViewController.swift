@@ -199,6 +199,11 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
                 detailVC.todoListTableVC = self
                 detailVC.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 detailVC.navigationItem.leftItemsSupplementBackButton = true
+                detailNavVC.setNavigationBarHidden(true, animated: false)
+                detailNavVC.setToolbarHidden(true, animated: false)
+
+                detailVC.isPeeking = true
+                
                 return detailNavVC
             }
         }

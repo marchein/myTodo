@@ -24,11 +24,11 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     var indexPath: IndexPath?
     var firstCallDone = false
     let notification = UINotificationFeedbackGenerator()
+    var isPeeking = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +40,9 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         
         tableView.reloadData()
         
-        navigationController?.setToolbarHidden(false, animated: false)
+        if !isPeeking {
+            navigationController?.setToolbarHidden(false, animated: false)
+        }
         
         if todo == nil, let splitVC = splitViewController {
             let splitNavVC = splitVC.viewControllers[1] as! UINavigationController
@@ -50,6 +52,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        isPeeking = false
     }
     
     fileprivate func configureView() {
@@ -75,7 +78,6 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             }
             
             if description.count > 0 {
-                print(descCell)
                 descTextView.text = description
                 descTextView.textColor = UIColor.black
             } else {
@@ -153,7 +155,6 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
     @IBAction func doneButtonTapped(_ sender: Any) {
         notification.notificationOccurred(.success)
         if let splitVC = splitViewController {
-            print(splitVC.viewControllers)
             if (splitVC.viewControllers.count > 1) {
                 print("Split VC childs: \(splitVC.viewControllers)")
                 let navController = splitVC.viewControllers[1] as? UINavigationController

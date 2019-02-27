@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B74762821AB551000E973F5"
+               BlueprintIdentifier = "5B366F0321B163F400C7C836"
                BuildableName = "myTodoUITests.xctest"
                BlueprintName = "myTodoUITests"
                ReferencedContainer = "container:myTodo.xcodeproj">
