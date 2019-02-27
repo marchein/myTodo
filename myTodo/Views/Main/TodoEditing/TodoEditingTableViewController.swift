@@ -57,14 +57,6 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
 
         checkIfSavingIsPossible()
     }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView == descTextView {
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }
-        checkIfSavingIsPossible()
-    }
         
     func setupForEditing(todo: Todo) {
         guard let todoTitle = todo.title else { return }
@@ -191,13 +183,5 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
             self.navigationController?.popViewController(animated: true)
             return
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }
