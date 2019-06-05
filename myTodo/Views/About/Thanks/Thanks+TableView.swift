@@ -40,7 +40,7 @@ extension ThanksTableViewController {
         let thanksValues = myTodo.thanksItems[indexPath.section]["items"] as! [Thank]
         let thank = thanksValues[indexPath.row] as Thank
         if let thankUrl = thank.url {
-            self.showLinksClicked(url: thankUrl)
+            self.openSafariViewControllerWith(url: thankUrl)
         } else {
             self.openTwitter(username: thank.name)
         }

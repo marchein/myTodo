@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import StoreKit
 
 class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK:- Outlets
@@ -128,7 +129,24 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
             newTodo.desc = descTextView.text
             todoListTableVC?.insertNewObject(todoData: newTodo)
             self.navigationController?.popViewController(animated: true)
+            incrementAddedTodos()
         }
+    }
+    
+    func getAddedTodos() -> Int {
+        return UserDefaults.standard.integer(forKey: localStoreKeys.todosAdded)
+    }
+    
+    func incrementAddedTodos() {
+        let addedTodos = getAddedTodos() + 1
+        UserDefaults.standard.set(addedTodos, forKey: localStoreKeys.todosAdded)
+        if addedTodos == myTodo.askForReviewAt {
+            showRateWindow()
+        }
+    }
+    
+    func showRateWindow() {
+        SKStoreReviewController.requestReview()
     }
     
     func getDueDate() -> Date? {

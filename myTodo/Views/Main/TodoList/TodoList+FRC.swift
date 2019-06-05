@@ -69,6 +69,8 @@ extension TodoListTableViewController: NSFetchedResultsControllerDelegate {
         case .move:
             configureCell(tableView.cellForRow(at: indexPath!)!, withTodo: anObject as! Todo)
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        @unknown default:
+            print("Unknown action for indexPath at \(indexPath!)")
         }
     }
     

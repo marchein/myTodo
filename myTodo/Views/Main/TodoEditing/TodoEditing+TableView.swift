@@ -40,8 +40,6 @@ extension TodoEditingTableViewController {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
             
-
-            
             let scrollTo = self.tableView.contentSize.height - self.tableView.frame.size.height
             self.tableView.setContentOffset(CGPoint(x: 0, y: scrollTo), animated: false)
             

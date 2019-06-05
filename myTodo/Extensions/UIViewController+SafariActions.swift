@@ -22,11 +22,11 @@ extension UIViewController: SFSafariViewControllerDelegate {
         } else if application.canOpenURL(twitterURL as URL) {
             application.open(twitterURL as URL)
         } else {
-            showLinksClicked(url: webURL)
+            openSafariViewControllerWith(url: webURL)
         }
     }
     
-    public func showLinksClicked(url: String) {
+    public func openSafariViewControllerWith(url: String) {
         guard let safariURL = URL(string: url) else { return }
         
         let safariVC = SFSafariViewController(url: safariURL)

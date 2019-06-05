@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import StoreKit
 
 // MARK: - Table View Extension
 extension AboutTableViewController {
@@ -24,15 +25,30 @@ extension AboutTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
-        if selectedCell == contactMailCell {
-            sendSupportMail()
-        } else if selectedCell == developerTwitterCell {
-            openTwitter(username: myTodo.twitterName)
-        } else if selectedCell == appStoreCell {
-            appStoreAction()
-        } else if selectedCell == resetNotificationCell {
-            resetNotificationAction()
+        DispatchQueue.main.async() {
+            selectedCell.setSelected(false, animated: false)
         }
-        selectedCell.setSelected(false, animated: false)
+        
+        switch (selectedCell) {
+        case contactMailCell:
+            sendSupportMail()
+            break
+        case rateCell:
+            SKStoreReviewController.requestReview()
+            break
+        case appStoreCell:
+            appStoreAction()
+            break
+        case developerCell:
+            openSafariViewControllerWith(url: myTodo.website)
+            break
+        case resetNotificationCell:
+            resetNotificationAction()
+            break
+        default:
+            break
+        }
+        
+        
     }
 }

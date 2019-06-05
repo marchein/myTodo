@@ -22,7 +22,8 @@ extension AboutTableViewController: MFMailComposeViewControllerDelegate {
             present(mail, animated: true)
         } else {
             print("No mail account configured")
-            showLinksClicked(url: myTodo.supportPage)
+            let mailErrorMessage = NSLocalizedString("mail_error", comment: "")
+            showMessage(title: NSLocalizedString("Error", comment: ""), message: String(format: mailErrorMessage, myTodo.mailAdress), on: self)
         }
     }
     

@@ -18,7 +18,7 @@ class AboutTableViewController: UITableViewController {
     @IBOutlet weak var appIconIV: UIImageView!
     @IBOutlet weak var appVersionCell: UITableViewCell!
     @IBOutlet weak var contactMailCell: UITableViewCell!
-    @IBOutlet weak var developerTwitterCell: UITableViewCell!
+    @IBOutlet weak var rateCell: UITableViewCell!
     @IBOutlet weak var appStoreCell: UITableViewCell!
     @IBOutlet weak var developerCell: UITableViewCell!
     @IBOutlet weak var resetNotificationCell: UITableViewCell!
@@ -57,8 +57,8 @@ class AboutTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-    
-    func appStoreAction() {
+        
+    func  appStoreAction() {
         let urlStr = "itms-apps://itunes.apple.com/app/id\(myTodo.appStoreId)"
         if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)

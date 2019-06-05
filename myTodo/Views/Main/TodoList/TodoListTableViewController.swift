@@ -54,6 +54,7 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
             UserDefaults.standard.set(showConfirmDialog, forKey: localStoreKeys.showConfirmDialog)
             UserDefaults.standard.set(isSimulatorOrTestFlight(), forKey: localStoreKeys.isTester)
             UserDefaults.standard.set(myTodo.defaultAppIcon, forKey: localStoreKeys.currentAppIcon)
+            UserDefaults.standard.set(0, forKey: localStoreKeys.todosAdded)
             UserDefaults.standard.set(true, forKey: localStoreKeys.appSetup)
         }
         
@@ -90,7 +91,6 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     }
     
     func insertNewObject(todoData: TodoData) {
-        print("insert: \(todoData)")
         let context = self.fetchedResultsController.managedObjectContext
         let newTodo = Todo(context: context)
         newTodo.date = todoData.date!

@@ -12,7 +12,7 @@
 "5eX-15-WQg.text" = "app_icon_label";
 
 /* Class = "UILabel"; text = "myTodo on Twitter"; ObjectID = "ANl-Mk-QMH"; */
-"ANl-Mk-QMH.text" = "myTodo auf Twitter";
+"ANl-Mk-QMH.text" = "myTodo bewerten";
 
 /* Class = "UIButton"; normalTitle = "tip_price"; ObjectID = "AdG-II-7yX"; */
 "AdG-II-7yX.normalTitle" = "tip_price";
@@ -42,7 +42,7 @@
 "XL1-gD-qrJ.title" = "Spendenglas";
 
 /* Class = "UILabel"; text = "Support myTodo"; ObjectID = "aeI-rr-3yC"; */
-"aeI-rr-3yC.text" = "myTodo unterstützen";
+"aeI-rr-3yC.text" = "Unterstütze die Entwicklung";
 
 /* Class = "UITableViewController"; title = "About"; ObjectID = "d3V-32-RIX"; */
 "d3V-32-RIX.title" = "Über";
@@ -51,7 +51,7 @@
 "e2b-No-H44.text" = "1.0";
 
 /* Class = "UILabel"; text = "myTodo support"; ObjectID = "eg5-mK-YoP"; */
-"eg5-mK-YoP.text" = "myTodo Support";
+"eg5-mK-YoP.text" = "App Kundendienst";
 
 /* Class = "UITableViewController"; title = "Thanks to"; ObjectID = "h80-j9-bid"; */
 "h80-j9-bid.title" = "Danksagungen";
@@ -73,3 +73,5 @@
 
 /* Class = "UILabel"; text = "myTodo version"; ObjectID = "yTy-05-oos"; */
 "yTy-05-oos.text" = "myTodo Version";
+
+"WnE-DK-X4X.text" = "Webseite des Entwicklers";

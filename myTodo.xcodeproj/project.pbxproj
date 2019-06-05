@@ -42,6 +42,7 @@
 		5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641EC2187C16500446436 /* LaunchScreen.storyboard */; };
 		5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0448219B3EEE006E1E1D /* myTodo2.png */; };
 		5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0449219B3EEE006E1E1D /* myTodo1.png */; };
+		5BD2091622A7310E00222828 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */; };
 		5BD533BC219DFE5F000C0DD9 /* brains.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533B9219DFE5F000C0DD9 /* brains.png */; };
 		5BD533BD219DFE5F000C0DD9 /* wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533BA219DFE5F000C0DD9 /* wet.png */; };
 		5BD533BE219DFE5F000C0DD9 /* pinsel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533BB219DFE5F000C0DD9 /* pinsel.png */; };
@@ -115,6 +116,7 @@
 		5BA641EF2187C16500446436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BCB0448219B3EEE006E1E1D /* myTodo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2.png; sourceTree = "<group>"; };
 		5BCB0449219B3EEE006E1E1D /* myTodo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo1.png; sourceTree = "<group>"; };
+		5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
 		5BD533B9219DFE5F000C0DD9 /* brains.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brains.png; sourceTree = "<group>"; };
 		5BD533BA219DFE5F000C0DD9 /* wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wet.png; sourceTree = "<group>"; };
 		5BD533BB219DFE5F000C0DD9 /* pinsel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinsel.png; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */,
 				5B51A72B21A4564100CE0A74 /* Date+Helpers.swift */,
 				5B51A73121A458CB00CE0A74 /* SKProduct+LocalizedPrice.swift */,
+				5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -463,11 +466,12 @@
 				TargetAttributes = {
 					5B366F0321B163F400C7C836 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 5BA641DA2187C16400446436;
 					};
 					5BA641DA2187C16400446436 = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -621,6 +625,7 @@
 				5B51A72E21A4572A00CE0A74 /* Thank.swift in Sources */,
 				5B51A72821A4559600CE0A74 /* UIView+Effects.swift in Sources */,
 				5B51A74121A462DF00CE0A74 /* TodoList+TableView.swift in Sources */,
+				5BD2091622A7310E00222828 /* UserDefaults+Helper.swift in Sources */,
 				5BE7845321A2BFA200F0BFC9 /* EmptyListViewController.swift in Sources */,
 				5B51A74C21A4719E00CE0A74 /* TipJar+TableView.swift in Sources */,
 				5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */,
@@ -724,7 +729,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = myTodo;
 			};
@@ -744,7 +749,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = myTodo;
 			};
@@ -886,7 +891,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "myTodo Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -909,7 +914,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "myTodo Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

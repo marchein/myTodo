@@ -45,4 +45,4 @@
 "tip_success" = "Tip successful!";
 "tip_success_message" = "Thank you so much for your tip!";
 "loading" = "Loading...";
-"christmas_2018" = "Christmas (2018)";
+"mail_error" = "There is no mail account configured in Apple Mail. Please contact us at %@";

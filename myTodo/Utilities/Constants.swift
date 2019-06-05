@@ -20,6 +20,8 @@ struct localStoreKeys {
     static let isTester = "isTester"
     // has tipped?
     static let hasTipped = "hasTipped"
+    // how many todos are added?
+    static let todosAdded = "todosAdded"
 }
 
 struct myTodoIAP {
@@ -46,20 +48,15 @@ struct myTodoShortcut {
 struct myTodo {
     static let appStoreId = "1441790770"
     static let twitterName = "myTodo_app"
-    static let mailAdress = "info@mytodoapp.de"
-    static let website = "https://mytodoapp.de/"
-    static let supportPage = "https://mytodoapp.de/kontakt/"
+    static let mailAdress = "dev@marc-hein.de"
+    static let website = "https://marc-hein.de/"
     static let versionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     static let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     static let defaultAppIcon = "default"
     static var appIcons = AppIcons(icons: [
         AppIcon(iconName: nil, iconTitle: "myTodo (2018)"),
         AppIcon(iconName: "myTodo2", iconTitle: "myTodo (2014)"),
-        AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)"),
-        AppIcon(iconName: "brains", iconTitle: "Braaaaaains", startDate: Date().dateBy(date: "01.12.2018")),
-        AppIcon(iconName: "wet", iconTitle: "Waterdrawing", startDate: Date().dateBy(date: "01.12.2018")),
-        AppIcon(iconName: "pinsel", iconTitle: "Sprayed", startDate: Date().dateBy(date: "01.12.2018")),
-        AppIcon(iconName: "myTodo_christmas", iconTitle: NSLocalizedString("christmas_2018", comment: ""), startDate: Date().dateBy(date: "01.12.2018"), endDate: Date().dateBy(date: "06.01.2019"))
+        AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)")
     ])
     static let thanksItems = [
         ["header": "Frameworks",
@@ -74,4 +71,6 @@ struct myTodo {
                    Thank(name: "ZachariasFuchs")]
         ]
     ]
+    
+    static let askForReviewAt = 5
 }
