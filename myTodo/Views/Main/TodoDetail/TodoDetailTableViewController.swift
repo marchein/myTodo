@@ -71,7 +71,12 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             
             if location.count > 0 {
                 locationLabel.text = location
-                locationLabel.textColor = UIColor.black
+                
+                if #available(iOS 13.0, *) {
+                    locationLabel.textColor = UIColor.label
+                } else {
+                    locationLabel.textColor = UIColor.black
+                }
             } else {
                 locationLabel.text = NSLocalizedString("Unknown location", comment: "")
                 locationLabel.textColor = UIColor.lightGray
@@ -79,7 +84,11 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             
             if description.count > 0 {
                 descTextView.text = description
-                descTextView.textColor = UIColor.black
+                if #available(iOS 13.0, *) {
+                   descTextView.textColor = UIColor.label
+               } else {
+                   descTextView.textColor = UIColor.black
+               }
             } else {
                 descTextView.text = NSLocalizedString("No description available", comment: "")
                 descTextView.textColor = UIColor.lightGray

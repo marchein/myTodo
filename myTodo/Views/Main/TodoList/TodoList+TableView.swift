@@ -89,12 +89,24 @@ extension TodoListTableViewController {
             cell.detailTextLabel?.text = "\(dateValue) \(NSLocalizedString("at", comment: "")) \(timeValue) \(NSLocalizedString("time unit", comment: "at... __UHR__"))"
         }
         
-        if todo.done {
-            cell.textLabel?.textColor = UIColor.lightGray
-            cell.detailTextLabel?.textColor = UIColor.lightGray
+        if #available(iOS 13.0, *) {
+            if todo.done {
+                cell.textLabel?.textColor = UIColor.lightGray
+                cell.detailTextLabel?.textColor = UIColor.lightGray
+            } else {
+                cell.textLabel?.textColor = UIColor.label
+                cell.detailTextLabel?.textColor = UIColor.secondaryLabel
+            }
         } else {
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
+            if todo.done {
+                cell.textLabel?.textColor = UIColor.lightGray
+                cell.detailTextLabel?.textColor = UIColor.lightGray
+            } else {
+                cell.textLabel?.textColor = UIColor.black
+                cell.detailTextLabel?.textColor = UIColor.black
+            }
         }
+        
+        
     }
 }
