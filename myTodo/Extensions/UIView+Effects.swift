@@ -27,5 +27,17 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
+    
+    func fixInputAssistant() {
+        for subview in self.subviews {
+            if type(of: subview) is UITextField.Type {
+                let item = (subview as! UITextField).inputAssistantItem
+                item.leadingBarButtonGroups = []
+                item.trailingBarButtonGroups = []
+            } else if subview.subviews.count > 0 {
+                subview.fixInputAssistant()
+            }
+        }
+    }
 }
 

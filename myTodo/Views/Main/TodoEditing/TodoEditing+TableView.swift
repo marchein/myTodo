@@ -21,6 +21,7 @@ extension TodoEditingTableViewController {
             return 1
         }
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

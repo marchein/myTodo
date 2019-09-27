@@ -28,14 +28,18 @@ extension TipJarTableViewController: SKProductsRequestDelegate, SKPaymentTransac
                 productsArray.append(product)
             }
             productsArray = productsArray.reversed()
+            hasData = true
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } else {
             print("There are no products.")
+            if response.invalidProductIdentifiers.count != 0 {
+                print(response.invalidProductIdentifiers.description)
+            }
         }
-        hasData = true
-        tableView.reloadData()
-        if response.invalidProductIdentifiers.count != 0 {
-            print(response.invalidProductIdentifiers.description)
-        }
+        
+        
     }
     
     func startTransaction() {

@@ -28,6 +28,7 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        view.fixInputAssistant()
     }
     
     override func viewWillAppear(_ animated: Bool) {

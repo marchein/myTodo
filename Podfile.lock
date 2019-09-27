@@ -1,5 +1,5 @@
 PODS:
-  - IQKeyboardManagerSwift (6.4.1)
+  - IQKeyboardManagerSwift (6.4.2)
   - JGProgressHUD (2.0.4)
   - MGSwipeTableCell (1.6.9)
 
@@ -15,7 +15,7 @@ SPEC REPOS:
     - MGSwipeTableCell
 
 SPEC CHECKSUMS:
-  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
+  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
   JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
   MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
 

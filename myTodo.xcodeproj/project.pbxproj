@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B082CDC21961A7000866DBE /* AboutTableViewController.swift */; };
+		5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
+		5B0D425F233E3CFF002BCE4D /* Pods_myTodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5B366F0721B163F400C7C836 /* myTodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B366F0621B163F400C7C836 /* myTodoUITests.swift */; };
-		5B4472AD219C9C89003A03D6 /* myTodo_christmas.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */; };
 		5B51A72821A4559600CE0A74 /* UIView+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72721A4559600CE0A74 /* UIView+Effects.swift */; };
 		5B51A72A21A4560600CE0A74 /* Bundle+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */; };
 		5B51A72C21A4564100CE0A74 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72B21A4564100CE0A74 /* Date+Helpers.swift */; };
@@ -28,7 +29,6 @@
 		5B51A74C21A4719E00CE0A74 /* TipJar+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A74B21A4719E00CE0A74 /* TipJar+TableView.swift */; };
 		5B51A75621A478C000CE0A74 /* TipJar+Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A75521A478C000CE0A74 /* TipJar+Transaction.swift */; };
 		5B51A75821A4813700CE0A74 /* TodoEditing+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A75721A4813700CE0A74 /* TodoEditing+TableView.swift */; };
-		5B53A5C72196FA76000CD0F5 /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
 		5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53A5CA2197077B000CD0F5 /* ThanksTableViewController.swift */; };
 		5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53F6252194CA4700373DD5 /* TodoData.swift */; };
 		5B68059D219D51BB006514EF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B68059C219D51BB006514EF /* Utilities.swift */; };
@@ -38,14 +38,15 @@
 		5BA641E22187C16400446436 /* myTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E02187C16400446436 /* myTodo.xcdatamodeld */; };
 		5BA641E42187C16400446436 /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E32187C16400446436 /* TodoListTableViewController.swift */; };
 		5BA641E62187C16400446436 /* TodoDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */; };
-		5BA641E92187C16400446436 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641E72187C16400446436 /* Main.storyboard */; };
-		5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA641EC2187C16500446436 /* LaunchScreen.storyboard */; };
+		5BB876BD232391500094723E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB876B3232391500094723E /* LaunchScreen.storyboard */; };
+		5BB876BE232391500094723E /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB876B5232391500094723E /* Detail.storyboard */; };
+		5BB876BF232391500094723E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB876B7232391500094723E /* Main.storyboard */; };
+		5BB876C0232391500094723E /* Master.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB876B9232391500094723E /* Master.storyboard */; };
+		5BB876C1232391500094723E /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB876BB232391500094723E /* About.storyboard */; };
 		5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0448219B3EEE006E1E1D /* myTodo2.png */; };
 		5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0449219B3EEE006E1E1D /* myTodo1.png */; };
+		5BCE1AD1232938AB00D9EB92 /* myTodo2019dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCE1ACF232938AA00D9EB92 /* myTodo2019dark.png */; };
 		5BD2091622A7310E00222828 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */; };
-		5BD533BC219DFE5F000C0DD9 /* brains.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533B9219DFE5F000C0DD9 /* brains.png */; };
-		5BD533BD219DFE5F000C0DD9 /* wet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533BA219DFE5F000C0DD9 /* wet.png */; };
-		5BD533BE219DFE5F000C0DD9 /* pinsel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD533BB219DFE5F000C0DD9 /* pinsel.png */; };
 		5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD7D0E7219487B600209131 /* LocalNotifications.swift */; };
 		5BDFD74F219DA88D00D01D6D /* AppIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */; };
 		5BDFD751219DAA6D00D01D6D /* AppIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */; };
@@ -53,9 +54,6 @@
 		5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */; };
 		5BE1EA3D219AED120023B4FB /* TipJarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */; };
 		5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE1EA3E219AF5130023B4FB /* StoreKit.framework */; };
-		5BE313BF21A367790029260B /* Master.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313C121A367790029260B /* Master.storyboard */; };
-		5BE313C621A367A60029260B /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313C821A367A60029260B /* Detail.storyboard */; };
-		5BE313CD21A367AF0029260B /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE313CF21A367AF0029260B /* About.storyboard */; };
 		5BE7845321A2BFA200F0BFC9 /* EmptyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */; };
 		5BE7845621A2DDAC00F0BFC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BE7845821A2DDAC00F0BFC9 /* InfoPlist.strings */; };
 		5BE7A53421985A4C0070F127 /* FixedUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE7A53321985A4C0070F127 /* FixedUITextField.swift */; };
@@ -72,13 +70,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B0D4260233E3CFF002BCE4D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B0D425F233E3CFF002BCE4D /* Pods_myTodo.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		47C800EFCA555EA4D498C53B /* Pods-myTodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTodo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myTodo/Pods-myTodo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B082CDC21961A7000866DBE /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		5B0D425D233E3BA3002BCE4D /* myTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTodo.entitlements; sourceTree = "<group>"; };
 		5B366F0421B163F400C7C836 /* myTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B366F0621B163F400C7C836 /* myTodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTodoUITests.swift; sourceTree = "<group>"; };
 		5B366F0821B163F400C7C836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo_christmas.png; sourceTree = "<group>"; };
 		5B51A72721A4559600CE0A74 /* UIView+Effects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Effects.swift"; sourceTree = "<group>"; };
 		5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Icon.swift"; sourceTree = "<group>"; };
 		5B51A72B21A4564100CE0A74 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
@@ -101,25 +113,27 @@
 		5B53F6252194CA4700373DD5 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
 		5B68059C219D51BB006514EF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		5B839863218DDCD8004DF853 /* TodoEditingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEditingTableViewController.swift; sourceTree = "<group>"; };
-		5B879F9321986F76008B475B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5B879F9421986F76008B475B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B99BB722198700700115AA4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5B99BB742198701000115AA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		5B99BB752198701000115AA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5B99BB762198701000115AA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5B99BB772198702700115AA4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		5BA641DB2187C16400446436 /* myTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA641DE2187C16400446436 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA641E12187C16400446436 /* myTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myTodo.xcdatamodel; sourceTree = "<group>"; };
 		5BA641E32187C16400446436 /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		5BA641E52187C16400446436 /* TodoDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailTableViewController.swift; sourceTree = "<group>"; };
 		5BA641EF2187C16500446436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BB876B4232391500094723E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5BB876B6232391500094723E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Detail.storyboard; sourceTree = "<group>"; };
+		5BB876B8232391500094723E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5BB876BA232391500094723E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Master.storyboard; sourceTree = "<group>"; };
+		5BB876BC232391500094723E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/About.storyboard; sourceTree = "<group>"; };
+		5BB876C82323929C0094723E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/About.storyboard; sourceTree = "<group>"; };
+		5BB876C9232394180094723E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Detail.storyboard; sourceTree = "<group>"; };
+		5BB876CA232398BC0094723E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Master.storyboard; sourceTree = "<group>"; };
+		5BB876CB232398F50094723E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BCB0448219B3EEE006E1E1D /* myTodo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2.png; sourceTree = "<group>"; };
 		5BCB0449219B3EEE006E1E1D /* myTodo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo1.png; sourceTree = "<group>"; };
+		5BCE1ACF232938AA00D9EB92 /* myTodo2019dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2019dark.png; sourceTree = "<group>"; };
 		5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
-		5BD533B9219DFE5F000C0DD9 /* brains.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brains.png; sourceTree = "<group>"; };
-		5BD533BA219DFE5F000C0DD9 /* wet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wet.png; sourceTree = "<group>"; };
-		5BD533BB219DFE5F000C0DD9 /* pinsel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinsel.png; sourceTree = "<group>"; };
 		5BD7D0E7219487B600209131 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewController.swift; sourceTree = "<group>"; };
 		5BDFD750219DAA6D00D01D6D /* AppIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewCell.swift; sourceTree = "<group>"; };
@@ -127,15 +141,6 @@
 		5BE1EA3A219ADFEF0023B4FB /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		5BE1EA3C219AED120023B4FB /* TipJarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarTableViewController.swift; sourceTree = "<group>"; };
 		5BE1EA3E219AF5130023B4FB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		5BE313C021A367790029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Master.storyboard; sourceTree = "<group>"; };
-		5BE313CE21A367AF0029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
-		5BE313D521A368880029260B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Detail.storyboard; sourceTree = "<group>"; };
-		5BE313DE21A36A140029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Detail.strings; sourceTree = "<group>"; };
-		5BE313E021A36A150029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Detail.strings; sourceTree = "<group>"; };
-		5BE313E821A370610029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/About.strings; sourceTree = "<group>"; };
-		5BE313EA21A3706D0029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/About.strings; sourceTree = "<group>"; };
-		5BE313EC21A372D60029260B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Master.strings; sourceTree = "<group>"; };
-		5BE313EE21A372F50029260B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Master.strings; sourceTree = "<group>"; };
 		5BE7845221A2BFA200F0BFC9 /* EmptyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListViewController.swift; sourceTree = "<group>"; };
 		5BE7845721A2DDAC00F0BFC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5BE7845921A2DDAE00F0BFC9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,7 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B53A5C72196FA76000CD0F5 /* Pods_myTodo.framework in Frameworks */,
+				5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */,
 				5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,12 +191,9 @@
 		5B4472B1219CAA04003A03D6 /* Alternative App Icons */ = {
 			isa = PBXGroup;
 			children = (
-				5BD533B9219DFE5F000C0DD9 /* brains.png */,
-				5BD533BB219DFE5F000C0DD9 /* pinsel.png */,
-				5BD533BA219DFE5F000C0DD9 /* wet.png */,
 				5BCB0449219B3EEE006E1E1D /* myTodo1.png */,
 				5BCB0448219B3EEE006E1E1D /* myTodo2.png */,
-				5B4472AB219C9C89003A03D6 /* myTodo_christmas.png */,
+				5BCE1ACF232938AA00D9EB92 /* myTodo2019dark.png */,
 			);
 			path = "Alternative App Icons";
 			sourceTree = "<group>";
@@ -330,6 +332,7 @@
 		5BA641DD2187C16400446436 /* myTodo */ = {
 			isa = PBXGroup;
 			children = (
+				5B0D425D233E3BA3002BCE4D /* myTodo.entitlements */,
 				5BE3F58F219F2EED00381974 /* Views */,
 				5B53F6272194CA5400373DD5 /* Model */,
 				5BE3F590219F2EFA00381974 /* Storyboards */,
@@ -380,11 +383,11 @@
 		5BE3F590219F2EFA00381974 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5BA641E72187C16400446436 /* Main.storyboard */,
-				5BE313C121A367790029260B /* Master.storyboard */,
-				5BE313C821A367A60029260B /* Detail.storyboard */,
-				5BE313CF21A367AF0029260B /* About.storyboard */,
-				5BA641EC2187C16500446436 /* LaunchScreen.storyboard */,
+				5BB876BB232391500094723E /* About.storyboard */,
+				5BB876B5232391500094723E /* Detail.storyboard */,
+				5BB876B3232391500094723E /* LaunchScreen.storyboard */,
+				5BB876B7232391500094723E /* Main.storyboard */,
+				5BB876B9232391500094723E /* Master.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				5BA641D82187C16400446436 /* Frameworks */,
 				5BA641D92187C16400446436 /* Resources */,
 				049B5D72C2B16EBF631C8073 /* [CP] Embed Pods Frameworks */,
+				5B0D4260233E3CFF002BCE4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,20 +516,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B4472AD219C9C89003A03D6 /* myTodo_christmas.png in Resources */,
 				5BE7845621A2DDAC00F0BFC9 /* InfoPlist.strings in Resources */,
-				5BA641EE2187C16500446436 /* LaunchScreen.storyboard in Resources */,
-				5BE313BF21A367790029260B /* Master.storyboard in Resources */,
-				5BD533BD219DFE5F000C0DD9 /* wet.png in Resources */,
-				5BE313CD21A367AF0029260B /* About.storyboard in Resources */,
+				5BB876BF232391500094723E /* Main.storyboard in Resources */,
+				5BB876C0232391500094723E /* Master.storyboard in Resources */,
+				5BB876BD232391500094723E /* LaunchScreen.storyboard in Resources */,
+				5BB876BE232391500094723E /* Detail.storyboard in Resources */,
 				5B99BB732198700700115AA4 /* Localizable.strings in Resources */,
+				5BB876C1232391500094723E /* About.storyboard in Resources */,
 				5BEADE3D2188F02200527CE1 /* Assets.xcassets in Resources */,
-				5BD533BE219DFE5F000C0DD9 /* pinsel.png in Resources */,
 				5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */,
 				5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */,
-				5BE313C621A367A60029260B /* Detail.storyboard in Resources */,
-				5BD533BC219DFE5F000C0DD9 /* brains.png in Resources */,
-				5BA641E92187C16400446436 /* Main.storyboard in Resources */,
+				5BCE1AD1232938AB00D9EB92 /* myTodo2019dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,51 +646,46 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		5BA641E72187C16400446436 /* Main.storyboard */ = {
+		5BB876B3232391500094723E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5B879F9321986F76008B475B /* Base */,
-				5B99BB742198701000115AA4 /* en */,
-				5B99BB772198702700115AA4 /* de */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5BA641EC2187C16500446436 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B879F9421986F76008B475B /* Base */,
-				5B99BB752198701000115AA4 /* en */,
+				5BB876B4232391500094723E /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		5BE313C121A367790029260B /* Master.storyboard */ = {
+		5BB876B5232391500094723E /* Detail.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5BE313C021A367790029260B /* Base */,
-				5BE313EC21A372D60029260B /* en */,
-				5BE313EE21A372F50029260B /* de */,
-			);
-			name = Master.storyboard;
-			sourceTree = "<group>";
-		};
-		5BE313C821A367A60029260B /* Detail.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5BE313D521A368880029260B /* Base */,
-				5BE313DE21A36A140029260B /* de */,
-				5BE313E021A36A150029260B /* en */,
+				5BB876B6232391500094723E /* en */,
+				5BB876C9232394180094723E /* de */,
 			);
 			name = Detail.storyboard;
 			sourceTree = "<group>";
 		};
-		5BE313CF21A367AF0029260B /* About.storyboard */ = {
+		5BB876B7232391500094723E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5BE313CE21A367AF0029260B /* Base */,
-				5BE313E821A370610029260B /* en */,
-				5BE313EA21A3706D0029260B /* de */,
+				5BB876B8232391500094723E /* en */,
+				5BB876CB232398F50094723E /* de */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5BB876B9232391500094723E /* Master.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BB876BA232391500094723E /* en */,
+				5BB876CA232398BC0094723E /* de */,
+			);
+			name = Master.storyboard;
+			sourceTree = "<group>";
+		};
+		5BB876BB232391500094723E /* About.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BB876BC232391500094723E /* en */,
+				5BB876C82323929C0094723E /* de */,
 			);
 			name = About.storyboard;
 			sourceTree = "<group>";
@@ -870,8 +866,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 163;
+				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 170;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UJR28ZV94C;
 				INFOPLIST_FILE = myTodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -881,7 +881,8 @@
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "myTodo Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -895,9 +896,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 163;
+				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 170;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UJR28ZV94C;
 				INFOPLIST_FILE = myTodo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -907,7 +911,8 @@
 				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "myTodo Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

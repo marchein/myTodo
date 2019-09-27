@@ -27,7 +27,7 @@ class AppIconTableViewController: UITableViewController {
         
         UIApplication.shared.setAlternateIconName(name) { (error) in
             if let error = error {
-                fatalError(error.localizedDescription)
+                fatalError("Error: \(error)")
             }
         }
     }
