@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hRI-mz-ovs">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+    </dependencies>
+    <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="Hmg-VE-7zo">
+            <objects>
+                <splitViewController id="hRI-mz-ovs" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="io7-n6-QCH" kind="relationship" relationship="detailViewController" id="mKG-2s-Uz9"/>
+                        <segue destination="1UP-ap-3tX" kind="relationship" relationship="masterViewController" id="u5I-TR-iwO"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fK9-Nj-eH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3013" y="525"/>
+        </scene>
+        <!--Master-->
+        <scene sceneID="SyE-uu-0TI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Master" id="1UP-ap-3tX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bR6-Xh-Uic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2407" y="448"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="kgJ-ux-y2c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="io7-n6-QCH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBe-Dl-Xdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2402" y="591"/>
+        </scene>
+    </scenes>
+</document>

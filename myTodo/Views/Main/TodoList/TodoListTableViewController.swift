@@ -19,6 +19,8 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     var showConfirmDialog: Bool?
     var emptyViewIsLoaded = false
     let notification = UINotificationFeedbackGenerator()
+    var selectedIndexPath: IndexPath? = nil;
+    var selectedTodo: Todo? = nil;
 
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
@@ -30,6 +32,11 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
         
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: tableView)
+        }
+        
+        if #available(iOS 13.0, *) {
+            let inter = UIContextMenuInteraction(delegate: self)
+            self.view.addInteraction(inter)
         }
         
         setupApp()
@@ -67,7 +74,7 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     fileprivate func setupSplitView() {
         if let split = splitViewController {
             let controllers = split.viewControllers
-            todoDetailVC = (controllers[controllers.count-1] as! UINavigationController).topViewController as? TodoDetailTableViewController
+            self.todoDetailVC = (controllers[controllers.count-1] as! UINavigationController).topViewController as? TodoDetailTableViewController
         }
     }
     
@@ -91,22 +98,26 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     }
     
     func insertNewObject(todoData: TodoData) {
-        let context = self.fetchedResultsController.managedObjectContext
-        let newTodo = Todo(context: context)
-        newTodo.date = todoData.date!
-        newTodo.title = todoData.title!
-        newTodo.desc = todoData.desc ?? ""
-        newTodo.done = false
-        newTodo.location = todoData.location ?? ""
-        
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        DispatchQueue.global(qos: .background).async {
+            let context = self.fetchedResultsController.managedObjectContext
+            let newTodo = Todo(context: context)
+            newTodo.date = todoData.date!
+            newTodo.title = todoData.title!
+            newTodo.desc = todoData.desc ?? ""
+            newTodo.done = false
+            newTodo.location = todoData.location ?? ""
+
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
-        
-        tableView.reloadData()
     }
     
     func doneAction(selectedItem: Todo?) {

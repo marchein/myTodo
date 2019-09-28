@@ -1,7 +1,7 @@
 PODS:
-  - IQKeyboardManagerSwift (6.3.0)
-  - JGProgressHUD (2.0.3)
-  - MGSwipeTableCell (1.6.8)
+  - IQKeyboardManagerSwift (6.5.0)
+  - JGProgressHUD (2.0.4)
+  - MGSwipeTableCell (1.6.9)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
@@ -9,16 +9,16 @@ DEPENDENCIES:
   - MGSwipeTableCell
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - IQKeyboardManagerSwift
     - JGProgressHUD
     - MGSwipeTableCell
 
 SPEC CHECKSUMS:
-  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
-  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
-  MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
+  IQKeyboardManagerSwift: 6cd19976c6e871907c4ed9127c2d3affdd4defc2
+  JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
+  MGSwipeTableCell: 17349a8b56c81245bd77671251eb8aa9d486d46b
 
 PODFILE CHECKSUM: 6875d6f8bd75facf34c0e3791ca6ef31bccbe453
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.0

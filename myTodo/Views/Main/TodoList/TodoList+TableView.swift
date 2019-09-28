@@ -39,6 +39,12 @@ extension TodoListTableViewController {
         let doneButtonText = todo.done ? NSLocalizedString("Undone", comment: "") : NSLocalizedString("Done", comment: "")
         let doneTableButton = MGSwipeButton(title: doneButtonText, icon: nil, backgroundColor: self.view.tintColor) {
             (sender: MGSwipeTableCell!) -> Bool in
+            self.notification.notificationOccurred(.success)
+            if let splitVC = self.splitViewController, splitVC.viewControllers.count > 1, let navController = splitVC.viewControllers[1] as? UINavigationController {
+                   print("Split VC childs: \(splitVC.viewControllers)")
+               
+                navController.performSegue(withIdentifier: myTodoSegue.emptyDetailView, sender: self)
+            }
             self.doneAction(selectedItem: todo)
             return true
         }
@@ -72,7 +78,7 @@ extension TodoListTableViewController {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
             if self.splitViewController?.viewControllers.count == 2 {
-                self.performSegue(withIdentifier: "showDetail", sender: self)
+                self.performSegue(withIdentifier: myTodoSegue.showDetail, sender: self)
             }
         }
     }
@@ -93,8 +99,13 @@ extension TodoListTableViewController {
             cell.textLabel?.textColor = UIColor.lightGray
             cell.detailTextLabel?.textColor = UIColor.lightGray
         } else {
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
+            if #available(iOS 13.0, *) {
+                cell.textLabel?.textColor = UIColor.label
+                cell.detailTextLabel?.textColor = UIColor.secondaryLabel
+            } else {
+               cell.textLabel?.textColor = UIColor.black
+               cell.detailTextLabel?.textColor = UIColor.black
+           }
         }
     }
 }

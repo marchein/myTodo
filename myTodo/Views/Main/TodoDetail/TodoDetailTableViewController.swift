@@ -71,7 +71,12 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             
             if location.count > 0 {
                 locationLabel.text = location
-                locationLabel.textColor = UIColor.black
+                
+                if #available(iOS 13.0, *) {
+                    locationLabel.textColor = UIColor.label
+                } else {
+                    locationLabel.textColor = UIColor.black
+                }
             } else {
                 locationLabel.text = NSLocalizedString("Unknown location", comment: "")
                 locationLabel.textColor = UIColor.lightGray
@@ -79,13 +84,17 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             
             if description.count > 0 {
                 descTextView.text = description
-                descTextView.textColor = UIColor.black
+                if #available(iOS 13.0, *) {
+                   descTextView.textColor = UIColor.label
+               } else {
+                   descTextView.textColor = UIColor.black
+               }
             } else {
                 descTextView.text = NSLocalizedString("No description available", comment: "")
                 descTextView.textColor = UIColor.lightGray
             }
             
-            setDoneButton()
+            setDoneButton(todo)
         } else {
             editButton.isEnabled = false
             doneButton.isEnabled = false
@@ -110,8 +119,16 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
             self.notification.notificationOccurred(.warning)
             self.navigationController?.popToRootViewController(animated: true)
         })
+        
+        
         let shareAction = UIAlertAction(title: NSLocalizedString("Share", comment: ""), style: .default, handler: { (action: UIAlertAction) in
-            self.showShareSheet()
+            if let shareSheet = getShareSheet(for: self.todo) {
+                // FIXME: repair Sharesheet on iPad
+                if let popoverController = shareSheet.popoverPresentationController {
+                    self.setPopOverController(popOver: popoverController)
+                }
+                self.present(shareSheet, animated: true, completion: nil)
+            }
         })
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
@@ -126,32 +143,7 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         
         self.present(optionMenu, animated: true, completion: nil)
     }
-    
-    func showShareSheet() {
-        guard let currentTodo = todo else { return }
-        guard let dueDate = getDateOf(date: todo?.date, option: .date) else { return }
-        guard let dueTime = getDateOf(date: todo?.date, option: .time) else { return }
         
-        let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
-        if let website = NSURL(string: myTodo.website) {
-            let objectsToShare = [textToShare, website] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
-            
-            if let popoverController = activityVC.popoverPresentationController {
-                setPopOverController(popOver: popoverController)
-            }
-            
-            self.present(activityVC, animated: true, completion: nil)
-        }
-    }
-    
-    fileprivate func setPopOverController(popOver: UIPopoverPresentationController) {
-        popOver.sourceView = self.view
-        popOver.permittedArrowDirections = [.down]
-        popOver.barButtonItem = shareButton
-    }
-    
     @IBAction func doneButtonTapped(_ sender: Any) {
         notification.notificationOccurred(.success)
         if let splitVC = splitViewController {
@@ -167,12 +159,20 @@ class TodoDetailTableViewController: UITableViewController, UIPopoverControllerD
         todoListTableVC?.doneAction(selectedItem: todo)
     
         DispatchQueue.main.async() {
-            self.setDoneButton()
+            if let todo = self.todo {
+                self.setDoneButton(todo)
+            }
         }
     }
     
-    fileprivate func setDoneButton() {
-        doneButton.image = (todo?.done ?? false) ? #imageLiteral(resourceName: "todoDone") : #imageLiteral(resourceName: "todoUndone")
+    fileprivate func setPopOverController(popOver: UIPopoverPresentationController) {
+        popOver.sourceView = self.view
+        popOver.permittedArrowDirections = [.down]
+        popOver.barButtonItem = shareButton
+    }
+    
+    func setDoneButton(_ todo: Todo) {
+        doneButton.image = todo.done ? #imageLiteral(resourceName: "todoDone") : #imageLiteral(resourceName: "todoUndone")
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

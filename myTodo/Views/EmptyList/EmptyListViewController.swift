@@ -15,24 +15,5 @@ class EmptyListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupView()
-    }
-    
-    fileprivate func setupView() {
-        setupToolbar()
-        image.image = Bundle.main.icon
-    }
-    
-    fileprivate func setupToolbar() {
-        let toolBar = UIToolbar()
-        view.addSubview(toolBar)
-        
-        toolBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        let toolBarGuide = self.view.safeAreaLayoutGuide
-        toolBar.trailingAnchor.constraint(equalTo: toolBarGuide.trailingAnchor).isActive = true
-        toolBar.leadingAnchor.constraint(equalTo: toolBarGuide.leadingAnchor).isActive = true
-        toolBar.bottomAnchor.constraint(equalTo: toolBarGuide.bottomAnchor).isActive = true
     }
 }

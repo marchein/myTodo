@@ -10,15 +10,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>brains</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>brains</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>myTodo1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -37,32 +28,14 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>myTodo_christmas</key>
+			<key>myTodo2019dark</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>myTodo_christmas</string>
+					<string>myTodo2019dark</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>pinsel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>pinsel</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>wet</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>wet</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
+				<true/>
 			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -79,15 +52,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>brains</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>brains</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>myTodo1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -106,32 +70,14 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>myTodo_christmas</key>
+			<key>myTodo2019dark</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>myTodo_christmas</string>
+					<string>myTodo2019dark</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>pinsel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>pinsel</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>wet</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>wet</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
+				<true/>
 			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -141,7 +87,7 @@
 				<string></string>
 			</array>
 			<key>UIPrerenderedIcon</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -153,9 +99,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>162</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
