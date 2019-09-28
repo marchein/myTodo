@@ -23,15 +23,22 @@ extension TodoEditingTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if indexPath.section == 0 {
+            return 44.0
+        } else {
+            return UITableView.automaticDimension
+        }
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if indexPath.section == 0 {
+           return 44.0
+       } else {
+           return UITableView.automaticDimension
+       }
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        
         let startHeight = textView.frame.size.height
         let calcHeight = textView.sizeThatFits(textView.frame.size).height  //iOS 8+ only
         

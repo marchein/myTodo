@@ -54,8 +54,8 @@ struct myTodo {
     static let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     static let defaultAppIcon = "default"
     static var appIcons = AppIcons(icons: [
-        AppIcon(iconName: "myTodo2019dark", iconTitle: "myTodo - Dark (2019)"),
-        AppIcon(iconName: nil, iconTitle: "myTodo (2018)"),
+        AppIcon(iconName: nil, iconTitle: "myTodo - " + NSLocalizedString("icon_light", comment: "")),
+        AppIcon(iconName: "myTodo2019dark", iconTitle: "myTodo - "  + NSLocalizedString("icon_dark", comment: "")),
         AppIcon(iconName: "myTodo2", iconTitle: "myTodo (2014)"),
         AppIcon(iconName: "myTodo1", iconTitle: "myTodo (2013)")
     ])

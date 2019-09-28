@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 import UserNotifications
+#if !targetEnvironment(macCatalyst)
 import IQKeyboardManagerSwift
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -20,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         LocalNotification.registerForLocalNotification(on: UIApplication.shared)
         UIApplication.shared.applicationIconBadgeNumber = 0
+        #if !targetEnvironment(macCatalyst)
         IQKeyboardManager.shared.enable = true
+        #endif
         
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as! UISplitViewController

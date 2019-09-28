@@ -46,3 +46,7 @@
 "tip_success_message" = "Vielen Dank für Deine Unterstützung!";
 "loading" = "Laden...";
 "mail_error" = "Es ist kein E-Mail Konto in Apple Mail hinterlegt. Bitte kontaktiere uns unter %@";
+"icon_light" = "Hell";
+"icon_dark" = "Dunkel";
+"share" = "Teilen";
+"delete" = "Löschen";

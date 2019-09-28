@@ -37,6 +37,22 @@ func showMessage(title: String, message: String, on view: UIViewController) {
     }
 }
 
+func getShareSheet(for todo: Todo?) -> UIActivityViewController? {
+     guard let currentTodo = todo else { return nil }
+     guard let dueDate = getDateOf(date: currentTodo.date, option: .date) else { return nil }
+     guard let dueTime = getDateOf(date: currentTodo.date, option: .time) else { return nil }
+     
+     let textToShare = "\(currentTodo.title!) \(NSLocalizedString("is_due_sharing", comment: "")) \(dueDate) \(NSLocalizedString("at", comment: "")) \(dueTime) \(NSLocalizedString("time unit", comment: "")).\n\n\(NSLocalizedString("mytodo_promo_sharing", comment: ""))"
+     if let website = NSURL(string: "https://itunes.apple.com/app/id\(myTodo.appStoreId)") {
+         let objectsToShare = [textToShare, website] as [Any]
+         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+         activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+         
+         return activityVC
+     }
+    return nil
+ }
+
 // MARK:- Date functions
 enum DateOptions {
     case date

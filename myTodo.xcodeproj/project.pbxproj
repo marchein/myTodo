@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0326F5233E647C00AE5531 /* TodoList+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0326F4233E647C00AE5531 /* TodoList+ContextMenu.swift */; };
 		5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B082CDC21961A7000866DBE /* AboutTableViewController.swift */; };
-		5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; };
-		5B0D425F233E3CFF002BCE4D /* Pods_myTodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; platformFilter = ios; };
 		5B366F0721B163F400C7C836 /* myTodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B366F0621B163F400C7C836 /* myTodoUITests.swift */; };
 		5B51A72821A4559600CE0A74 /* UIView+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72721A4559600CE0A74 /* UIView+Effects.swift */; };
 		5B51A72A21A4560600CE0A74 /* Bundle+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */; };
@@ -70,24 +70,12 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		5B0D4260233E3CFF002BCE4D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				5B0D425F233E3CFF002BCE4D /* Pods_myTodo.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		47C800EFCA555EA4D498C53B /* Pods-myTodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTodo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myTodo/Pods-myTodo.debug.xcconfig"; sourceTree = "<group>"; };
+		5B0326F4233E647C00AE5531 /* TodoList+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+ContextMenu.swift"; sourceTree = "<group>"; };
 		5B082CDC21961A7000866DBE /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		5B0D425D233E3BA3002BCE4D /* myTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTodo.entitlements; sourceTree = "<group>"; };
+		5B32CDF4233EB9ED00BE2D16 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B366F0421B163F400C7C836 /* myTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B366F0621B163F400C7C836 /* myTodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTodoUITests.swift; sourceTree = "<group>"; };
 		5B366F0821B163F400C7C836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -173,6 +161,7 @@
 		0E0F778CC21A3FC073B84621 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B32CDF4233EB9ED00BE2D16 /* IQKeyboardManagerSwift.framework */,
 				5BE1EA3E219AF5130023B4FB /* StoreKit.framework */,
 				656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */,
 			);
@@ -218,6 +207,7 @@
 				5B51A74021A462DF00CE0A74 /* TodoList+TableView.swift */,
 				5B51A73621A4595700CE0A74 /* TodoList+UserNotificationCenter.swift */,
 				5B51A73821A4598F00CE0A74 /* TodoList+FRC.swift */,
+				5B0326F4233E647C00AE5531 /* TodoList+ContextMenu.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -447,7 +437,6 @@
 				5BA641D82187C16400446436 /* Frameworks */,
 				5BA641D92187C16400446436 /* Resources */,
 				049B5D72C2B16EBF631C8073 /* [CP] Embed Pods Frameworks */,
-				5B0D4260233E3CFF002BCE4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -607,6 +596,7 @@
 				5BE1EA3B219ADFEF0023B4FB /* BorderedButton.swift in Sources */,
 				5B53F6262194CA4700373DD5 /* TodoData.swift in Sources */,
 				5B51A75621A478C000CE0A74 /* TipJar+Transaction.swift in Sources */,
+				5B0326F5233E647C00AE5531 /* TodoList+ContextMenu.swift in Sources */,
 				5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */,
 				5B51A73921A4598F00CE0A74 /* TodoList+FRC.swift in Sources */,
 				5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */,
@@ -870,7 +860,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 170;
+				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UJR28ZV94C;
 				INFOPLIST_FILE = myTodo/Info.plist;
@@ -878,7 +868,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -900,7 +890,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 170;
+				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UJR28ZV94C;
 				INFOPLIST_FILE = myTodo/Info.plist;
@@ -908,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
