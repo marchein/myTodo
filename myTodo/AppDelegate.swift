@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         LocalNotification.registerForLocalNotification(on: UIApplication.shared)
         UIApplication.shared.applicationIconBadgeNumber = 0
         #if !targetEnvironment(macCatalyst)
-        IQKeyboardManager.shared.enable = true
+            IQKeyboardManager.shared.enable = true
         #endif
         
         // Override point for customization after application launch.
@@ -105,6 +105,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
+        
+        /*var container: NSPersistentContainer {
+            if #available(iOS 13.0, *) {
+                return NSPersistentCloudKitContainer(name: "myTodo")
+            } else {
+                return NSPersistentContainer(name: "myTodo")
+            }
+        }*/
+        
+       /* if #available(iOS 13.0, *) {
+            // Enable history tracking and remote notifications
+           guard let description = container.persistentStoreDescriptions.first else {
+               fatalError("###\(#function): Failed to retrieve a persistent store description.")
+           }
+           description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+           description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        }*/
+        
         let container = NSPersistentContainer(name: "myTodo")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
