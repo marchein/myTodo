@@ -396,16 +396,16 @@
                                             <rect key="frame" x="16" y="32.5" width="343" height="35.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="KLy-Lv-VNe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="35.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="228" height="35.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="tip_name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCo-bS-nK1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="248" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="228" height="18"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="tip_desc" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xM9-69-5s4">
-                                                            <rect key="frame" x="0.0" y="21" width="248" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="21" width="228" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -413,9 +413,9 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="AdG-II-7yX" customClass="BorderedButton" customModule="myTodo" customModuleProvider="target">
-                                                    <rect key="frame" x="263" y="3.5" width="80" height="28"/>
+                                                    <rect key="frame" x="243" y="3.5" width="100" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="8C7-BA-vt6"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="8C7-BA-vt6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                     <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
