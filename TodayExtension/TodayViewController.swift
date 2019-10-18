@@ -13,20 +13,15 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var todoTitle: UILabel!
     @IBOutlet weak var todoDate: UILabel!
-    @IBOutlet weak var todoLocation: UILabel!
+    var currentTodo: Todo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.extensionContext?.widgetLargestAvailableDisplayMode = .compact        
+        self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
+        let appSetup = myTodo.sharedDefaults.bool(forKey: localStoreKeys.appSetup)
+        print(appSetup)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if let todo = retrieveTodo() {
-            todoTitle.text = todo.title
-            todoDate.text = getDateOf(date: todo.date, option: .both)
-            todoLocation.text = todo.location
-        }
-    }
         
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
@@ -35,7 +30,40 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        completionHandler(NCUpdateResult.newData)
+        print("perform update")
+        
+        DispatchQueue.global().async {
+            // fetch data on a background thread
+            let tmpTodo = self.retrieveTodo()
+            print("tmpTodo: \(tmpTodo)")
+            print("currentTodo: \(self.currentTodo)")
+
+            if self.currentTodo == nil && tmpTodo == nil {
+                print("NO DATA - show empty view")
+                completionHandler(.newData)
+            } else if tmpTodo == self.currentTodo {
+                print("no different data")
+                completionHandler(.noData)
+            } else if tmpTodo == nil {
+                print("failed updating")
+                completionHandler(.failed)
+            } else if tmpTodo != self.currentTodo {
+                print("updating")
+                self.currentTodo = tmpTodo
+                self.updateUI()
+                completionHandler(.newData)
+            }
+        }
+    }
+    
+    private func updateUI() {
+        DispatchQueue.main.async {
+            // update UI components
+            if let todo = self.currentTodo {
+                self.todoTitle.text = todo.title
+                self.todoDate.text = getDateOf(date: todo.date, option: .both)
+            }
+        }
     }
     
     func retrieveTodo() -> Todo? {
