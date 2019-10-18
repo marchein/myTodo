@@ -25,9 +25,15 @@ struct localStoreKeys {
 }
 
 struct myTodoIAP {
-    static let smallTip = "de.marc_hein.myTodo.tip.small"
-    static let mediumTip = "de.marc_hein.myTodo.tip.medium"
-    static let largeTip = "de.marc_hein.myTodo.tip.large"
+    #if targetEnvironment(macCatalyst)
+        static let smallTip = "de.marc_hein.myTodo.mac.tip.small"
+        static let mediumTip = "de.marc_hein.myTodo.mac.tip.medium"
+        static let largeTip = "de.marc_hein.myTodo.mac.tip.large"
+    #else
+        static let smallTip = "de.marc_hein.myTodo.tip.small"
+        static let mediumTip = "de.marc_hein.myTodo.tip.medium"
+        static let largeTip = "de.marc_hein.myTodo.tip.large"
+    #endif
     
     static let allTips = [myTodoIAP.smallTip, myTodoIAP.mediumTip, myTodoIAP.largeTip]
 }
@@ -46,12 +52,17 @@ struct myTodoShortcut {
 }
 
 struct myTodo {
-    static let appStoreId = "1441790770"
+    #if targetEnvironment(macCatalyst)
+        static let appStoreId = "1484062619"
+    #else
+        static let appStoreId = "1441790770"
+    #endif
     static let twitterName = "myTodo_app"
     static let mailAdress = "dev@marc-hein.de"
     static let website = "https://marc-hein.de/"
     static let versionString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     static let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+    
     static let defaultAppIcon = "default"
     static var appIcons = AppIcons(icons: [
         AppIcon(iconName: nil, iconTitle: "myTodo - " + NSLocalizedString("icon_light", comment: "")),

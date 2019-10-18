@@ -24,9 +24,12 @@ extension AboutTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.0
+        if indexPath.section == 0 && indexPath.row == 1 {
+            return 0
+        }
+        return 	UITableView.automaticDimension
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         DispatchQueue.main.async() {

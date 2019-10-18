@@ -35,6 +35,7 @@ class AboutTableViewController: UITableViewController {
         super.viewDidLoad()
         appVersionCell.detailTextLabel?.text = myTodo.versionString
         confirmDialogSwitch.isOn = UserDefaults.standard.bool(forKey: localStoreKeys.showConfirmDialog)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,16 +46,18 @@ class AboutTableViewController: UITableViewController {
     }
     
     fileprivate func reconfigureView() {
-        currentAppIcon = UserDefaults.standard.string(forKey: localStoreKeys.currentAppIcon)
-        if !myTodo.appIcons.contains(iconName: currentAppIcon) {
-            currentAppIcon = myTodo.defaultAppIcon
-            UserDefaults.standard.set(currentAppIcon, forKey: localStoreKeys.currentAppIcon)
-        }
-        
-        if let appIcon = currentAppIcon {
-            appIconIV.image = appIcon == myTodo.defaultAppIcon ? Bundle.main.icon : UIImage(named: appIcon)
-            appIconIV.roundCorners(radius: 6)
-        }
+        #if !targetEnvironment(macCatalyst)
+            currentAppIcon = UserDefaults.standard.string(forKey: localStoreKeys.currentAppIcon)
+            if !myTodo.appIcons.contains(iconName: currentAppIcon) {
+                currentAppIcon = myTodo.defaultAppIcon
+                UserDefaults.standard.set(currentAppIcon, forKey: localStoreKeys.currentAppIcon)
+            }
+            
+            if let appIcon = currentAppIcon {
+                appIconIV.image = appIcon == myTodo.defaultAppIcon ? Bundle.main.icon : UIImage(named: appIcon)
+                appIconIV.roundCorners(radius: 6)
+            }
+        #endif
         tableView.reloadData()
     }
         
