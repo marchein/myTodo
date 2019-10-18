@@ -33,7 +33,7 @@ class AppIconTableViewController: UITableViewController {
     }
     
     internal func setSelectedImage(key: String?, cell: UITableViewCell?) {
-        let currentAppIcon = UserDefaults.standard.string(forKey: localStoreKeys.currentAppIcon)
+        let currentAppIcon = myTodo.sharedDefaults.string(forKey: localStoreKeys.currentAppIcon)!
         if key ?? myTodo.defaultAppIcon == currentAppIcon {
             cell?.accessoryType = .checkmark
         }

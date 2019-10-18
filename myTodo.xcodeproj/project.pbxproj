@@ -10,6 +10,20 @@
 		5B0326F5233E647C00AE5531 /* TodoList+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0326F4233E647C00AE5531 /* TodoList+ContextMenu.swift */; };
 		5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B082CDC21961A7000866DBE /* AboutTableViewController.swift */; };
 		5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */; platformFilter = ios; };
+		5B178F872359E625000F3E73 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B178F862359E625000F3E73 /* NotificationCenter.framework */; };
+		5B178F8A2359E625000F3E73 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B178F892359E625000F3E73 /* TodayViewController.swift */; };
+		5B178F8D2359E625000F3E73 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B178F8B2359E625000F3E73 /* MainInterface.storyboard */; };
+		5B178F912359E625000F3E73 /* TodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B178F852359E625000F3E73 /* TodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B178F972359E83A000F3E73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BEADE3C2188F02100527CE1 /* Assets.xcassets */; };
+		5B178F982359EF0E000F3E73 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A73B21A45BFE00CE0A74 /* Constants.swift */; };
+		5B178F992359EF59000F3E73 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD752219DB1F000D01D6D /* AppIcon.swift */; };
+		5B178F9A2359EF5C000F3E73 /* Thank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72D21A4572A00CE0A74 /* Thank.swift */; };
+		5B178F9C2359F211000F3E73 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B178F9B2359F211000F3E73 /* PersistentContainer.swift */; };
+		5B178F9D2359F211000F3E73 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B178F9B2359F211000F3E73 /* PersistentContainer.swift */; };
+		5B178F9E2359F2FA000F3E73 /* myTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5BA641E02187C16400446436 /* myTodo.xcdatamodeld */; };
+		5B178FA02359F59E000F3E73 /* TodayViewController+FRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B178F9F2359F59E000F3E73 /* TodayViewController+FRC.swift */; };
+		5B178FA12359F7B3000F3E73 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53F6252194CA4700373DD5 /* TodoData.swift */; };
+		5B178FA2235A00AF000F3E73 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B68059C219D51BB006514EF /* Utilities.swift */; };
 		5B366F0721B163F400C7C836 /* myTodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B366F0621B163F400C7C836 /* myTodoUITests.swift */; };
 		5B51A72821A4559600CE0A74 /* UIView+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72721A4559600CE0A74 /* UIView+Effects.swift */; };
 		5B51A72A21A4560600CE0A74 /* Bundle+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A72921A4560600CE0A74 /* Bundle+Icon.swift */; };
@@ -61,6 +75,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B178F8F2359E625000F3E73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BA641D32187C16400446436 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B178F842359E625000F3E73;
+			remoteInfo = TodayExtension;
+		};
 		5B366F0921B163F400C7C836 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BA641D32187C16400446436 /* Project object */;
@@ -70,11 +91,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B178F922359E625000F3E73 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B178F912359E625000F3E73 /* TodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		47C800EFCA555EA4D498C53B /* Pods-myTodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myTodo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myTodo/Pods-myTodo.debug.xcconfig"; sourceTree = "<group>"; };
 		5B0326F4233E647C00AE5531 /* TodoList+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+ContextMenu.swift"; sourceTree = "<group>"; };
 		5B082CDC21961A7000866DBE /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		5B0D425D233E3BA3002BCE4D /* myTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = myTodo.entitlements; sourceTree = "<group>"; };
+		5B178F852359E625000F3E73 /* TodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B178F862359E625000F3E73 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5B178F892359E625000F3E73 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		5B178F8C2359E625000F3E73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		5B178F8E2359E625000F3E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B178F962359E73F000F3E73 /* TodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodayExtension.entitlements; sourceTree = "<group>"; };
+		5B178F9B2359F211000F3E73 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		5B178F9F2359F59E000F3E73 /* TodayViewController+FRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodayViewController+FRC.swift"; sourceTree = "<group>"; };
 		5B32CDF4233EB9ED00BE2D16 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B366F0421B163F400C7C836 /* myTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B366F0621B163F400C7C836 /* myTodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTodoUITests.swift; sourceTree = "<group>"; };
@@ -139,6 +182,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B178F822359E625000F3E73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B178F872359E625000F3E73 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B366F0121B163F400C7C836 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -164,8 +215,21 @@
 				5B32CDF4233EB9ED00BE2D16 /* IQKeyboardManagerSwift.framework */,
 				5BE1EA3E219AF5130023B4FB /* StoreKit.framework */,
 				656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */,
+				5B178F862359E625000F3E73 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B178F882359E625000F3E73 /* TodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				5B178F962359E73F000F3E73 /* TodayExtension.entitlements */,
+				5B178F892359E625000F3E73 /* TodayViewController.swift */,
+				5B178F9F2359F59E000F3E73 /* TodayViewController+FRC.swift */,
+				5B178F8B2359E625000F3E73 /* MainInterface.storyboard */,
+				5B178F8E2359E625000F3E73 /* Info.plist */,
+			);
+			path = TodayExtension;
 			sourceTree = "<group>";
 		};
 		5B366F0521B163F400C7C836 /* myTodoUITests */ = {
@@ -295,6 +359,7 @@
 				5B53F6252194CA4700373DD5 /* TodoData.swift */,
 				5BDFD752219DB1F000D01D6D /* AppIcon.swift */,
 				5B51A72D21A4572A00CE0A74 /* Thank.swift */,
+				5B178F9B2359F211000F3E73 /* PersistentContainer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +369,7 @@
 			children = (
 				5BA641DD2187C16400446436 /* myTodo */,
 				5B366F0521B163F400C7C836 /* myTodoUITests */,
+				5B178F882359E625000F3E73 /* TodayExtension */,
 				5BA641DC2187C16400446436 /* Products */,
 				A41BDE8AAC5DEF3AE1602F41 /* Pods */,
 				0E0F778CC21A3FC073B84621 /* Frameworks */,
@@ -315,6 +381,7 @@
 			children = (
 				5BA641DB2187C16400446436 /* myTodo.app */,
 				5B366F0421B163F400C7C836 /* myTodoUITests.xctest */,
+				5B178F852359E625000F3E73 /* TodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -410,6 +477,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B178F842359E625000F3E73 /* TodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B178F952359E625000F3E73 /* Build configuration list for PBXNativeTarget "TodayExtension" */;
+			buildPhases = (
+				5B178F812359E625000F3E73 /* Sources */,
+				5B178F822359E625000F3E73 /* Frameworks */,
+				5B178F832359E625000F3E73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayExtension;
+			productName = TodayExtension;
+			productReference = 5B178F852359E625000F3E73 /* TodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5B366F0321B163F400C7C836 /* myTodoUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B366F0D21B163F400C7C836 /* Build configuration list for PBXNativeTarget "myTodoUITests" */;
@@ -437,10 +521,12 @@
 				5BA641D82187C16400446436 /* Frameworks */,
 				5BA641D92187C16400446436 /* Resources */,
 				049B5D72C2B16EBF631C8073 /* [CP] Embed Pods Frameworks */,
+				5B178F922359E625000F3E73 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B178F902359E625000F3E73 /* PBXTargetDependency */,
 			);
 			name = myTodo;
 			productName = myTodo;
@@ -453,10 +539,13 @@
 		5BA641D32187C16400446436 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Marc Hein Webdesign";
 				TargetAttributes = {
+					5B178F842359E625000F3E73 = {
+						CreatedOnToolsVersion = 11.1;
+					};
 					5B366F0321B163F400C7C836 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
@@ -489,11 +578,21 @@
 			targets = (
 				5BA641DA2187C16400446436 /* myTodo */,
 				5B366F0321B163F400C7C836 /* myTodoUITests */,
+				5B178F842359E625000F3E73 /* TodayExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B178F832359E625000F3E73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B178F972359E83A000F3E73 /* Assets.xcassets in Resources */,
+				5B178F8D2359E625000F3E73 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B366F0221B163F400C7C836 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,6 +663,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B178F812359E625000F3E73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B178FA02359F59E000F3E73 /* TodayViewController+FRC.swift in Sources */,
+				5B178FA12359F7B3000F3E73 /* TodoData.swift in Sources */,
+				5B178F9A2359EF5C000F3E73 /* Thank.swift in Sources */,
+				5B178F8A2359E625000F3E73 /* TodayViewController.swift in Sources */,
+				5B178F9D2359F211000F3E73 /* PersistentContainer.swift in Sources */,
+				5B178F982359EF0E000F3E73 /* Constants.swift in Sources */,
+				5B178FA2235A00AF000F3E73 /* Utilities.swift in Sources */,
+				5B178F992359EF59000F3E73 /* AppIcon.swift in Sources */,
+				5B178F9E2359F2FA000F3E73 /* myTodo.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B366F0021B163F400C7C836 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,6 +713,7 @@
 				5B51A75621A478C000CE0A74 /* TipJar+Transaction.swift in Sources */,
 				5B0326F5233E647C00AE5531 /* TodoList+ContextMenu.swift in Sources */,
 				5B53A5CB2197077B000CD0F5 /* ThanksTableViewController.swift in Sources */,
+				5B178F9C2359F211000F3E73 /* PersistentContainer.swift in Sources */,
 				5B51A73921A4598F00CE0A74 /* TodoList+FRC.swift in Sources */,
 				5B082CDD21961A7000866DBE /* AboutTableViewController.swift in Sources */,
 				5B51A73021A4577E00CE0A74 /* UIViewController+SafariActions.swift in Sources */,
@@ -619,6 +735,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B178F902359E625000F3E73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B178F842359E625000F3E73 /* TodayExtension */;
+			targetProxy = 5B178F8F2359E625000F3E73 /* PBXContainerItemProxy */;
+		};
 		5B366F0A21B163F400C7C836 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BA641DA2187C16400446436 /* myTodo */;
@@ -627,6 +748,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5B178F8B2359E625000F3E73 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B178F8C2359E625000F3E73 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		5B99BB712198700700115AA4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -692,6 +821,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B178F932359E625000F3E73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJR28ZV94C;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo.TodayExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B178F942359E625000F3E73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodayExtension/TodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UJR28ZV94C;
+				INFOPLIST_FILE = TodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.marc-hein.myTodo.TodayExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5B366F0B21B163F400C7C836 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -854,11 +1029,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47C800EFCA555EA4D498C53B /* Pods-myTodo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
@@ -884,11 +1060,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7463BEEC1FEFB040498E2F4C /* Pods-myTodo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
@@ -912,6 +1089,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B178F952359E625000F3E73 /* Build configuration list for PBXNativeTarget "TodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B178F932359E625000F3E73 /* Debug */,
+				5B178F942359E625000F3E73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B366F0D21B163F400C7C836 /* Build configuration list for PBXNativeTarget "myTodoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

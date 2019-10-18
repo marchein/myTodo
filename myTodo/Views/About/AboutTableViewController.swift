@@ -34,7 +34,7 @@ class AboutTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         appVersionCell.detailTextLabel?.text = myTodo.versionString
-        confirmDialogSwitch.isOn = UserDefaults.standard.bool(forKey: localStoreKeys.showConfirmDialog)
+        confirmDialogSwitch.isOn = myTodo.sharedDefaults.bool(forKey: localStoreKeys.showConfirmDialog)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,10 +45,10 @@ class AboutTableViewController: UITableViewController {
     }
     
     fileprivate func reconfigureView() {
-        currentAppIcon = UserDefaults.standard.string(forKey: localStoreKeys.currentAppIcon)
+        currentAppIcon = myTodo.sharedDefaults.string(forKey: localStoreKeys.currentAppIcon)
         if !myTodo.appIcons.contains(iconName: currentAppIcon) {
             currentAppIcon = myTodo.defaultAppIcon
-            UserDefaults.standard.set(currentAppIcon, forKey: localStoreKeys.currentAppIcon)
+            myTodo.sharedDefaults.set(currentAppIcon, forKey: localStoreKeys.currentAppIcon)
         }
         
         if let appIcon = currentAppIcon {
@@ -72,7 +72,7 @@ class AboutTableViewController: UITableViewController {
     }
     
     @IBAction func confirmDialogSwitchAction(_ sender: Any) {
-        UserDefaults.standard.set(confirmDialogSwitch.isOn, forKey: localStoreKeys.showConfirmDialog)
+        myTodo.sharedDefaults.set(confirmDialogSwitch.isOn, forKey: localStoreKeys.showConfirmDialog)
     }
     
     @IBAction func closeModal(_ sender: Any) {

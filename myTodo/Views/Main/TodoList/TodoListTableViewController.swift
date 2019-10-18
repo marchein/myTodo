@@ -19,8 +19,8 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     var showConfirmDialog: Bool?
     var emptyViewIsLoaded = false
     let notification = UINotificationFeedbackGenerator()
-    var selectedIndexPath: IndexPath? = nil;
-    var selectedTodo: Todo? = nil;
+    var selectedIndexPath: IndexPath? = nil
+    var selectedTodo: Todo? = nil
 
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
@@ -38,7 +38,7 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
             let inter = UIContextMenuInteraction(delegate: self)
             self.view.addInteraction(inter)
         }
-        
+                
         setupApp()
     }
     
@@ -54,15 +54,15 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
     }
     
     fileprivate func setupApp() {
-        let appSetup = UserDefaults.standard.bool(forKey: localStoreKeys.appSetup)
-        
+        let appSetup = myTodo.sharedDefaults.bool(forKey: localStoreKeys.appSetup)
         if !appSetup {
             showConfirmDialog = true
-            UserDefaults.standard.set(showConfirmDialog, forKey: localStoreKeys.showConfirmDialog)
-            UserDefaults.standard.set(isSimulatorOrTestFlight(), forKey: localStoreKeys.isTester)
-            UserDefaults.standard.set(myTodo.defaultAppIcon, forKey: localStoreKeys.currentAppIcon)
-            UserDefaults.standard.set(0, forKey: localStoreKeys.todosAdded)
-            UserDefaults.standard.set(true, forKey: localStoreKeys.appSetup)
+            myTodo.sharedDefaults.set(showConfirmDialog, forKey: localStoreKeys.showConfirmDialog)
+            myTodo.sharedDefaults.set(isSimulatorOrTestFlight(), forKey: localStoreKeys.isTester)
+            myTodo.sharedDefaults.set(myTodo.defaultAppIcon, forKey: localStoreKeys.currentAppIcon)
+            myTodo.sharedDefaults.set(0, forKey: localStoreKeys.todosAdded)
+            myTodo.sharedDefaults.set(true, forKey: localStoreKeys.appSetup)
+            print("setup done")
         }
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -137,7 +137,7 @@ class TodoListTableViewController: UITableViewController, UIViewControllerPrevie
             } catch let error as NSError  {
                 fatalError("Could not save \(error), \(error.userInfo)")
             }
-            showConfirmDialog = UserDefaults.standard.bool(forKey: localStoreKeys.showConfirmDialog)
+            showConfirmDialog = myTodo.sharedDefaults.bool(forKey: localStoreKeys.showConfirmDialog)
             if showConfirmDialog ?? true {
                 let title = currentObject.title ?? "myTodo"
                 let message = currentObject.done ? NSLocalizedString("marked_done", comment: "") : NSLocalizedString("marked_undone", comment: "")

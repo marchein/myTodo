@@ -46,6 +46,7 @@ struct myTodoShortcut {
 }
 
 struct myTodo {
+    static let groupIdentifier = "group.de.marc-hein.myTodo.TodayExtension"
     static let appStoreId = "1441790770"
     static let twitterName = "myTodo_app"
     static let mailAdress = "dev@marc-hein.de"
@@ -74,4 +75,6 @@ struct myTodo {
     ]
     
     static let askForReviewAt = 5
+    
+    static let sharedDefaults: UserDefaults = UserDefaults(suiteName: myTodo.groupIdentifier)!
 }

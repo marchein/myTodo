@@ -27,6 +27,7 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
     // MARK:- System Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureView()
         view.fixInputAssistant()
     }
@@ -135,12 +136,12 @@ class TodoEditingTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     func getAddedTodos() -> Int {
-        return UserDefaults.standard.integer(forKey: localStoreKeys.todosAdded)
+        return myTodo.sharedDefaults.integer(forKey: localStoreKeys.todosAdded)
     }
     
     func incrementAddedTodos() {
         let addedTodos = getAddedTodos() + 1
-        UserDefaults.standard.set(addedTodos, forKey: localStoreKeys.todosAdded)
+        myTodo.sharedDefaults.set(addedTodos, forKey: localStoreKeys.todosAdded)
         if addedTodos == myTodo.askForReviewAt {
             showRateWindow()
         }

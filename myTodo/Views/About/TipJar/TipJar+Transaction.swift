@@ -58,7 +58,7 @@ extension TipJarTableViewController: SKProductsRequestDelegate, SKPaymentTransac
             switch transaction.transactionState {
             case SKPaymentTransactionState.purchased:
                 hud!.dismiss(animated: true)
-                UserDefaults.standard.set(true, forKey: localStoreKeys.hasTipped)
+                myTodo.sharedDefaults.set(true, forKey: localStoreKeys.hasTipped)
                 SKPaymentQueue.default().finishTransaction(transaction)
                 transactionInProgress = false
                 impact.impactOccurred()

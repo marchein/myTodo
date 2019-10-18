@@ -20,9 +20,10 @@ class TipJarTableViewController: UITableViewController {
     internal var selectedProductIndex: Int!
     internal var transactionInProgress = false
     internal var hasData = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         SKPaymentQueue.default().add(self)
 
         setupProducts()
