@@ -46,6 +46,7 @@
 		5BCB044A219B3EEE006E1E1D /* myTodo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0448219B3EEE006E1E1D /* myTodo2.png */; };
 		5BCB044B219B3EEE006E1E1D /* myTodo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCB0449219B3EEE006E1E1D /* myTodo1.png */; };
 		5BCE1AD1232938AB00D9EB92 /* myTodo2019dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BCE1ACF232938AA00D9EB92 /* myTodo2019dark.png */; };
+		5BD18FEF235A84D600EC410D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD18FEE235A84D600EC410D /* CloudKit.framework */; };
 		5BD2091622A7310E00222828 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */; };
 		5BD7D0E8219487B600209131 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD7D0E7219487B600209131 /* LocalNotifications.swift */; };
 		5BDFD74F219DA88D00D01D6D /* AppIconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */; };
@@ -121,6 +122,7 @@
 		5BCB0448219B3EEE006E1E1D /* myTodo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2.png; sourceTree = "<group>"; };
 		5BCB0449219B3EEE006E1E1D /* myTodo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo1.png; sourceTree = "<group>"; };
 		5BCE1ACF232938AA00D9EB92 /* myTodo2019dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myTodo2019dark.png; sourceTree = "<group>"; };
+		5BD18FEE235A84D600EC410D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5BD2091522A7310E00222828 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
 		5BD7D0E7219487B600209131 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		5BDFD74E219DA88D00D01D6D /* AppIconTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD18FEF235A84D600EC410D /* CloudKit.framework in Frameworks */,
 				5B0D425E233E3CFF002BCE4D /* Pods_myTodo.framework in Frameworks */,
 				5BE1EA3F219AF5130023B4FB /* StoreKit.framework in Frameworks */,
 			);
@@ -161,6 +164,7 @@
 		0E0F778CC21A3FC073B84621 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BD18FEE235A84D600EC410D /* CloudKit.framework */,
 				5B32CDF4233EB9ED00BE2D16 /* IQKeyboardManagerSwift.framework */,
 				5BE1EA3E219AF5130023B4FB /* StoreKit.framework */,
 				656CAAF25F4846F314A92A75 /* Pods_myTodo.framework */,
@@ -858,7 +862,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
@@ -888,7 +892,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = myTodo/myTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 171;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
